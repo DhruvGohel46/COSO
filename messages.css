@@ -14,7 +14,7 @@ body {
     width: 300px;
     background-color: #f4f4f4;
     padding: 10px;
-    border-right: 1px solid #bd0606;
+    border-right: 1px solid #ffffff;
     overflow-y: auto; /* Allow scrolling if there are many chats */
 }
 
