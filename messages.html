@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messaging - COSO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="messages.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="messages.html">Messages</a></li>
+                <li><a href="registration.html">Registration</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="newsFeed.html">News Feed</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            <input type="text" placeholder="Search..." class="search-bar">
+            <ul class="chat-list">
+                <li class="chat-item">
+                    <div class="chat-avatar"></div>
+                    <div class="chat-info">
+                        <span class="chat-name">User 1</span>
+                        <span class="chat-message">Last message preview...</span>
+                    </div>
+                    <span class="unread-indicator">3</span>
+                </li>
+                <!-- More chat items -->
+            </ul>
+        </aside>
+        <main class="chat-area">
+            <div class="chat-header">
+                <h2>Chat with User 1</h2>
+            </div>
+            <div class="messages">
+                <div class="message sent">
+                    <span class="message-text">Hello!</span>
+                    <span class="timestamp">10:00 AM</span>
+                </div>
+                <div class="message received">
+                    <span class="message-text">Hi there!</span>
+                    <span class="timestamp">10:01 AM</span>
+                </div>
+                <!-- More messages -->
+            </div>
+            <div class="input-area">
+                <input type="text" placeholder="Type a message..." class="message-input">
+                <button class="send-button">Send</button>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+/* Styles for the profile page */
+body {
+    font-family: 'Baloo Bhai 2', 'Edu AU VIC WA NT Pre', 'Merriweather', sans-serif;
+}
+
+h2 {
+    color: #333;
+}
+
+#profile-data {
+    margin: 20px 0;
+    text-align: center;
+    /* Center the profile data */
+}
+
+#profile-form {
+    margin-top: 20px;
+    /* Add margin to the top of the form */
+    display: flex;
+    /* Use flexbox for alignment */
+    flex-direction: column;
+    /* Stack elements vertically */
+    align-items: center;
+    /* Center align form elements */
+}
+
+
+#photo-preview img {
+    max-width: 100px;
+    margin-top: 10px;
+}
+
+/* Navigation Styles */
+nav {
+    background-color: #007bff;
+    /* Primary color for the navigation bar */
+    padding: 0px;
+    /* Padding around the navigation */
+    margin: 0px;
+    position: fixed;
+    /* Fix the navigation to the left */
+    height: 100%;
+    /* Full height */
+    width: 9vw;
+    left: 0;
+    top: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    /* Remove bullet points */
+    padding: 0;
+    /* Remove default padding */
+    margin: 0;
+    /* Remove default margin */
+    display: block;
+    /* Block layout for vertical */
+}
+
+nav a {
+    text-decoration: none;
+    /* Remove underline from links */
+    color: white;
+    /* White text color */
+    padding: 10px 15px;
+    /* Padding for clickable area */
+    display: block;
+    /* Block display for vertical links */
+    transition: background-color 0.3s;
+    /* Smooth transition for hover effect */
+}
+
+nav a:hover {
+    background-color: #0056b3;
+    /* Darker shade on hover */
+}
+
+/* Adjust main content area to accommodate the fixed nav */
+.container {
+    margin-left: 200px;
+    /* Leave space for the vertical nav */
+}
