@@ -29,10 +29,19 @@ header {
     height: 10vh;
 }
 
+img {
+    position: relative;
+    left: 20px;
+    max-height: 50px;
+    max-width: 50px;
+}
+
 h1 {
     position: relative;
-    text-align: start;
+    text-align: left;
+    right: 23vw;
     font-size: 3em;
+    
 }
 
 .container {
@@ -56,7 +65,7 @@ h2 {
     /* Dark color for subheadings */
     z-index: 100;
     margin-top: 20px;
-    
+
 }
 
 p {
