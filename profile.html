@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - COSO</title>
+    <title>Registration - COSO</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,25 +17,59 @@
     <header>
         <nav>
             <ul>
+                <h1 style="font-size: 40px; margin: 0; position: relative; left: 4px;  ">COSO</h1>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="messages.html">Messages</a></li>
-                <li><a href="registration.html">Registration</a></li>
                 <li><a href="profile.html">Profile</a></li>
             </ul>
         </nav>
-    <h1 style="text-align: center;">User Profile</h1>
-
+        <h1 style="text-align: center; margin: 0;">User Profile</h1>
     </header>
+
     <div class="container">
         <h2 style="text-align: center;">Profile</h2>
-
         <div id="profile-data"></div>
         <form id="profile-form">
             <input type="file" id="profile-photo" accept="image/*">
             <button type="submit">Upload</button>
             <div id="photo-preview"></div>
         </form>
+
+        <h1>Register</h1>
+        <form id="registrationForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="college">College:</label>
+            <select id="college" required>
+                <option value="">Select College</option>
+                <option value="GTU - School of Management Studies (GSMS)">GTU - School of Management Studies (GSMS)
+                </option>
+                <option value="GTU - School of Engineering and Technology (GTU-SET)">GTU - School of Engineering and
+                    Technology (GTU-SET)</option>
+                <option value="Kaushalya The Skill University">Kaushalya The Skill University</option>
+                <option value="Vishwakarma Government Engineering College (VGEC)">Vishwakarma Government Engineering
+                    College (VGEC)</option>
+                <option value="School of Applied Sciences & Technology (SAST - GTU)">School of Applied Sciences &
+                    Technology (SAST - GTU)</option>
+            </select>
+
+            <label for="course">Course:</label>
+            <select id="course" required>
+                <option value="">Select Course</option>
+            </select>
+
+            <label for="year">Year:</label>
+            <select id="year" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <button type="submit">Register</button>
+        </form>
     </div>
+
     <script src="profile.js"></script>
 </body>
 
