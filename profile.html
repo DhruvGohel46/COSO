@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration - COSO</title>
+    <title>Profile - COSO</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -27,47 +28,73 @@
     </header>
 
     <div class="container">
-        <h2 style="text-align: center;">Profile</h2>
-        <div id="profile-data"></div>
-        <form id="profile-form">
-            <input type="file" id="profile-photo" accept="image/*">
-            <button type="submit">Upload</button>
-            <div id="photo-preview"></div>
-        </form>
+        <div class="profile-section">
+            <div class="profile-header">
+                <div id="profile-picture">
+                    <img src="logo.png" alt="Profile Picture" id="profile-photo-preview">
+                    <label for="profile-photo" class="upload-btn">Change Photo</label>
+                    <input type="file" id="profile-photo" accept="image/*" style="display: none;">
+                </div>
+                <div class="profile-info">
+                    <h2 id="profile-name">John Doe</h2>
+                    <p id="profile-college">University of Example</p>
+                    <p id="profile-course">Computer Science</p>
+                </div>
+            </div>
+            
+            <div class="profile-actions">
+                <button class="edit-btn">Edit Profile</button>
+            </div>
+        </div>
 
-        <h1>Register</h1>
-        <form id="registrationForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" required>
 
-            <label for="college">College:</label>
-            <select id="college" required>
-                <option value="">Select College</option>
-                <option value="GTU - School of Management Studies (GSMS)">GTU - School of Management Studies (GSMS)
-                </option>
-                <option value="GTU - School of Engineering and Technology (GTU-SET)">GTU - School of Engineering and
-                    Technology (GTU-SET)</option>
-                <option value="Kaushalya The Skill University">Kaushalya The Skill University</option>
-                <option value="Vishwakarma Government Engineering College (VGEC)">Vishwakarma Government Engineering
-                    College (VGEC)</option>
-                <option value="School of Applied Sciences & Technology (SAST - GTU)">School of Applied Sciences &
-                    Technology (SAST - GTU)</option>
-            </select>
+        <div class="registration-section">
+            <h2>Complete Your Registration</h2>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+                </div>
 
-            <label for="course">Course:</label>
-            <select id="course" required>
-                <option value="">Select Course</option>
-            </select>
+                <div class="form-group">
+                    <label for="college">College:</label>
+                    <select id="college" required>
+                        <option value="">Select College</option>
+                        <option value="GTU - School of Management Studies (GSMS)">GTU - School of Management Studies (GSMS)</option>
+                        <option value="GTU - School of Engineering and Technology (GTU-SET)">GTU - School of Engineering and Technology (GTU-SET)</option>
+                        <option value="Kaushalya The Skill University">Kaushalya The Skill University</option>
+                        <option value="Vishwakarma Government Engineering College (VGEC)">Vishwakarma Government Engineering College (VGEC)</option>
+                        <option value="School of Applied Sciences & Technology (SAST - GTU)">School of Applied Sciences & Technology (SAST - GTU)</option>
+                    </select>
+                </div>
 
-            <label for="year">Year:</label>
-            <select id="year" required>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-            <button type="submit">Register</button>
-        </form>
+                <div class="form-group">
+                    <label for="course">Course:</label>
+                    <select id="course" required>
+                        <option value="">Select Course</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Business Administration">Business Administration</option>
+                        <option value="Electrical Engineering">Electrical Engineering</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Year:</label>
+                    <select id="year" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="submit-btn">Complete Registration</button>
+                </div>
+            </form>
+        </div>
+
     </div>
 
     <script src="profile.js"></script>
