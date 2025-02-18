@@ -347,6 +347,7 @@ nav a {
     /* Block display for vertical links */
     transition: background-color 0.3s;
     /* Smooth transition for hover effect */
+    border-radius: 20px;
 }
 
 nav a:hover {

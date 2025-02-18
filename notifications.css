@@ -1,15 +1,63 @@
-/* Notifications Page Styles */
+/* Global Styles */
 body {
+
     font-family: 'Baloo Bhai 2', 'Edu AU VIC WA NT Pre', 'Merriweather', sans-serif;
+    background-color: #ffffff;
+    color: #333;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #007bff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    height: 10vh;
+}
+
+header img {
+    max-height: 50px;
+    max-width: 50px;
+}
+
+header h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+/* Navigation Menu Styles */
+nav ul {
+
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+   
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+    border-radius: 20px;
+}
+
+nav a:hover {
+    background-color: #0056b3;
+    
 }
 
 .container {
     display: flex;
     min-height: 100vh;
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
 }
+
 
 .notifications-area {
     flex: 1;
@@ -20,7 +68,28 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    header h1 {
+        font-size: 2em;
+        text-align: center;
+    }
+
+    .container {
+        padding: 15px;
+        max-width: 100%;
+    }
+}
+
+
+/* Notifications Header Styles */
 .notifications-header {
+
     border-bottom: 1px solid #eee;
     padding-bottom: 15px;
     margin-bottom: 20px;
@@ -31,7 +100,9 @@ body {
     color: #333;
 }
 
+/* Notifications List Container */
 .notifications-list {
+
     margin-top: 20px;
 }
 
@@ -47,7 +118,9 @@ body {
     background-color: #f9f9f9;
 }
 
+/* Notification Icon Styles */
 .notification-icon {
+
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -55,16 +128,22 @@ body {
     margin-right: 15px;
 }
 
+/* Notification Content Area */
 .notification-content {
+
     flex: 1;
 }
 
+/* Notification Message Text */
 .notification-message {
+
     margin: 0;
     color: #333;
 }
 
+/* Notification Timestamp */
 .notification-time {
+
     font-size: 0.9em;
     color: #666;
     margin-top: 5px;
@@ -88,14 +167,18 @@ body {
     background-color: #e9f3ff;
 }
 
+/* Empty State Message (when no notifications) */
 .empty-state {
+
     text-align: center;
     padding: 40px;
     color: #666;
 }
 
 /* Responsive Design */
+/* Responsive Design for Mobile Devices */
 @media (max-width: 768px) {
+
     .container {
         flex-direction: column;
         margin: 10px;
