@@ -128,6 +128,28 @@ body {
     background-color: #218838;
 }
 
+#passwordSection {
+    margin-top: 20px;
+    padding: 5px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+#passwordSection h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.locked input,
+.locked select {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+}
+
 /* Navigation Styles */
 nav {
     background-color: #007bff;
