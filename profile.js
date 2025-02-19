@@ -16,12 +16,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // College and Course Mapping
     const collegeCourseMap = {
-        "GTU - School of Management Studies (GSMS)": ["Ph.D. in Management",
+        "GTU - School of Management Studies (GSMS)": [
+            "Ph.D. in Management",
             "Master of Business Administration (MBA) in International Business",
             "MBA in Innovation,Entrepreneurship, and Venture Development (IEV)",
-            "post Graduate Diploma in Digital Marketing (PGDDM)",
-            "Post Graduate Diploma in Hospital Management (PGDHM)"],
-
+            "Post Graduate Diploma in Digital Marketing (PGDDM)",
+            "Post Graduate Diploma in Hospital Management (PGDHM)"
+        ],
         "GTU - School of Engineering and Technology (GTU-SET)": [
             "Computer Engineering",
             "Electronics & Communication Engineering",
@@ -74,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const registrationForm = document.getElementById('registrationForm');
     const editProfileBtn = document.getElementById('editProfileBtn');
 
-    registrationForm.addEventListener('submit', function (event) {
+    function handleRegistration(event) {
         event.preventDefault();
 
         const password = document.getElementById('passwordInput').value;
@@ -101,7 +102,9 @@ document.addEventListener('DOMContentLoaded', function () {
         lockForm();
 
         alert('Registration successful!');
-    });
+    }
+
+    registrationForm.addEventListener('submit', handleRegistration);
 
     // Load profile data if exists
     const savedProfile = localStorage.getItem('userProfile');
@@ -138,11 +141,36 @@ function lockForm() {
     inputs.forEach(input => input.disabled = true);
     document.getElementById('registrationForm').classList.add('locked');
     document.getElementById('editProfileBtn').classList.remove('hidden');
+    document.getElementById('editProfileBtn').textContent = 'Edit Profile';
 }
 
 function unlockForm() {
     const inputs = document.querySelectorAll('#registrationForm input, #registrationForm select');
     inputs.forEach(input => input.disabled = false);
     document.getElementById('registrationForm').classList.remove('locked');
-    document.getElementById('editProfileBtn').innerText = 'Save Changes';
+    document.getElementById('editProfileBtn').textContent = 'Save Changes';
+    
+    // Update form submission to handle saving changes
+    const registrationForm = document.getElementById('registrationForm');
+    registrationForm.removeEventListener('submit', handleRegistration);
+    registrationForm.addEventListener('submit', handleSaveChanges);
+}
+
+function handleSaveChanges(event) {
+    event.preventDefault();
+    
+    const formData = {
+        name: document.getElementById('name').value,
+        college: document.getElementById('college').value,
+        course: document.getElementById('course').value,
+        year: document.getElementById('year').value,
+        password: document.getElementById('passwordInput').value
+    };
+
+    // Save updated profile
+    localStorage.setItem('userProfile', JSON.stringify(formData));
+    updateProfileDisplay(formData);
+    lockForm();
+    
+    alert('Profile updated successfully!');
 }

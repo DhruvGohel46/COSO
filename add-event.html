@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Event - COSO</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="COSO Logo">
+        <h1>COSO</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="messages.html">Messages</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="notifications.html">Notifications</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Add Your Event</h2>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <!-- Flyer Upload -->
+            <label for="event-flyer">Upload Event Flyer:</label>
+            <input type="file" id="event-flyer" name="event-flyer" accept="image/*" required>
+
+            <!-- Event Title -->
+            <label for="event-title">Event Title:</label>
+            <input type="text" id="event-title" name="event-title" placeholder="Enter event name" required>
+
+            <!-- Event Date -->
+            <label for="event-date">Event Date:</label>
+            <input type="date" id="event-date" name="event-date" required>
+
+            <!-- Event Description -->
+            <label for="event-description">Event Description:</label>
+            <textarea id="event-description" name="event-description" placeholder="Enter event details" required></textarea>
+
+            <button type="submit" class="cta-button">Submit Event</button>
+        </form>
+    </main>
+</body>
+</html>

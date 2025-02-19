@@ -59,7 +59,6 @@
                 <li><a href="messages.html">Messages</a></li>
                 <li><a href="profile.html">Profile</a></li>
                 <li><a href="notifications.html">Notifications</a></li>
-
             </ul>
         </nav>
     </header>
@@ -71,10 +70,35 @@
                 <a href="profile.html" class="cta-button">Get Started</a>
             </div>
         </section>
+
+        <!-- Search Section -->
+        <section id="search-section">
+            <h2>Find Your Program</h2>
+            <div class="search-container">
+                <select id="college-search" aria-label="Select College">
+                    <option value="">Select College</option>
+                </select>
+                <select id="course-search" aria-label="Select Course" disabled>
+                    <option value="">Select Course</option>
+                </select>
+                <select id="academic-year" aria-label="Select Academic Year">
+                    <option value="">Select Academic Year</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <button id="search-button" class="cta-button">Search</button>
+            </div>
+        </section>
         
         <!-- Events Section -->
         <section id="events" class="events-section">
-            <h2>Upcoming Events</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>Upcoming Events</h2>
+                <a href="add-event.html" class="cta-button">Add Your Event</a>
+            </div>
+
             <div class="events-grid">
                 <article class="event-card">
                     <div class="event-icon">🎓</div>
@@ -101,10 +125,10 @@
                     <button class="cta-button">Get Tickets</button>
                 </article>
             </div>
+
         </section>
         
         <div class="container">
-
             <h2>Welcome to COSO!</h2>
             <p>This is the homepage of the COSO</p>
         </div>
