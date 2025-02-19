@@ -96,22 +96,23 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, observerOptions);
 
-        // Observe each event card
+        // Get all event cards
         const eventCards = document.querySelectorAll('.event-card');
+        
+        // Observe each event card for animations
         eventCards.forEach(card => {
             observer.observe(card);
         });
 
-        // Handle CTA button clicks
-        const ctaButtons = document.querySelectorAll('.event-card .cta-button');
-        ctaButtons.forEach(button => {
-            button.addEventListener('click', function(event) {
-                event.preventDefault();
-                // Handle button click (e.g., redirect to event page)
-                const eventTitle = this.closest('.event-card').querySelector('h3').textContent;
-                console.log(`Registering for event: ${eventTitle}`);
-                // Add actual registration logic here
+        // Add click event listeners to each card
+        eventCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const eventId = card.getAttribute('data-event-id');
+                console.log('Event clicked:', eventId);
+                // Future functionality: Redirect to event detail page using eventId
             });
         });
+
+
     }
 });
