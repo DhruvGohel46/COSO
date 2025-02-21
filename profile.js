@@ -1,3 +1,5 @@
+import { collegeData } from "./colleges and courses list";
+
 document.addEventListener('DOMContentLoaded', function () {
     // Profile Picture Upload
     const profilePhotoInput = document.getElementById('profile-photo');
@@ -14,62 +16,25 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // College and Course Mapping
-    const collegeCourseMap = {
-        "GTU - School of Management Studies (GSMS)": [
-            "Ph.D. in Management",
-            "Master of Business Administration (MBA) in International Business",
-            "MBA in Innovation,Entrepreneurship, and Venture Development (IEV)",
-            "Post Graduate Diploma in Digital Marketing (PGDDM)",
-            "Post Graduate Diploma in Hospital Management (PGDHM)"
-        ],
-        "GTU - School of Engineering and Technology (GTU-SET)": [
-            "Computer Engineering",
-            "Electronics & Communication Engineering",
-            "Artificial Intelligence and Data Science",
-            "Structural Engineering"
-        ],
-        "Kaushalya The Skill University": ["Business Administration", "Computer Applications"],
-        "Vishwakarma Government Engineering College (VGEC)": [
-            "Chemical Engineering",
-            "Civil Engineering",
-            "Computer Engineering",
-            "Computer Science and Engineering (Data Science)",
-            "Electronics & Communication Engineering",
-            "Electronics and Instrumentation Engineering",
-            "Electrical Engineering",
-            "Information Technology",
-            "Information and Communication Technology",
-            "Instrumentation & Control Engineering",
-            "Mechanical Engineering",
-            "Power Electronics Engineering"
-        ],
-        "School of Applied Sciences & Technology (SAST - GTU)": [
-            "Industrial Biotechnology",
-            "Intellectual Property Rights",
-            "Bioinformatics",
-            "Biotechnology"
-        ]
-    };
+   // College and Course Dropdowns
+const collegeSelect = document.getElementById('college');
+const courseSelect = document.getElementById('course');
 
-    const collegeSelect = document.getElementById('college');
-    const courseSelect = document.getElementById('course');
+collegeSelect.addEventListener('change', function () {
+    const selectedCollege = collegeSelect.value;
+    const courses = collegeData[selectedCollege] || [];
 
-    collegeSelect.addEventListener('change', function () {
-        const selectedCollege = collegeSelect.value;
-        const courses = collegeCourseMap[selectedCollege] || [];
+    // Clear existing options
+    courseSelect.innerHTML = '<option value="">Select Course</option>';
 
-        // Clear existing options
-        courseSelect.innerHTML = '<option value="">Select Course</option>';
-
-        // Add new options
-        courses.forEach(course => {
-            const option = document.createElement('option');
-            option.value = course;
-            option.textContent = course;
-            courseSelect.appendChild(option);
-        });
+    // Add new options
+    courses.forEach(course => {
+        const option = document.createElement('option');
+        option.value = course;
+        option.textContent = course;
+        courseSelect.appendChild(option);
     });
+});
 
     // Registration Form Handling
     const registrationForm = document.getElementById('registrationForm');

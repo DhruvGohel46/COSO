@@ -1,16 +1,11 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // College and Course Data
-    const collegeData = {
-        "GTU - School of Management Studies (GSMS)": ["Ph.D. in Management", "Master of Business Administration (MBA) in International Business", "MBA in Innovation,Entrepreneurship, and Venture Development (IEV)", "post Graduate Diploma in Digital Marketing (PGDDM)", "Post Graduate Diploma in Hospital Management (PGDHM)"],
-        "GTU - School of Engineering and Technology (GTU-SET)": ["Computer Engineering", "Electronics & Communication Engineering", "Artificial Intelligence and Data Science", "Structural Engineering"],
-        "Kaushalya The Skill University": ["Business Administration", "Computer Applications"],
-        "Vishwakarma Government Engineering College (VGEC)": ["Chemical Engineering", "Civil Engineering", "Computer Engineering", "Computer Science and Engineering (Data Science)", "Electronics & Communication Engineering", "Electronics and Instrumentation Engineering", "Electrical Engineering", "Information Technology", "Information and Communication Technology", "Instrumentation & Control Engineering", "Mechanical Engineering", "Power Electronics Engineering"],
-        "School of Applied Sciences & Technology (SAST - GTU)": ["Industrial Biotechnology", "Intellectual Property Rights", "Bioinformatics", "Biotechnology"]
-    };
+// Import college data from external file
+import { collegeData } from './colleges and courses list.js';
 
-    // Get dropdown elements
+document.addEventListener('DOMContentLoaded', function () {
     const collegeSelect = document.getElementById('college-search');
     const courseSelect = document.getElementById('course-search');
+    const yearSelect = document.getElementById('academic-year');
+    const searchButton = document.getElementById('search-button');
 
     // Populate college dropdown
     if (collegeSelect) {
@@ -28,36 +23,39 @@ document.addEventListener('DOMContentLoaded', function() {
             collegeSelect.appendChild(option);
         });
 
-    // Handle college selection change
-    collegeSelect.addEventListener('change', function() {
-        const selectedCollege = this.value;
-        
-        // Clear existing course options
-        courseSelect.innerHTML = '<option value="">Select Course</option>';
-        courseSelect.disabled = true;
+        // Handle college selection change
+        collegeSelect.addEventListener('change', function () {
+            const selectedCollege = this.value;
 
-        if (selectedCollege && collegeData[selectedCollege]) {
-            // Enable course dropdown
-            courseSelect.disabled = false;
+            // Clear existing course options
+            courseSelect.innerHTML = '<option value="">Select Course</option>';
+            courseSelect.disabled = true;
 
-            // Populate course options
-            collegeData[selectedCollege].forEach(course => {
-                const option = document.createElement('option');
-                option.value = course;
-                option.textContent = course;
-                courseSelect.appendChild(option);
-            });
-        }
-    });
+            if (selectedCollege && collegeData[selectedCollege]) {
+                // Enable course dropdown
+                courseSelect.disabled = false;
+                
+                console.log('Selected College:', selectedCollege);
+                console.log('Courses:', collegeData[selectedCollege]);
+
+                // Populate course options
+                collegeData[selectedCollege].forEach(course => {
+                    const option = document.createElement('option');
+                    option.value = course;
+                    option.textContent = course;
+                    courseSelect.appendChild(option);
+                });
+            }
+        });
+    }
 
     // Handle search button click
-    const searchButton = document.getElementById('search-button');
     if (searchButton) {
-        searchButton.addEventListener('click', function() {
+        searchButton.addEventListener('click', function () {
             const selectedCollege = collegeSelect.value;
             const selectedCourse = courseSelect.value;
-            const selectedYear = document.getElementById('academic-year').value;
-            
+            const selectedYear = yearSelect.value;
+
             if (!selectedCollege || !selectedCourse || !selectedYear) {
                 alert('Please select all fields before searching.');
                 return;
@@ -69,12 +67,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 course: selectedCourse,
                 year: selectedYear
             });
-            
+
             // TODO: Implement actual search functionality
             alert('Search functionality coming soon!');
         });
-    }
-
     }
 
     // Existing Events Section Functionality
@@ -98,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Get all event cards
         const eventCards = document.querySelectorAll('.event-card');
-        
+
         // Observe each event card for animations
         eventCards.forEach(card => {
             observer.observe(card);
@@ -106,13 +102,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Add click event listeners to each card
         eventCards.forEach(card => {
-            card.addEventListener('click', function() {
+            card.addEventListener('click', function () {
                 const eventId = card.getAttribute('data-event-id');
                 console.log('Event clicked:', eventId);
                 // Future functionality: Redirect to event detail page using eventId
             });
         });
-
-
     }
 });
