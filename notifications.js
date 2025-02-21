@@ -10,26 +10,38 @@ document.addEventListener('DOMContentLoaded', function() {
     // Sample notification data (would typically come from an API)
 
     const notifications = [ // Array of notification objects
-
         {
             type: 'friend-request',
             message: 'You have a new friend request from User1',
-            time: '10 minutes ago',
+            time: '2 minutes ago',
             read: false
         },
         {
-            type: 'message',
-            message: 'You have a new message from User2',
+            type: 'friend-request', 
+            message: 'You have a new friend request from User2',
+            time: '5 mins ago',
+            read: false
+        },
+        {
+            type: 'friend-request', 
+            message: 'You have a new friend request from User3',
+            time: '10 min ago',
+            read: false
+        },
+        {
+            type: 'friend-request', 
+            message: 'You have a new friend request from User4',
             time: '1 hour ago',
             read: false
         },
         {
-            type: 'update',
-            message: 'New features are available!',
+            type: 'friend-request', 
+            message: 'You have a new friend request from User5',
             time: '2 hours ago',
-            read: true
+            read: false
         }
     ];
+
 
     // Render notifications
     // Function to render notifications in the UI
@@ -67,43 +79,38 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p class="notification-time">${notification.time}</p>
                 </div>
                 <div class="notification-actions">
-                    <button class="mark-read">${notification.read ? 'Mark Unread' : 'Mark Read'}</button>
-                    <button class="dismiss">Dismiss</button>
+                    ${notification.type === 'friend-request' ? 
+                    `<button class="accept-btn">Accept</button>
+                     <button class="reject-btn">Reject</button>` : 
+                    ''}
                 </div>
+
             `;
 
             // Add event listeners for notification actions
 
-            // Get reference to mark read/unread button
-            const markReadBtn = notificationItem.querySelector('.mark-read');
+            // Handle friend request actions
+            if (notification.type === 'friend-request') {
+                const acceptBtn = notificationItem.querySelector('.accept-btn');
+                const rejectBtn = notificationItem.querySelector('.reject-btn');
 
-            // Get reference to dismiss button
-            const dismissBtn = notificationItem.querySelector('.dismiss');
+                acceptBtn.addEventListener('click', () => {
+                    // Handle friend request acceptance
+                    notificationsList.removeChild(notificationItem);
+                    if (notificationsList.children.length === 0) {
+                        emptyState.style.display = 'block';
+                    }
+                });
 
+                rejectBtn.addEventListener('click', () => {
+                    // Handle friend request rejection
+                    notificationsList.removeChild(notificationItem);
+                    if (notificationsList.children.length === 0) {
+                        emptyState.style.display = 'block';
+                    }
+                });
+            }
 
-            // Handle mark read/unread click
-            markReadBtn.addEventListener('click', () => {
-
-                notification.read = !notification.read; // Toggle read status
-
-                markReadBtn.textContent = notification.read ? 'Mark Unread' : 'Mark Read'; // Update button text
-
-                notificationItem.classList.toggle('read', notification.read); // Update visual state
-
-            });
-
-            // Handle dismiss click
-            dismissBtn.addEventListener('click', () => {
-
-                notificationsList.removeChild(notificationItem); // Remove notification from DOM
-
-                // Show empty state if no notifications left
-                if (notificationsList.children.length === 0) {
-
-                    emptyState.style.display = 'block'; // Show empty state message
-
-                }
-            });
 
             notificationsList.appendChild(notificationItem); // Add notification to list
 
