@@ -95,18 +95,26 @@ document.addEventListener('DOMContentLoaded', function () {
         // Get all event cards
         const eventCards = document.querySelectorAll('.event-card');
 
-        // Observe each event card for animations
-        eventCards.forEach(card => {
-            observer.observe(card);
-        });
+    // Observe each event card for animations
+    eventCards.forEach(card => {
+        observer.observe(card);
+    });
 
-        // Add click event listeners to each card
-        eventCards.forEach(card => {
-            card.addEventListener('click', function () {
-                const eventId = card.getAttribute('data-event-id');
-                console.log('Event clicked:', eventId);
-                // Future functionality: Redirect to event detail page using eventId
-            });
+    // Add click event listeners to each card
+    eventCards.forEach(card => {
+        card.addEventListener('click', function () {
+            const eventId = card.getAttribute('data-event-id');
+            console.log('Event clicked:', eventId);
+            // Future functionality: Redirect to event detail page using eventId
         });
+    });
+
+    // Check if the user is registered
+    var userRegistered = localStorage.getItem("userRegistered");
+    if (userRegistered === "true") {
+        document.getElementById("getStartedBtn").classList.add("hidden");
+        document.getElementById("heroBackground").classList.add("hidden");
+    }
+
     }
 });

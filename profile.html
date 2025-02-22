@@ -23,7 +23,6 @@
                 <li><a href="messages.html">Messages</a></li>
                 <li><a href="profile.html">Profile</a></li>
                 <li><a href="notifications.html">Notifications</a></li>
-
             </ul>
         </nav>
         <h1 style="text-align: center; margin: 0;">User Profile</h1>
@@ -33,7 +32,7 @@
         <div class="profile-section">
             <div class="profile-header">
                 <div id="profile-picture">
-                    <img src="logo.png" , alt="Profile Picture" id="profile-photo-preview">
+                    <img src="logo.png" alt="Profile Picture" id="profile-photo-preview">
                     <label for="profile-photo" class="upload-btn">Change Photo</label>
                     <input type="file" id="profile-photo" accept="image/*" style="display: none;">
                 </div>
@@ -58,26 +57,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="college">College:</label>
-                    <select id="college" required>
-                        <option value="">Select College</option>
-                        <option value="GTU - School of Management Studies (GSMS)">GTU - School of Management Studies
-                            (GSMS)</option>
-                        <option value="GTU - School of Engineering and Technology (GTU-SET)">GTU - School of Engineering
-                            and Technology (GTU-SET)</option>
-                        <option value="Kaushalya The Skill University">Kaushalya The Skill University</option>
-                        <option value="Vishwakarma Government Engineering College (VGEC)">Vishwakarma Government
-                            Engineering College (VGEC)</option>
-                        <option value="School of Applied Sciences & Technology (SAST - GTU)">School of Applied Sciences
-                            & Technology (SAST - GTU)</option>
+                    <label for="collegeSelect">College:</label>
+                    <select id="collegeSelect" required>
+                        <!-- Options will be populated dynamically -->
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="course">Course:</label>
-                    <select id="course" required>
+                    <label for="courseSelect">Course:</label>
+                    <select id="courseSelect" required>
                         <option value="">Select Course</option>
-                        
+                        <!-- Options will be updated dynamically based on the selected college -->
                     </select>
                 </div>
 
@@ -94,7 +84,6 @@
                             <label for="passwordInput">Password:</label>
                             <input type="password" id="passwordInput" placeholder="Enter new password">
                         </div>
-                       
                     </div>
                 </div>
 
@@ -103,10 +92,9 @@
                 </div>
             </form>
         </div>
-
-
     </div>
 
+    <script src="colleges and courses list.js"></script>
     <script src="profile.js"></script>
 </body>
 

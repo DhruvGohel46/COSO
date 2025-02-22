@@ -1,4 +1,4 @@
-import { collegeData } from "./colleges and courses list";
+import { collegeData } from "./colleges and courses list.js";
 
 document.addEventListener('DOMContentLoaded', function () {
     // Profile Picture Upload
@@ -16,25 +16,33 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-   // College and Course Dropdowns
-const collegeSelect = document.getElementById('college');
-const courseSelect = document.getElementById('course');
+    // College and Course Dropdowns
+    const collegeSelect = document.getElementById('collegeSelect');
+    const courseSelect = document.getElementById('courseSelect');
 
-collegeSelect.addEventListener('change', function () {
-    const selectedCollege = collegeSelect.value;
-    const courses = collegeData[selectedCollege] || [];
-
-    // Clear existing options
-    courseSelect.innerHTML = '<option value="">Select Course</option>';
-
-    // Add new options
-    courses.forEach(course => {
+    // Populate the college dropdown on page load
+    Object.keys(collegeData).forEach(college => {
         const option = document.createElement('option');
-        option.value = course;
-        option.textContent = course;
-        courseSelect.appendChild(option);
+        option.value = college;
+        option.textContent = college;
+        collegeSelect.appendChild(option);
     });
-});
+
+    collegeSelect.addEventListener('change', function () {
+        const selectedCollege = collegeSelect.value;
+        const courses = collegeData[selectedCollege] || [];
+
+        // Clear existing options
+        courseSelect.innerHTML = '<option value="">Select Course</option>';
+
+        // Add new options
+        courses.forEach(course => {
+            const option = document.createElement('option');
+            option.value = course;
+            option.textContent = course;
+            courseSelect.appendChild(option);
+        });
+    });
 
     // Registration Form Handling
     const registrationForm = document.getElementById('registrationForm');
@@ -51,8 +59,8 @@ collegeSelect.addEventListener('change', function () {
 
         const formData = {
             name: document.getElementById('name').value,
-            college: document.getElementById('college').value,
-            course: document.getElementById('course').value,
+            college: collegeSelect.value,
+            course: courseSelect.value,
             year: document.getElementById('year').value,
             password: password
         };
@@ -126,8 +134,8 @@ function handleSaveChanges(event) {
     
     const formData = {
         name: document.getElementById('name').value,
-        college: document.getElementById('college').value,
-        course: document.getElementById('course').value,
+        college: document.getElementById('collegeSelect').value,
+        course: document.getElementById('courseSelect').value,
         year: document.getElementById('year').value,
         password: document.getElementById('passwordInput').value
     };
