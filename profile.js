@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // College and Course Dropdowns
     const collegeSelect = document.getElementById('collegeSelect');
     const courseSelect = document.getElementById('courseSelect');
 
@@ -27,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
         option.textContent = college;
         collegeSelect.appendChild(option);
     });
-
     collegeSelect.addEventListener('change', function () {
         const selectedCollege = collegeSelect.value;
         const courses = collegeData[selectedCollege] || [];
@@ -43,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
             courseSelect.appendChild(option);
         });
     });
+
 
     // Registration Form Handling
     const registrationForm = document.getElementById('registrationForm');
@@ -122,7 +121,7 @@ function unlockForm() {
     inputs.forEach(input => input.disabled = false);
     document.getElementById('registrationForm').classList.remove('locked');
     document.getElementById('editProfileBtn').textContent = 'Save Changes';
-    
+
     // Update form submission to handle saving changes
     const registrationForm = document.getElementById('registrationForm');
     registrationForm.removeEventListener('submit', handleRegistration);
@@ -131,7 +130,7 @@ function unlockForm() {
 
 function handleSaveChanges(event) {
     event.preventDefault();
-    
+
     const formData = {
         name: document.getElementById('name').value,
         college: document.getElementById('collegeSelect').value,
@@ -144,6 +143,6 @@ function handleSaveChanges(event) {
     localStorage.setItem('userProfile', JSON.stringify(formData));
     updateProfileDisplay(formData);
     lockForm();
-    
+
     alert('Profile updated successfully!');
 }
