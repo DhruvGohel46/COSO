@@ -13,8 +13,9 @@ body {
     padding: 20px;
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-left: 220px; /* Adjust margin to accommodate navigation */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 220px;
+    /* Adjust margin to accommodate navigation */
     box-sizing: border-box;
 }
 
@@ -49,7 +50,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0, 0, 0, 0.7);
     color: white;
     text-align: center;
     padding: 8px;
@@ -163,7 +164,8 @@ nav {
     margin: 0;
     position: fixed;
     height: 100%;
-    width: 220px; /* Set a consistent width for navigation */
+    width: 220px;
+    /* Set a consistent width for navigation */
 }
 
 nav ul {
@@ -182,26 +184,49 @@ nav a {
 }
 
 nav a img {
-    max-height: 30px; /* Increased maximum height for icons */
+    max-height: 30px;
+    /* Increased maximum height for icons */
 
 }
 
 nav a:hover {
-    background-color: #5a2d8a; /* Adjusted hover color to match the new theme */
+    background-color: #5a2d8a;
+    /* Adjusted hover color to match the new theme */
 
 }
 
 @media (max-width: 768px) {
+    nav a {
+        
+        border-radius: 20px;
+    }
+
+    nav a img {
+        vertical-align: middle;
+    }
+
+    h1 {
+        display: flex;
+        justify-content: center;
+        background-color: #7E34D9;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .profile-header {
         flex-direction: column;
         text-align: center;
     }
-    
+
     #profile-picture {
         width: 120px;
         height: 120px;
     }
-    
+
     .container {
         padding: 15px;
         margin-left: 0;

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title style="font-family: 'Irish Grover', sans-serif;">Profile - COSO</title>
+    <title style="font-family: 'Irish Grover', sans-serif;">Profile - COSO</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,17 +19,18 @@
 
 <body>
     <header>
-        <nav>
+        
+        <nav><h1
+            style="font-family: 'Irish Grover', sans-serif; font-size: 40px; margin: 0; position: relative; left: 4px;  ">
+            COSO</h1>
             <ul>
-<h1 style="font-family: 'Irish Grover', sans-serif; font-size: 40px; margin: 0; position: relative; left: 4px;  ">COSO</h1>
-
                 <li><a href="index.html"> <img src="home.png" alt=""></a></li>
                 <li><a href="messages.html"><img src="message.png" alt=""></a></li>
                 <li><a href="notifications.html"><img src="bell.png" alt=""></a></li>
                 <li><a href="profile.html"><img src="user.png" alt=""></a></li>
             </ul>
         </nav>
-<h1 style="font-family: 'Irish Grover', sans-serif; text-align: center; margin: 0;">User Profile</h1>
+        <h2 style="display: flex; justify-content: center; margin: 0;">User Profile</h2>
 
     </header>
 
@@ -37,7 +38,6 @@
         <div class="profile-section">
             <div class="profile-header">
                 <div id="profile-picture">
-                    <img src="logo.png" alt="Profile Picture" id="profile-photo-preview">
                     <label for="profile-photo" class="upload-btn">Change Photo</label>
                     <input type="file" id="profile-photo" accept="image/*" style="display: none;">
                 </div>
@@ -109,22 +109,22 @@
         const notificationsIcon = document.querySelector('nav a[href="notifications.html"]');
         const profileIcon = document.querySelector('nav a[href="profile.html"]');
 
-        homeIcon.addEventListener('click', function(event) {
+        homeIcon.addEventListener('click', function (event) {
             event.preventDefault();
             window.location.href = 'index.html';
         });
 
-        messagesIcon.addEventListener('click', function(event) {
+        messagesIcon.addEventListener('click', function (event) {
             event.preventDefault();
             window.location.href = 'messages.html';
         });
 
-        notificationsIcon.addEventListener('click', function(event) {
+        notificationsIcon.addEventListener('click', function (event) {
             event.preventDefault();
             window.location.href = 'notifications.html';
         });
 
-        profileIcon.addEventListener('click', function(event) {
+        profileIcon.addEventListener('click', function (event) {
             event.preventDefault();
             window.location.href = 'profile.html';
         });

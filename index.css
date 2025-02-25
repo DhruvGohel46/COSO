@@ -65,12 +65,13 @@ nav a {
 nav a img {
     max-height: 30px;
     /* Increased maximum height for icons */
-    margin-right: 10px;
-    /* Adjusted space between icon and text */
     vertical-align: middle;
     /* Align icon vertically with text */
 }
+nav a:hover {
+    background-color: #5a2d8a; /* Adjusted hover color to match the new theme */
 
+}
 
 /* Search Section Styles */
 #search-section {
