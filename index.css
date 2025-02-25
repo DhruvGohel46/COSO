@@ -103,6 +103,9 @@ nav a img {
 }
 
 @media screen and (max-width: 600px) {
+    h1{
+        font-size: 5rem;
+    }
     .search-container {
         flex-direction: column;
         align-items: center;
