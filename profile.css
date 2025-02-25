@@ -8,13 +8,14 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 95%;
     margin: 20px auto;
     padding: 20px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-left: 220px;
+    margin-left: 135px;
+    margin-right: 10px;
     /* Adjust margin to accommodate navigation */
     box-sizing: border-box;
 }
@@ -29,6 +30,7 @@ body {
     gap: 30px;
     margin-bottom: 20px;
     flex-wrap: wrap;
+   
 }
 
 #profile-picture {
@@ -158,16 +160,21 @@ body {
 
 /* Navigation Styles */
 nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     background-color: #7E34D9;
-
     padding: 0;
     margin: 0;
     position: fixed;
     height: 100%;
-    width: 220px;
+    width: fit-content;
     /* Set a consistent width for navigation */
 }
-
+h1{
+    padding: 7px;
+}
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -220,6 +227,7 @@ nav a:hover {
     .profile-header {
         flex-direction: column;
         text-align: center;
+        height: 10vh;
     }
 
     #profile-picture {
