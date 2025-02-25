@@ -8,9 +8,10 @@ body {
 }
 
 .button {
-    display: inline-block;                                                                                                                                                                                                                                                                                                                              
+    display: inline-block;
     padding: 12px 24px;
-    background-color: #7E34D9; /* Updated color */
+    background-color: #7E34D9;
+    /* Updated color */
     color: white;
     text-decoration: none;
     border-radius: 4px;
@@ -35,9 +36,11 @@ header img {
     max-height: 50px;
     max-width: 50px;
 }
+
 h1 {
     font-size: 3rem;
 }
+
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -51,15 +54,21 @@ nav a {
     padding: 10px 15px;
     transition: background-color 0.3s;
     border-radius: 20px;
-    display: flex; /* Ensure flex display for proper alignment */
-    justify-content: center; /* Center align items horizontally */
-    align-items: center; /* Center align items vertically */
+    display: flex;
+    /* Ensure flex display for proper alignment */
+    justify-content: center;
+    /* Center align items horizontally */
+    align-items: center;
+    /* Center align items vertically */
 }
 
 nav a img {
-    max-height: 30px; /* Increased maximum height for icons */
-    margin-right: 10px; /* Adjusted space between icon and text */
-    vertical-align: middle; /* Align icon vertically with text */
+    max-height: 30px;
+    /* Increased maximum height for icons */
+    margin-right: 10px;
+    /* Adjusted space between icon and text */
+    vertical-align: middle;
+    /* Align icon vertically with text */
 }
 
 
@@ -119,16 +128,21 @@ nav a img {
 
 .demo-events {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns */
-    gap: 20px; /* Space between cards */
+    grid-template-columns: repeat(2, 1fr);
+    /* Two columns */
+    gap: 20px;
+    /* Space between cards */
     max-width: 100%;
     margin: 0 auto;
 }
 
 .event-card {
-    width: 100%; /* Full width of the card */
-    display: flex; /* Enable flex layout */
-    align-items: flex-start; /* Align children at the top */
+    width: 100%;
+    /* Full width of the card */
+    display: flex;
+    /* Enable flex layout */
+    align-items: flex-start;
+    /* Align children at the top */
     background: white;
     border-radius: 8px;
     padding: 20px;
@@ -182,12 +196,28 @@ nav a img {
     }
 
     .demo-events {
-        grid-template-columns: 1fr; /* One column on small screens */
+        grid-template-columns: 1fr;
+        /* One column on small screens */
     }
-    .search-container,header,.event-card{ 
+
+    .search-container,
+    header,
+    .event-card {
         max-width: 90%;
         flex-direction: column;
         align-items: center;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    header h1 {
+        font-size: 4em;
+        text-align: center;
+        margin: 0;
     }
 }
 
@@ -208,13 +238,16 @@ nav a img {
 
 /* Flyer Styles */
 .event-card .flyer {
-    flex: 0 0 40%; /* Allocate 40% of the width for the flyer image */
+    flex: 0 0 40%;
+    /* Allocate 40% of the width for the flyer image */
 }
 
 /* Details Styles */
 .event-card .details {
-    flex: 0 0 60%; /* Allocate the remaining 60% of the width for event details */
-    padding-left: 20px; /* Add some space between the image and the details */
+    flex: 0 0 60%;
+    /* Allocate the remaining 60% of the width for event details */
+    padding-left: 20px;
+    /* Add some space between the image and the details */
 }
 
 form {
@@ -255,7 +288,8 @@ form button {
     display: block;
     width: 100%;
     padding: 12px;
-    background-color: #7E34D9; /* Updated color */
+    background-color: #7E34D9;
+    /* Updated color */
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -268,24 +302,6 @@ form button:hover {
     background-color: #0056b3;
 }
 
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-        height: auto;
-    }
-
-    header h1 {
-        font-size: 4em;
-        text-align: center;
-        margin: 0;
-    }
-
-    .container {
-        padding: 15px;
-        max-width: 100%;
-    }
-}
 
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('logo.png');
@@ -301,17 +317,18 @@ form button:hover {
     margin: 0 auto;
 }
 
-@media (max-width: 768px) {
-    .hero {
-        padding: 60px 20px;
-    }
-}
+
 
 .event-title,
 .event-college {
-    flex: 1; /* Allow title and college to take available space */
-    margin: 0; /* Remove default margin */
-    padding-left: 20px; /* Add space between flyer and details */
-    display: flex; /* Use flex to align items */
-    flex-direction: column; /* Stack title and college vertically */
+    flex: 1;
+    /* Allow title and college to take available space */
+    margin: 0;
+    /* Remove default margin */
+    padding-left: 20px;
+    /* Add space between flyer and details */
+    display: flex;
+    /* Use flex to align items */
+    flex-direction: column;
+    /* Stack title and college vertically */
 }
