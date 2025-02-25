@@ -35,7 +35,9 @@ header img {
     max-height: 50px;
     max-width: 50px;
 }
-
+h1 {
+    font-size: 3rem;
+}
 nav ul {
     list-style-type: none;
     padding: 0;
