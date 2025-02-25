@@ -103,10 +103,12 @@ nav a img {
 }
 
 @media screen and (max-width: 412px) {
+    
     h1{
         font-size: 10rem;
     }
-    .search-container {
+    .search-container,header{ 
+        max-width: 100%;
         flex-direction: column;
         align-items: center;
     }
