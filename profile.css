@@ -14,7 +14,7 @@ body {
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-left: 220px;
+    margin-left: 220px; /* Adjust margin to accommodate navigation */
     box-sizing: border-box;
 }
 
@@ -73,7 +73,8 @@ body {
 }
 
 .edit-btn {
-    background-color: #007bff;
+    background-color: #7E34D9;
+
     color: white;
     border: none;
     padding: 10px 20px;
@@ -156,13 +157,13 @@ body {
 
 /* Navigation Styles */
 nav {
-    background-color: #007bff;
+    background-color: #7E34D9;
+
     padding: 0;
     margin: 0;
     position: fixed;
     height: 100%;
-    width: 140px;
-    box-sizing: border-box;
+    width: 220px; /* Set a consistent width for navigation */
 }
 
 nav ul {
@@ -180,8 +181,14 @@ nav a {
     transition: background-color 0.3s;
 }
 
+nav a img {
+    max-height: 30px; /* Increased maximum height for icons */
+
+}
+
 nav a:hover {
-    background-color: #0056b3;
+    background-color: #5a2d8a; /* Adjusted hover color to match the new theme */
+
 }
 
 @media (max-width: 768px) {

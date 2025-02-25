@@ -73,7 +73,32 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Existing Events Section Functionality
+    // Add event listeners for navigation icons
+    const homeIcon = document.querySelector('nav a[href="index.html"]');
+    const messagesIcon = document.querySelector('nav a[href="messages.html"]');
+    const notificationsIcon = document.querySelector('nav a[href="notifications.html"]');
+    const profileIcon = document.querySelector('nav a[href="profile.html"]');
+
+    homeIcon.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default anchor behavior
+        window.location.href = 'index.html'; // Redirect to home
+    });
+
+    messagesIcon.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default anchor behavior
+        window.location.href = 'messages.html'; // Redirect to messages
+    });
+
+    notificationsIcon.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default anchor behavior
+        window.location.href = 'notifications.html'; // Redirect to notifications
+    });
+
+    profileIcon.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default anchor behavior
+        window.location.href = 'profile.html'; // Redirect to profile
+    });
+
     const eventsSection = document.getElementById('events');
     if (eventsSection) {
         // Add Intersection Observer for animations

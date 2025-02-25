@@ -43,7 +43,32 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
 
-    // Render notifications
+    // Add event listeners for navigation icons
+    const homeIcon = document.querySelector('nav a[href="index.html"]');
+    const messagesIcon = document.querySelector('nav a[href="messages.html"]');
+    const notificationsIcon = document.querySelector('nav a[href="notifications.html"]');
+    const profileIcon = document.querySelector('nav a[href="profile.html"]');
+
+    homeIcon.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = 'index.html';
+    });
+
+    messagesIcon.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = 'messages.html';
+    });
+
+    notificationsIcon.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = 'notifications.html';
+    });
+
+    profileIcon.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = 'profile.html';
+    });
+
     // Function to render notifications in the UI
     function renderNotifications() {
 
