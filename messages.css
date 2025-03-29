@@ -143,56 +143,14 @@ body {
 }
 
 /* Navigation Styles */
-header {
-    background-color: #7E34D9;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    height: 10vh;
-}
+nav {
+    background-color: #7E34D9; /* Primary color for the navigation bar */
 
-header img {
-    max-height: 50px;
-    max-width: 50px;
+    padding: 10px; /* Padding around the navigation */
+    width: 200px; /* Set a consistent width for navigation */
+    position: fixed; /* Fix the navigation to the left */
+    height: 100%; /* Full height */
 }
-
-h1 {
-    font-size: 3rem;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-nav a {
-    text-decoration: none;
-    color: white;
-    padding: 10px 15px;
-    transition: background-color 0.3s;
-    border-radius: 20px;
-    display: flex;
-    /* Ensure flex display for proper alignment */
-    justify-content: center;
-    /* Center align items horizontally */
-    align-items: center;
-    /* Center align items vertically */
-}
-
-nav a img {
-    max-height: 30px;
-    /* Increased maximum height for icons */
-    vertical-align: middle;
-    /* Align icon vertically with text */
-}
-nav a:hover {
-    background-color: #5a2d8a; /* Adjusted hover color to match the new theme */
-
-}
-
 
 @media (max-width: 768px) {
     nav {
