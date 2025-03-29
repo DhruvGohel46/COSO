@@ -7,14 +7,29 @@ body {
     padding: 0;
 }
 
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #7E34D9;
+    /* Updated color */
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #502980;
+}
+
 header {
     background-color: #7E34D9;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    height: 15vh;
+    height: 10vh;
 }
 
 header img {
@@ -22,12 +37,10 @@ header img {
     max-width: 50px;
 }
 
-header h1 {
-    font-size: 3em;
-    margin: 0;
+h1 {
+    font-size: 3rem;
 }
 
-/* Navigation Menu Styles */
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -38,21 +51,28 @@ nav ul {
 nav a {
     text-decoration: none;
     color: white;
-    padding: 10px 10px;
+    padding: 10px 15px;
     transition: background-color 0.3s;
     border-radius: 20px;
+    display: flex;
+    /* Ensure flex display for proper alignment */
+    justify-content: center;
+    /* Center align items horizontally */
+    align-items: center;
+    /* Center align items vertically */
 }
 
 nav a img {
-    max-height: 35px; /* Increased maximum height for icons */
-    margin-right: 15px; /* Adjusted space between icon and text */
-
+    max-height: 30px;
+    /* Increased maximum height for icons */
+    vertical-align: middle;
+    /* Align icon vertically with text */
 }
-
 nav a:hover {
-    background-color: #1717186c;
-    transition: background-color 0.3s;
+    background-color: #5a2d8a; /* Adjusted hover color to match the new theme */
+
 }
+
 
 .container {
     display: flex;
@@ -201,7 +221,4 @@ color: #7E34D9;
 }
 
 /* Adjust margin to accommodate navigation */
-.container {
-    /* margin-left: 220px; Adjust margin to accommodate navigation */
-
-}
+/* Removed empty ruleset for .container */

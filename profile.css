@@ -1,4 +1,11 @@
 /* Profile Page Styles */
+:root {
+    --primary-color: #7E34D9;
+    --primary-dark: #502980;
+    --hover-color: #5a2d8a;
+    --text-color: #ffffff;
+}
+
 body {
     font-family: 'Baloo Bhai 2', 'Edu AU VIC WA NT Pre', 'Merriweather', sans-serif;
     margin: 0;
@@ -7,18 +14,125 @@ body {
     box-sizing: border-box;
 }
 
+/* Button Styles */
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #7E34D9;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #502980;
+}
+
+/* Header & Navigation Styles */
+header {
+    background-color: #7E34D9;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+    height: 10vh;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.brand-name {
+    font-family: 'Irish Grover', sans-serif;
+    font-size: 3rem;
+    color: black;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links img {
+    max-height: 30px;
+    vertical-align: middle;
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a img {
+    max-height: 30px;
+    width: auto;
+    vertical-align: middle;
+}
+
+nav a:hover {
+    background-color: #5a2d8a;
+}
+
 .container {
     width: 90%;
+    max-width: 800px;
     margin: 20px auto;
     padding: 20px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-left: 130px;
-    /* Adjust margin to accommodate navigation */
     box-sizing: border-box;
 }
 
+/* Login Section Styles */
+.login-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.login-section h2 {
+    margin-top: 0;
+    color: #333;
+    text-align: center;
+}
+
+.signup-prompt, .login-prompt {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.signup-prompt p, .login-prompt p {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+/* Profile Section Styles */
 .profile-section {
     margin-bottom: 40px;
 }
@@ -29,10 +143,9 @@ body {
     gap: 30px;
     margin-bottom: 20px;
     flex-wrap: wrap;
-   
 }
 
-#profile-picture {
+#profile-picture, .reg-profile-picture {
     position: relative;
     width: 150px;
     height: 150px;
@@ -40,7 +153,7 @@ body {
     overflow: hidden;
 }
 
-#profile-photo-preview {
+#profile-photo-preview, #reg-photo-preview {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -72,11 +185,12 @@ body {
 
 .profile-actions {
     margin-top: 20px;
+    display: flex;
+    gap: 10px;
 }
 
-.edit-btn {
+.edit-btn, .logout-btn {
     background-color: #7E34D9;
-
     color: white;
     border: none;
     padding: 10px 20px;
@@ -86,9 +200,18 @@ body {
 }
 
 .edit-btn:hover {
-    background-color: #0056b3;
+    background-color: #502980;
 }
 
+.logout-btn {
+    background-color: #dc3545;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+/* Registration Section Styles */
 .registration-section {
     padding: 20px;
     background-color: #f9f9f9;
@@ -98,6 +221,25 @@ body {
 .registration-section h2 {
     margin-top: 0;
     color: #333;
+    text-align: center;
+}
+
+/* Profile Picture in Registration */
+.reg-profile-picture-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.reg-profile-picture {
+    margin-bottom: 10px;
+}
+
+.upload-hint {
+    color: #666;
+    margin: 0;
+    font-size: 0.9rem;
 }
 
 .form-group {
@@ -121,7 +263,7 @@ body {
 }
 
 .submit-btn {
-    background-color: #28a745;
+    background-color: #7E34D9;
     color: white;
     border: none;
     padding: 12px 24px;
@@ -129,22 +271,11 @@ body {
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s;
+    width: 100%;
 }
 
 .submit-btn:hover {
-    background-color: #218838;
-}
-
-#passwordSection {
-    margin-top: 20px;
-    padding: 5px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-}
-
-#passwordSection h2 {
-    margin-top: 0;
-    color: #333;
+    background-color: #502980;
 }
 
 .hidden {
@@ -157,94 +288,61 @@ body {
     cursor: not-allowed;
 }
 
-/* Navigation Styles */
-nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #7E34D9;
-    padding: 0;
-    margin: 0;
-    position: fixed;
-    height: 100%;
-    width: fit-content;
-    /* Set a consistent width for navigation */
-}
-h1{
-    padding: 7px;
-}
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: block;
-}
-
-nav a {
-    text-decoration: none;
-    color: white;
-    padding: 10px 15px;
-    display: block;
-    transition: background-color 0.3s;
-}
-
-nav a img {
-    max-height: 30px;
-    /* Increased maximum height for icons */
-
-}
-
-nav a:hover {
-    background-color: #5a2d8a;
-    /* Adjusted hover color to match the new theme */
-
-}
-
+/* Media Queries */
 @media (max-width: 768px) {
-    nav a {
-        
-        border-radius: 20px;
-    }
-
-    nav a img {
-        vertical-align: middle;
+    header {
+        padding: 10px;
     }
 
     h1 {
-        display: flex;
-        justify-content: center;
-        background-color: #7E34D9;
+        font-size: 2rem;
     }
 
     nav ul {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        gap: 5px;
+    }
+
+    nav a {
+        padding: 8px 12px;
+    }
+
+    nav a img {
+        max-height: 24px;
+    }
+
+    nav a {
+        border-radius: 20px;
     }
 
     .profile-header {
         flex-direction: column;
         text-align: center;
-        height: 10vh;
     }
 
-    #profile-picture {
+    #profile-picture, .reg-profile-picture {
         width: 120px;
         height: 120px;
     }
 
     .container {
+        width: 95%;
         padding: 15px;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        flex-flow: column;
     }
 
-    nav {
-        width: 100%;
-        position: relative;
-        height: auto;
+    .navbar {
+        padding: 0 10px;
+    }
+
+    .brand-name {
+        font-size: 2rem;
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links img {
+        width: 24px;
+        height: 24px;
     }
 }
