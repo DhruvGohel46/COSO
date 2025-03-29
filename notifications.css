@@ -14,7 +14,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    height: 10vh;
+    height: 15vh;
 }
 
 header img {
@@ -38,24 +38,25 @@ nav ul {
 nav a {
     text-decoration: none;
     color: white;
-    padding: 10px 15px;
+    padding: 10px 10px;
     transition: background-color 0.3s;
     border-radius: 20px;
 }
 
 nav a img {
-    max-height: 30px; /* Increased maximum height for icons */
-    margin-right: 10px; /* Adjusted space between icon and text */
+    max-height: 35px; /* Increased maximum height for icons */
+    margin-right: 15px; /* Adjusted space between icon and text */
 
 }
 
 nav a:hover {
-    background-color: #0056b3;
+    background-color: #1717186c;
+    transition: background-color 0.3s;
 }
 
 .container {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     min-height: 100vh;
     padding: 40px 20px;
     max-width: 800px;
