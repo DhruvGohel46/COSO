@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COSO - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1 style="font-family: 'Irish Grover', sans-serif; color: black;">COSO</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html"><img src="home.png" alt="no"></a></li>
+                <li><a href="messages.html"><img src="message.png" alt="no"></a></li>
+                <li><a href="notifications.html"><img src="bell.png" alt="no"></a></li>
+                <li><a href="profile.html"><img src="user.png" alt="no"></a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="page-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="#user-posts">Home</a></li>
+                <li><a href="#technical-events" class="active">Technical Events</a></li>
+                <li><a href="#non-technical-events">Non-Technical Events</a></li>
+                <li><a href="#sports-events">Sports Events</a></li>
+            </ul>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Search Section -->
+            <section id="search-section">
+                <h1 style="display: flex; justify-content: center; font-size: 40px;">Search Your Friend</h1>
+                <div class="search-container">
+                    <select id="college-search" aria-label="Select College">
+                    </select>
+                    <select id="course-search" aria-label="Select Course" disabled>
+                    </select>
+                    <select id="academic-year" aria-label="Select Academic Year">
+                        <option value="">Select Academic Year </option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <button id="search-button" class="button">Search</button>
+                </div>
+            </section>
+            
+            <div style="display: flex; justify-content: flex-end; margin: 20px;">
+                <a href="add-event.html" class="button">Add your Event</a>
+            </div>
+            
+            <!-- Technical Events Section -->
+            <section id="technical-events" class="event-category">
+                <h2>Technical Events</h2>
+                <div class="events-container">
+                    <!-- Event card example for Technical -->
+                    <div class="event-card" data-event-id="4" data-category="technical">
+                        <div class="flyer">
+                            <img src="628a.webp" alt="Notion 2025 Flyer" class="event-flyer">
+                        </div>
+                        <div class="details">
+                            <span class="category-badge technical">Technical</span>
+                            <h3 class="event-title">Notion 2025</h3>
+                            <p class="event-college">L.J. Institute of Engineering and Technology, Ahmedabad</p>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card" data-event-id="11" data-category="technical">
+                        <div class="flyer">
+                            <img src="images/flyer11.jpg" alt="TechnoFest 2025 Flyer" class="event-flyer">
+                        </div>
+                        <div class="details">
+                            <span class="category-badge technical">Technical</span>
+                            <h3 class="event-title">TechnoFest 2025</h3>
+                            <p class="event-college">Nirma University, Ahmedabad</p>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card" data-event-id="15" data-category="technical">
+                        <div class="flyer">
+                            <img src="images/flyer15.jpg" alt="Innovision 2025 Flyer" class="event-flyer">
+                        </div>
+                        <div class="details">
+                            <span class="category-badge technical">Technical</span>
+                            <h3 class="event-title">Innovision 2025</h3>
+                            <p class="event-college">Charotar University of Science and Technology, Anand</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Non-Technical Events Section -->
+            <section id="non-technical-events" class="event-category">
+                <h2>Non-Technical Events</h2>
+                <div class="events-container">
+                    <!-- Event card example for Non-Technical -->
+                    <div class="event-card" data-event-id="5" data-category="non-technical">
+                        <div class="flyer">
+                            <img src="images/flyer5.jpg" alt="Lumina Fest Flyer" class="event-flyer">
+                        </div>
+                        <div class="details">
+                            <span class="category-badge non-technical">Non-Technical</span>
+                            <h3 class="event-title">Lumina Fest</h3>
+                            <p class="event-college">L.J. Institute of Engineering and Technology, Ahmedabad</p>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card" data-event-id="12" data-category="non-technical">
+                        <div class="flyer">
+                            <img src="images/flyer12.jpg" alt="Culturama 2025 Flyer" class="event-flyer">
+                        </div>
+                        <div class="details">
+                            <span class="category-badge non-technical">Non-Technical</span>
+                            <h3 class="event-title">Culturama 2025</h3>
+                            <p class="event-college">Gujarat Commerce College, Ahmedabad</p>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card" data-event-id="13" data-category="non-technical">
+                        <div class="flyer">
+                            <img src="images/flyer13.jpg" alt="Navratri Utsav 2025 Flyer" class="event-flyer">
+                        </div>
+                        <div class="details">
+                            <span class="category-badge non-technical">Non-Technical</span>
+                            <h3 class="event-title">Navratri Utsav 2025</h3>
+                            <p class="event-college">Gujarat University, Ahmedabad</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Sports Events Section -->
+            <section id="sports-events" class="event-category">
+                <h2>Sports Events</h2>
+                <div class="events-container">
+                    <!-- Event card example for Sports -->
+                    <div class="event-card" data-event-id="6" data-category="sports">
+                        <div class="flyer">
+                            <img src="images/flyer6.jpg" alt="Agone Sports Flyer" class="event-flyer">
+                        </div>
+                        <div class="details">
+                            <span class="category-badge sports">Sports</span>
+                            <h3 class="event-title">Agone Sports</h3>
+                            <p class="event-college">L.J. Institute of Engineering and Technology, Ahmedabad</p>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card" data-event-id="8" data-category="sports">
+                        <div class="flyer">
+                            <img src="images/flyer8.jpg" alt="Sparsh 2025 Flyer" class="event-flyer">
+                        </div>
+                        <div class="details">
+                            <span class="category-badge sports">Sports</span>
+                            <h3 class="event-title">Sparsh 2025</h3>
+                            <p class="event-college">Sardar Vallabhbhai National Institute of Technology, Surat</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- User Posts Section -->
+            <section id="user-posts" class="user-posts-section">
+                <h2>College Posts</h2>
+                
+                <!-- Example User Post -->
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">LJ</div>
+                        <div class="post-meta">
+                            <div class="post-author">L.J. Institute of Engineering and Technology</div>
+                            <div class="post-details">Posted about Notion 2025 • 2 days ago</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>We're excited to announce that Notion 2025 was a huge success! Over 500 students participated in our technical workshops and hackathon. Congratulations to all winners!</p>
+                    </div>
+                    <img src="628a.webp" alt="Notion 2025 Event" class="post-image">
+                    <div class="post-actions">
+                        <div class="post-action">👍 Like</div>
+                        <div class="post-action">💬 Comment</div>
+                        <div class="post-action">↗️ Share</div>
+                    </div>
+                </div>
+                
+                <!-- Another Example User Post -->
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-avatar">NU</div>
+                        <div class="post-meta">
+                            <div class="post-author">Nirma University</div>
+                            <div class="post-details">Posted about TechnoFest 2025 • 3 days ago</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>TechnoFest 2025 begins tomorrow! Don't miss our keynote speaker from Google and exciting tech competitions with prizes worth ₹2 Lakhs!</p>
+                    </div>
+                    <div class="post-actions">
+                        <div class="post-action">👍 Like</div>
+                        <div class="post-action">💬 Comment</div>
+                        <div class="post-action">↗️ Share</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script type="module" src="colleges and courses list.js"></script>
+    <script type="module" src="index.js"></script>
+</body>
+
+</html>

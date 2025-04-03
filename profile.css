@@ -1,0 +1,346 @@
+/* Profile Page Styles */
+:root {
+    --primary-color: #7E34D9;
+    --primary-dark: #502980;
+    --hover-color: #5a2d8a;
+    --text-color: #ffffff;
+}
+
+body {
+    font-family: 'Baloo Bhai 2', 'Edu AU VIC WA NT Pre', 'Merriweather', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    box-sizing: border-box;
+}
+
+/* Button Styles */
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #7E34D9;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #502980;
+}
+
+/* Header & Navigation Styles */
+header {
+    background-color: #7E34D9;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+    height: 10vh;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.brand-name {
+    font-family: 'Irish Grover', sans-serif;
+    font-size: 3rem;
+    color: black;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links img {
+    max-height: 30px;
+    vertical-align: middle;
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a img {
+    max-height: 30px;
+    width: auto;
+    vertical-align: middle;
+}
+
+nav a:hover {
+    background-color: #5a2d8a;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+/* Login Section Styles */
+.login-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.login-section h2 {
+    margin-top: 0;
+    color: #333;
+    text-align: center;
+}
+
+.signup-prompt, .login-prompt {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.signup-prompt p, .login-prompt p {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+/* Profile Section Styles */
+.profile-section {
+    margin-bottom: 40px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+#profile-picture, .reg-profile-picture {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+#profile-photo-preview, #reg-photo-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.profile-info h2 {
+    margin: 0;
+    font-size: 2rem;
+    color: #333;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.profile-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn, .logout-btn {
+    background-color: #7E34D9;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-btn:hover {
+    background-color: #502980;
+}
+
+.logout-btn {
+    background-color: #dc3545;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+/* Registration Section Styles */
+.registration-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.registration-section h2 {
+    margin-top: 0;
+    color: #333;
+    text-align: center;
+}
+
+/* Profile Picture in Registration */
+.reg-profile-picture-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.reg-profile-picture {
+    margin-bottom: 10px;
+}
+
+.upload-hint {
+    color: #666;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    background-color: #7E34D9;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background-color: #502980;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.locked input,
+.locked select {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    
+    h1 {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        gap: 5px;
+    }
+
+    nav a {
+        padding: 8px 12px;
+    }
+
+    nav a img {
+        max-height: 24px;
+    }
+
+    nav a {
+        border-radius: 20px;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #profile-picture, .reg-profile-picture {
+        width: 120px;
+        height: 120px;
+    }
+
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .navbar {
+        padding: 0 10px;
+    }
+
+    .brand-name {
+        font-size: 2rem;
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links img {
+        width: 24px;
+        height: 24px;
+    }
+}
