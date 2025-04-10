@@ -1,16 +1,26 @@
 import { collegeData } from "./colleges and courses list.js";
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Elements
+    // Existing Elements
     const loginSection = document.getElementById('loginSection');
     const profileSection = document.getElementById('profileSection');
     const registrationSection = document.getElementById('registrationSection');
-    const showSignupBtn = document.getElementById('showSignupBtn');
+    const showStudentSignupBtn = document.getElementById('showStudentSignupBtn');
+    const showAdminSignupBtn = document.getElementById('showAdminSignupBtn');
     const showLoginBtn = document.getElementById('showLoginBtn');
+    const showLoginFromAdminBtn = document.getElementById('showLoginFromAdminBtn');
     const loginForm = document.getElementById('loginForm');
     const registrationForm = document.getElementById('registrationForm');
     const editProfileBtn = document.getElementById('editProfileBtn');
     const logoutBtn = document.getElementById('logoutBtn');
+    
+    // Admin Elements
+    const adminRegistrationSection = document.getElementById('adminRegistrationSection');
+    const adminDashboard = document.getElementById('adminDashboard');
+    const adminRegistrationForm = document.getElementById('adminRegistrationForm');
+    const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+    const studentList = document.getElementById('studentList');
+    const noStudentsMsg = document.querySelector('.no-students');
     
     // Profile Picture Upload (Profile Section)
     const profilePhotoInput = document.getElementById('profile-photo');
@@ -66,19 +76,21 @@ document.addEventListener('DOMContentLoaded', function () {
     // College and Course Dropdown Logic
     const collegeSelect = document.getElementById('collegeSelect');
     const courseSelect = document.getElementById('courseSelect');
+    const adminCollegeSelect = document.getElementById('adminCollegeSelect');
 
     // Populate the college dropdown
-    function populateColleges() {
-        collegeSelect.innerHTML = '<option value="">Select College</option>';
+    function populateColleges(selectElement) {
+        selectElement.innerHTML = '<option value="">Select Institute</option>';
         Object.keys(collegeData).forEach(college => {
             const option = document.createElement('option');
             option.value = college;
             option.textContent = college;
-            collegeSelect.appendChild(option);
+            selectElement.appendChild(option);
         });
     }
     
-    populateColleges();
+    populateColleges(collegeSelect);
+    populateColleges(adminCollegeSelect);
 
     // Update courses when college changes
     collegeSelect.addEventListener('change', function () {
@@ -97,40 +109,66 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Show Signup Form
-    showSignupBtn.addEventListener('click', function(e) {
+    // Show Student Signup Form
+    showStudentSignupBtn.addEventListener('click', function(e) {
         e.preventDefault();
         loginSection.classList.add('hidden');
         registrationSection.classList.remove('hidden');
+        adminRegistrationSection.classList.add('hidden');
+    });
+    
+    // Show Admin Signup Form
+    showAdminSignupBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        loginSection.classList.add('hidden');
+        registrationSection.classList.add('hidden');
+        adminRegistrationSection.classList.remove('hidden');
     });
 
-    // Show Login Form
+    // Show Login Form from Student Registration
     showLoginBtn.addEventListener('click', function(e) {
         e.preventDefault();
+        registrationSection.classList.add('hidden');
+        adminRegistrationSection.classList.add('hidden');
+        loginSection.classList.remove('hidden');
+    });
+    
+    // Show Login Form from Admin Registration
+    showLoginFromAdminBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        adminRegistrationSection.classList.add('hidden');
         registrationSection.classList.add('hidden');
         loginSection.classList.remove('hidden');
     });
 
-    // Login Form Submission
+    // Unified Login Form Submission
     loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         
-        // Get stored user data
-        const userData = JSON.parse(localStorage.getItem('userData'));
-        
-        if (userData && userData.email === email && userData.password === password) {
-            // Login successful
-            showProfile(userData);
-        } else {
-            // Login failed
-            alert('Invalid email or password. Please try again.');
+        // First check if admin credentials match
+        const adminData = JSON.parse(localStorage.getItem('adminData'));
+        if (adminData && adminData.email === email && adminData.password === password) {
+            // Admin Login successful
+            showAdminDashboard(adminData);
+            return;
         }
+        
+        // If not admin, check if student credentials match
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        if (userData && userData.email === email && userData.password === password) {
+            // Student Login successful
+            showProfile(userData);
+            return;
+        }
+        
+        // If neither matched, login failed
+        alert('Invalid email or password. Please try again.');
     });
 
-    // Registration Form Submission
+    // Student Registration Form Submission
     registrationForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -145,7 +183,9 @@ document.addEventListener('DOMContentLoaded', function () {
             year: document.getElementById('year').value,
             password: document.getElementById('passwordInput').value,
             profilePicture: profilePicture,
-            studentId: studentIdPreview.src !== 'placeholder-id.png' ? studentIdPreview.src : null
+            studentId: studentIdPreview.src !== 'student id card.png' ? studentIdPreview.src : null,
+            status: 'pending', // Set initial status as pending
+            userType: 'student' // Set user type as student
         };
         
         // Save user data to localStorage
@@ -154,7 +194,39 @@ document.addEventListener('DOMContentLoaded', function () {
         // Show profile
         showProfile(userData);
         
-        alert('Registration successful!');
+        alert('Registration successful! Your account is pending approval from a college admin.');
+    });
+
+    // Admin Registration Form Submission
+    adminRegistrationForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const password = document.getElementById('adminPasswordInput').value;
+        const confirmPassword = document.getElementById('adminConfirmPassword').value;
+        
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            alert('Passwords do not match. Please try again.');
+            return;
+        }
+        
+        const adminData = {
+            email: document.getElementById('adminRegEmail').value,
+            name: document.getElementById('adminName').value,
+            college: document.getElementById('adminCollegeSelect').value,
+            designation: document.getElementById('adminDesignation').value,
+            adminId: document.getElementById('adminId').value,
+            password: password,
+            userType: 'admin' // Set user type as admin
+        };
+        
+        // Save admin data to localStorage
+        localStorage.setItem('adminData', JSON.stringify(adminData));
+        
+        // Show admin dashboard
+        showAdminDashboard(adminData);
+        
+        alert('Admin registration successful!');
     });
 
     // Edit Profile Button
@@ -171,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         
         // Reset and populate colleges
-        populateColleges();
+        populateColleges(collegeSelect);
         collegeSelect.value = userData.college;
         
         // Trigger college change to populate courses
@@ -191,22 +263,33 @@ document.addEventListener('DOMContentLoaded', function () {
         registrationSection.classList.remove('hidden');
     });
 
-    // Logout Button
+    // Logout Button (Student)
     logoutBtn.addEventListener('click', function() {
         // Show login form
         profileSection.classList.add('hidden');
         loginSection.classList.remove('hidden');
     });
 
+    // Logout Button (Admin)
+    adminLogoutBtn.addEventListener('click', function() {
+        // Show login form (unified login)
+        adminDashboard.classList.add('hidden');
+        loginSection.classList.remove('hidden');
+    });
+
     // Check if user is already logged in
     function checkLoggedInStatus() {
         const userData = JSON.parse(localStorage.getItem('userData'));
+        const adminData = JSON.parse(localStorage.getItem('adminData'));
         
-        if (userData) {
+        if (adminData) {
+            // Admin is logged in, show dashboard
+            showAdminDashboard(adminData);
+        } else if (userData) {
             // User is logged in, show profile
             showProfile(userData);
         } else {
-            // User is not logged in, show login form
+            // No one is logged in, show login form
             loginSection.classList.remove('hidden');
         }
     }
@@ -226,7 +309,122 @@ document.addEventListener('DOMContentLoaded', function () {
         // Hide login/registration, show profile
         loginSection.classList.add('hidden');
         registrationSection.classList.add('hidden');
+        adminRegistrationSection.classList.add('hidden');
+        adminDashboard.classList.add('hidden');
         profileSection.classList.remove('hidden');
+    }
+
+    // Show admin dashboard
+    function showAdminDashboard(adminData) {
+        // Update admin info
+        document.getElementById('admin-name').textContent = adminData.name;
+        document.getElementById('admin-college').textContent = adminData.college;
+        document.getElementById('admin-designation').textContent = adminData.designation || 'Not specified';
+        
+        // Hide all other sections
+        loginSection.classList.add('hidden');
+        registrationSection.classList.add('hidden');
+        profileSection.classList.add('hidden');
+        adminRegistrationSection.classList.add('hidden');
+        
+        // Show admin dashboard
+        adminDashboard.classList.remove('hidden');
+        
+        // Load students from the same college
+        loadStudents(adminData.college);
+    }
+
+    // Load students from a specific college
+    function loadStudents(adminCollege) {
+        // Clear the student list
+        studentList.innerHTML = '';
+        
+        // Get all students from localStorage
+        let allUsers = [];
+        
+        // Check if userData exists and is an object (single user)
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        if (userData && userData.userType === 'student') {
+            allUsers.push(userData);
+        }
+        
+        // Check if there are additional users stored in other formats (e.g., array)
+        // This is a placeholder for if you implement multiple users in the future
+        const additionalUsers = JSON.parse(localStorage.getItem('allUsers')) || [];
+        allUsers = allUsers.concat(additionalUsers);
+        
+        // Filter students from the admin's college
+        const collegeStudents = allUsers.filter(user => user.college === adminCollege);
+        
+        // Show message if no students are found
+        if (collegeStudents.length === 0) {
+            noStudentsMsg.classList.remove('hidden');
+            return;
+        }
+        
+        // Hide the no students message
+        noStudentsMsg.classList.add('hidden');
+        
+        // Create student cards
+        collegeStudents.forEach((student, index) => {
+            const studentCard = document.createElement('div');
+            studentCard.className = 'student-card';
+            studentCard.innerHTML = `
+                <div class="student-photo">
+                    <img src="${student.profilePicture || 'logo.png'}" alt="${student.name}">
+                </div>
+                <div class="student-details">
+                    <h4>${student.name}</h4>
+                    <p>Course: ${student.course}</p>
+                    <p>Year: ${student.year}</p>
+                    <p>Email: ${student.email}</p>
+                    <p>Status: <span class="student-status ${student.status ? 'status-' + student.status : 'status-pending'}">${student.status || 'pending'}</span></p>
+                </div>
+                <div class="student-id-preview">
+                    <img src="${student.studentId || 'student id card.png'}" alt="Student ID">
+                </div>
+                <div class="student-actions">
+                    ${student.status !== 'approved' ? `<button class="approve-btn" data-student-index="${index}">Approve</button>` : ''}
+                    ${student.status !== 'rejected' ? `<button class="reject-btn" data-student-index="${index}">Reject</button>` : ''}
+                </div>
+            `;
+            
+            studentList.appendChild(studentCard);
+        });
+        
+        // Add event listeners to approve/reject buttons
+        const approveButtons = document.querySelectorAll('.approve-btn');
+        const rejectButtons = document.querySelectorAll('.reject-btn');
+        
+        approveButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-student-index'));
+                updateStudentStatus(collegeStudents[index], 'approved');
+            });
+        });
+        
+        rejectButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-student-index'));
+                updateStudentStatus(collegeStudents[index], 'rejected');
+            });
+        });
+    }
+
+    // Update student status
+    function updateStudentStatus(student, status) {
+        // Update status
+        student.status = status;
+        
+        // Save updated user data
+        localStorage.setItem('userData', JSON.stringify(student));
+        
+        // Reload the dashboard to reflect changes
+        const adminData = JSON.parse(localStorage.getItem('adminData'));
+        loadStudents(adminData.college);
+        
+        // Show alert
+        alert(`Student ${student.name} has been ${status}.`);
     }
 
     // Initial check on page load

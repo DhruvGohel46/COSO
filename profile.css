@@ -355,6 +355,199 @@ nav a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Admin Section Styles */
+.admin-dashboard {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.admin-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-header h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.8rem;
+}
+
+.admin-info {
+    margin: 10px 0;
+}
+
+.admin-info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.dashboard-content {
+    margin-top: 20px;
+}
+
+.dashboard-content h3 {
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.student-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.student-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.student-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.student-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.student-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.student-details h4 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.student-details p {
+    margin: 3px 0;
+    color: #666;
+}
+
+.student-id-preview {
+    width: 150px;
+    height: 90px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    flex-shrink: 0;
+}
+
+.student-id-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #f0f0f0;
+}
+
+.student-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.approve-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.approve-btn:hover {
+    background-color: #218838;
+}
+
+.reject-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.reject-btn:hover {
+    background-color: #c82333;
+}
+
+.student-status {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.status-approved {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-rejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.status-pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.no-students {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.admin-prompt, .student-prompt {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.admin-prompt p, .student-prompt p {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.user-type-selection {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.user-type-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
     
@@ -425,5 +618,44 @@ nav a:hover {
         justify-content: center;
         padding: 10px 20px;
         font-size: 0.9rem;
+    }
+    /* Admin Section Styles */
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .admin-header button {
+        margin-top: 10px;
+        align-self: flex-end;
+    }
+    
+    .student-card {
+        flex-direction: column;
+    }
+    
+    .student-photo {
+        width: 80px;
+        height: 80px;
+        align-self: center;
+    }
+    
+    .student-details {
+        text-align: center;
+    }
+    
+    .student-id-preview {
+        width: 100%;
+        max-width: 200px;
+        align-self: center;
+    }
+    
+    .student-actions {
+        justify-content: center;
+    }
+    
+    .user-type-buttons {
+        flex-direction: column;
+        gap: 10px;
     }
 }
