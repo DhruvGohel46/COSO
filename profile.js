@@ -48,6 +48,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // Student ID Upload
+    const studentIdInput = document.getElementById('student-id');
+    const studentIdPreview = document.getElementById('student-id-preview');
+
+    studentIdInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                studentIdPreview.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
     // College and Course Dropdown Logic
     const collegeSelect = document.getElementById('collegeSelect');
     const courseSelect = document.getElementById('courseSelect');
@@ -129,7 +144,8 @@ document.addEventListener('DOMContentLoaded', function () {
             course: courseSelect.value,
             year: document.getElementById('year').value,
             password: document.getElementById('passwordInput').value,
-            profilePicture: profilePicture
+            profilePicture: profilePicture,
+            studentId: studentIdPreview.src !== 'placeholder-id.png' ? studentIdPreview.src : null
         };
         
         // Save user data to localStorage

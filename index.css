@@ -79,6 +79,7 @@ nav a:hover {
 #search-section {
     padding: 40px 20px;
     background-color: #f8f9fa;
+    margin-bottom: 20px;
 }
 
 #search-section h2 {
@@ -89,12 +90,15 @@ nav a:hover {
 }
 
 .search-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    max-width: 1000px;
     margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .search-container input,
@@ -114,7 +118,31 @@ nav a:hover {
     border-color: #007bff;
 }
 
+/* Update the search container styles */
+.search-container input[type="text"],
+.search-container select,
+.search-container button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
 
+.search-container button {
+    background-color: #7E34D9;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search-container button:hover {
+    background-color: #502980;
+    transform: translateY(-1px);
+}
 
 /* Events Section Styles */
 .events-section {
@@ -722,5 +750,148 @@ form button:hover {
     /* Ensure body has no scrollbar issues */
     body {
         overflow-x: hidden;
+    }
+
+    /* Update media query for mobile responsiveness */
+    .search-container input[type="text"],
+    .search-container select,
+    .search-container button {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    .search-container {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    #search-section h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    /* Event Card Mobile Fixes */
+    .event-card {
+        width: 100%;
+        flex-direction: column;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .event-card .flyer {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .event-card .flyer img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .event-card .details {
+        width: 100%;
+        padding: 0;
+    }
+
+    .event-title {
+        font-size: 1.2rem;
+        line-height: 1.4;
+        margin: 10px 0;
+        text-align: left;
+        width: 100%;
+        padding: 0;
+    }
+
+    .event-college {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin: 5px 0;
+        text-align: left;
+        width: 100%;
+        padding: 0;
+    }
+
+    /* Post Card Mobile Fixes */
+    .post-card {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .post-header {
+        margin-bottom: 12px;
+    }
+
+    .post-content {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 12px;
+        text-align: left;
+    }
+
+    .post-image {
+        width: 100%;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    .post-meta {
+        flex: 1;
+        min-width: 0; /* Prevents text overflow */
+    }
+
+    .post-author {
+        font-size: 1rem;
+        margin-bottom: 2px;
+        white-space: normal;
+        word-wrap: break-word;
+    }
+
+    .post-details {
+        font-size: 0.8rem;
+        white-space: normal;
+        word-wrap: break-word;
+    }
+
+    .post-actions {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding-top: 12px;
+    }
+
+    .post-action {
+        font-size: 0.9rem;
+    }
+
+    /* Category Badge Fixes */
+    .category-badge {
+        display: inline-block;
+        margin-bottom: 8px;
+        font-size: 0.75rem;
+        padding: 3px 6px;
+    }
+
+    /* Container Spacing Fixes */
+    .events-container {
+        gap: 15px;
+        padding: 10px 0;
+    }
+
+    .user-posts-section {
+        margin-top: 30px;
+    }
+
+    /* Text Overflow Prevention */
+    .event-card .details,
+    .post-content,
+    .post-meta {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
     }
 }

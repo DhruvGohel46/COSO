@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const yearSelect = document.getElementById('academic-year');
     const searchButton = document.getElementById('search-button');
     const searchSection = document.getElementById('search-section');
+    const nameSearch = document.getElementById('name-search');
     
     // Initially hide the search section (only show in College Posts)
     if (searchSection) {
@@ -58,17 +59,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // Handle search button click
     if (searchButton) {
         searchButton.addEventListener('click', function () {
+            const searchName = nameSearch.value;
             const selectedCollege = collegeSelect.value;
             const selectedCourse = courseSelect.value;
             const selectedYear = yearSelect.value;
 
-            if (!selectedCollege || !selectedCourse || !selectedYear) {
-                alert('Please select all fields before searching.');
+            // Validate if at least one search criteria is filled
+            if (!searchName && !selectedCollege && !selectedCourse && !selectedYear) {
+                alert('Please enter at least one search criteria');
                 return;
             }
 
             // Perform search (placeholder for actual search logic)
             console.log('Searching for:', {
+                name: searchName,
                 college: selectedCollege,
                 course: selectedCourse,
                 year: selectedYear
