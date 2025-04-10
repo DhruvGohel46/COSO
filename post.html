@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COSO - Create Post</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script src="Post.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>COSO</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html"><img src="home.png" alt="Home"></a></li>
+                <li><a href="messages.html"><img src="message.png" alt="Messages"></a></li>
+                <li><a href="notifications.html"><img src="bell.png" alt="Notifications"></a></li>
+                <li><a href="profile.html"><img src="user.png" alt="Profile"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <h1>Create a New Post</h1>
+            <p>Share your moments with the college community. Upload photos and add a caption.</p>
+
+            <form id="create-post-form" onsubmit="handlePostSubmit(event)">
+                <div class="photo-upload-section">
+                    <label for="post-photos">Upload Photos</label>
+                    <div class="photo-preview-container" id="photo-preview-container">
+                        <div class="photo-placeholder" id="photo-placeholder">
+                            <span>+</span>
+                            <p>Add Photos</p>
+                        </div>
+                    </div>
+                    <input type="file" id="post-photos" name="post-photos" accept="image/*" multiple style="display: none;">
+                    <button type="button" id="upload-photo-btn" class="button">Select Photos</button>
+                    <p class="photo-hint">You can upload up to 5 photos</p>
+                </div>
+
+                <label for="post-caption">Caption</label>
+                <textarea id="post-caption" name="post-caption" placeholder="Write a caption for your post..." required></textarea>
+
+                <label for="post-location">Location (Optional)</label>
+                <input type="text" id="post-location" name="post-location" placeholder="Add a location">
+
+                <label for="post-tags">Tags (Optional)</label>
+                <input type="text" id="post-tags" name="post-tags" placeholder="Add tags separated by commas (e.g., friends, campus, study)">
+
+                <label for="post-visibility">Visibility</label>
+                <select id="post-visibility" name="post-visibility" required>
+                    <option value="public">Public - Anyone can see</option>
+                    <option value="college">College Only - Only students from your college</option>
+                    <option value="connections">Connections Only - Only your connections</option>
+                </select>
+
+                <button type="submit" class="button">Share Post</button>
+            </form>
+        </div>
+    </main>

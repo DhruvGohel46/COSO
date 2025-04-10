@@ -328,6 +328,33 @@ nav a:hover {
     cursor: not-allowed;
 }
 
+/* Add Post Button Styles */
+.add-post-section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.add-post-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-post-button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
     
@@ -387,5 +414,16 @@ nav a:hover {
         width: 100%;
         max-width: 280px;
         height: 160px;
+    }
+
+    .add-post-section {
+        margin-top: 15px;
+    }
+
+    .add-post-button {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 20px;
+        font-size: 0.9rem;
     }
 }
