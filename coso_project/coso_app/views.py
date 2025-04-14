@@ -3,6 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import get_object_or_404
+from rest_framework.decorators import api_view
+from rest_framework.reverse import reverse
 from .models import User, Event, Post
 from .serializers import (
     StudentRegistrationSerializer, AdminRegistrationSerializer, LoginSerializer,
@@ -247,3 +249,18 @@ class PostDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticated, IsOwnerOrAdmin]
+
+@api_view(['GET'])
+def api_root(request):
+    """
+    API root view providing links to main endpoints
+    """
+    return Response({
+        'register_student': reverse('student-register', request=request),
+        'register_admin': reverse('admin-register', request=request),
+        'login': reverse('login', request=request),
+        'profile': reverse('profile', request=request),
+        'events': reverse('event-list', request=request),
+        'posts': reverse('post-list', request=request),
+        'admin_dashboard': reverse('admin-dashboard', request=request),
+    })

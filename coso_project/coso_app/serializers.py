@@ -105,3 +105,4 @@ class PostSerializer(serializers.ModelSerializer):
     
     def get_author_name(self, obj):
         return obj.author.full_name
+

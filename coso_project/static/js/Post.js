@@ -1,3 +1,5 @@
+import { postsAPI } from './api.js';
+
 // create-post.js - Handles all functionality for the Create Post page
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -147,64 +149,164 @@ document.addEventListener('DOMContentLoaded', function() {
         photoHint.textContent = `You can upload ${remaining} more photo${remaining !== 1 ? 's' : ''}`;
     }
     
-    // Handle form submission
-    function submitPost(e) {
+    // Handle form submission with backend integration
+    async function submitPost(e) {
         e.preventDefault();
-        
+
         // Validate form
         if (!validateForm()) {
             return;
         }
-        
-        // Create FormData object to handle file uploads
-        const formData = new FormData();
-        
-        // Add all photos
-        uploadedPhotos.forEach((photo, index) => {
-            formData.append(`photo_${index}`, photo);
-        });
-        
-        // Add other form fields
-        formData.append('caption', captionInput.value);
-        formData.append('location', locationInput.value);
-        formData.append('tags', tagsInput.value);
-        formData.append('visibility', visibilitySelect.value);
-        
+
         // Show loading state
         toggleLoadingState(true);
-        
-        // In a real application, you would send the data to the server here
-        // Using fetch API to simulate server communication
-        setTimeout(() => {
-            // This timeout simulates network request
-            console.log('Post data:', {
-                photos: uploadedPhotos.map(p => p.name),
+
+        try {
+            // Prepare tags array
+            const tags = tagsInput.value
+                .split(',')
+                .map(tag => tag.trim())
+                .filter(tag => tag.length > 0);
+
+            // Create post using the API
+            await postsAPI.createPost({
+                photos: uploadedPhotos,
                 caption: captionInput.value,
                 location: locationInput.value,
-                tags: tagsInput.value,
-                visibility: visibilitySelect.value
+                visibility: visibilitySelect.value,
+                tags: tags
             });
-            
+
             // Clear saved draft after successful submission
             localStorage.removeItem('post_draft');
             
             // Show success message
             showNotification('Post created successfully!', 'success');
-            
-            // Reset form after small delay
+
+            // Reset form and redirect
             setTimeout(() => {
                 resetForm();
                 toggleLoadingState(false);
-                
-                // Redirect to home page
-                // window.location.href = 'index.html';
-                
-                // Redirect to profile page
-            window.location.href = 'profile.html';
+                window.location.href = 'index.html';
             }, 1000);
-        }, 1500);
+
+        } catch (error) {
+            console.error('Failed to create post:', error);
+            showNotification(
+                error.message || 'Failed to create post. Please try again.', 
+                'error'
+            );
+            toggleLoadingState(false);
+        }
     }
-    
+
+    // Add async functions for post management
+    async function deletePost(postId) {
+        try {
+            await postsAPI.deletePost(postId);
+            showNotification('Post deleted successfully!', 'success');
+            // Refresh the posts list or remove the post from DOM
+        } catch (error) {
+            console.error('Failed to delete post:', error);
+            showNotification(error.message || 'Failed to delete post. Please try again.', 'error');
+        }
+    }
+
+    async function updatePost(postId, postData) {
+        try {
+            await postsAPI.updatePost(postId, postData);
+            showNotification('Post updated successfully!', 'success');
+            // Refresh the post content in the DOM
+        } catch (error) {
+            console.error('Failed to update post:', error);
+            showNotification(error.message || 'Failed to update post. Please try again.', 'error');
+        }
+    }
+
+    async function loadPost(postId) {
+        try {
+            const post = await postsAPI.getPost(postId);
+            // Populate form with post data for editing
+            captionInput.value = post.caption;
+            locationInput.value = post.location;
+            tagsInput.value = post.tags.join(', ');
+            visibilitySelect.value = post.visibility;
+            // Handle photos if needed
+        } catch (error) {
+            console.error('Failed to load post:', error);
+            showNotification(error.message || 'Failed to load post. Please try again.', 'error');
+        }
+    }
+
+    // Function to load all posts (for feed or profile)
+    async function loadAllPosts() {
+        try {
+            const posts = await postsAPI.getPosts();
+            displayPosts(posts);
+        } catch (error) {
+            console.error('Failed to load posts:', error);
+            showNotification(error.message || 'Failed to load posts. Please try again.', 'error');
+        }
+    }
+
+    // Function to display posts in the UI
+    function displayPosts(posts) {
+        const postsContainer = document.querySelector('.posts-container');
+        if (!postsContainer) return;
+
+        postsContainer.innerHTML = posts.map(post => `
+            <div class="post-card" data-post-id="${post.id}">
+                <div class="post-header">
+                    <div class="post-author">${post.author.full_name}</div>
+                    <div class="post-meta">
+                        <span class="post-location">${post.location}</span>
+                        <span class="post-time">${formatTimeAgo(post.created_at)}</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    ${post.photos.map(photo => `
+                        <img src="${photo.url}" alt="Post image" class="post-image">
+                    `).join('')}
+                    <p class="post-caption">${post.caption}</p>
+                    <div class="post-tags">
+                        ${post.tags.map(tag => `<span class="tag">#${tag}</span>`).join('')}
+                    </div>
+                </div>
+                ${post.is_author ? `
+                    <div class="post-actions">
+                        <button class="edit-post" data-post-id="${post.id}">Edit</button>
+                        <button class="delete-post" data-post-id="${post.id}">Delete</button>
+                    </div>
+                ` : ''}
+            </div>
+        `).join('');
+
+        // Add event listeners for edit and delete buttons
+        document.querySelectorAll('.edit-post').forEach(button => {
+            button.addEventListener('click', () => loadPost(button.dataset.postId));
+        });
+
+        document.querySelectorAll('.delete-post').forEach(button => {
+            button.addEventListener('click', async () => {
+                if (confirm('Are you sure you want to delete this post?')) {
+                    await deletePost(button.dataset.postId);
+                }
+            });
+        });
+    }
+
+    // Helper function to format time ago
+    function formatTimeAgo(timestamp) {
+        const date = new Date(timestamp);
+        const now = new Date();
+        const seconds = Math.floor((now - date) / 1000);
+
+        if (seconds < 60) return 'just now';
+        if (seconds < 3600) return `${Math.floor(seconds / 60)} minutes ago`;
+        if (seconds < 86400) return `${Math.floor(seconds / 3600)} hours ago`;
+        return `${Math.floor(seconds / 86400)} days ago`;
+    }
+
     // Validate the form
     function validateForm() {
         // Check if at least one photo is uploaded

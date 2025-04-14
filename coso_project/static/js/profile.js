@@ -1,6 +1,7 @@
+import { authAPI, adminAPI } from './api.js';
 import { collegeData } from "./colleges and courses list.js";
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
     // Existing Elements
     const loginSection = document.getElementById('loginSection');
     const profileSection = document.getElementById('profileSection');
@@ -142,91 +143,134 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Unified Login Form Submission
-    loginForm.addEventListener('submit', function(e) {
+    loginForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-        
-        // First check if admin credentials match
-        const adminData = JSON.parse(localStorage.getItem('adminData'));
-        if (adminData && adminData.email === email && adminData.password === password) {
-            // Admin Login successful
-            showAdminDashboard(adminData);
-            return;
+
+        try {
+            // Try backend login first
+            const response = await authAPI.login(email, password);
+            if (response.role === 'admin') {
+                showAdminDashboard(response.user);
+                return;
+            } else {
+                showProfile(response.user);
+                return;
+            }
+        } catch (error) {
+            console.error('Backend login failed:', error);
+            
+            // Fallback to existing localStorage logic
+            const adminData = JSON.parse(localStorage.getItem('adminData'));
+            if (adminData && adminData.email === email && adminData.password === password) {
+                showAdminDashboard(adminData);
+                return;
+            }
+            
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            if (userData && userData.email === email && userData.password === password) {
+                showProfile(userData);
+                return;
+            }
+            
+            alert('Invalid email or password. Please try again.');
         }
-        
-        // If not admin, check if student credentials match
-        const userData = JSON.parse(localStorage.getItem('userData'));
-        if (userData && userData.email === email && userData.password === password) {
-            // Student Login successful
-            showProfile(userData);
-            return;
-        }
-        
-        // If neither matched, login failed
-        alert('Invalid email or password. Please try again.');
     });
 
     // Student Registration Form Submission
-    registrationForm.addEventListener('submit', function(e) {
+    registrationForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        // Get profile picture from registration form
-        const profilePicture = regPhotoPreview.src !== 'logo.png' ? regPhotoPreview.src : 'logo.png';
+        const formData = new FormData(registrationForm);
         
-        const userData = {
-            email: document.getElementById('regEmail').value,
-            name: document.getElementById('name').value,
-            college: collegeSelect.value,
-            course: courseSelect.value,
-            year: document.getElementById('year').value,
-            password: document.getElementById('passwordInput').value,
-            profilePicture: profilePicture,
-            studentId: studentIdPreview.src !== 'student id card.png' ? studentIdPreview.src : null,
-            status: 'pending', // Set initial status as pending
-            userType: 'student' // Set user type as student
-        };
-        
-        // Save user data to localStorage
-        localStorage.setItem('userData', JSON.stringify(userData));
-        
-        // Show profile
-        showProfile(userData);
-        
-        alert('Registration successful! Your account is pending approval from a college admin.');
+        try {
+            // Try backend registration first
+            await authAPI.registerStudent(Object.fromEntries(formData));
+            alert('Registration successful! Your account is pending approval.');
+            
+            // Fallback to existing localStorage logic if needed
+            const userData = {
+                email: document.getElementById('regEmail').value,
+                name: document.getElementById('name').value,
+                college: collegeSelect.value,
+                course: courseSelect.value,
+                year: document.getElementById('year').value,
+                password: document.getElementById('passwordInput').value,
+                profilePicture: regPhotoPreview.src !== 'logo.png' ? regPhotoPreview.src : 'logo.png',
+                studentId: studentIdPreview.src !== 'student id card.png' ? studentIdPreview.src : null,
+                status: 'pending',
+                userType: 'student'
+            };
+            localStorage.setItem('userData', JSON.stringify(userData));
+            
+            showProfile(userData);
+        } catch (error) {
+            console.error('Backend registration failed:', error);
+            // Continue with existing localStorage logic
+            const userData = {
+                email: document.getElementById('regEmail').value,
+                name: document.getElementById('name').value,
+                college: collegeSelect.value,
+                course: courseSelect.value,
+                year: document.getElementById('year').value,
+                password: document.getElementById('passwordInput').value,
+                profilePicture: regPhotoPreview.src !== 'logo.png' ? regPhotoPreview.src : 'logo.png',
+                studentId: studentIdPreview.src !== 'student id card.png' ? studentIdPreview.src : null,
+                status: 'pending',
+                userType: 'student'
+            };
+            localStorage.setItem('userData', JSON.stringify(userData));
+            
+            showProfile(userData);
+            
+            alert('Registration successful! Your account is pending approval from a college admin.');
+        }
     });
 
     // Admin Registration Form Submission
-    adminRegistrationForm.addEventListener('submit', function(e) {
+    adminRegistrationForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        const password = document.getElementById('adminPasswordInput').value;
-        const confirmPassword = document.getElementById('adminConfirmPassword').value;
+        const formData = new FormData(adminRegistrationForm);
         
-        // Check if passwords match
-        if (password !== confirmPassword) {
-            alert('Passwords do not match. Please try again.');
-            return;
+        try {
+            // Try backend admin registration first
+            await authAPI.registerAdmin(Object.fromEntries(formData));
+            alert('Admin registration successful!');
+            
+            // Fallback to existing localStorage logic if needed
+            const adminData = {
+                email: document.getElementById('adminRegEmail').value,
+                name: document.getElementById('adminName').value,
+                college: document.getElementById('adminCollegeSelect').value,
+                designation: document.getElementById('adminDesignation').value,
+                adminId: document.getElementById('adminId').value,
+                password: document.getElementById('adminPasswordInput').value,
+                userType: 'admin'
+            };
+            localStorage.setItem('adminData', JSON.stringify(adminData));
+            
+            showAdminDashboard(adminData);
+        } catch (error) {
+            console.error('Backend admin registration failed:', error);
+            // Continue with existing localStorage logic
+            const adminData = {
+                email: document.getElementById('adminRegEmail').value,
+                name: document.getElementById('adminName').value,
+                college: document.getElementById('adminCollegeSelect').value,
+                designation: document.getElementById('adminDesignation').value,
+                adminId: document.getElementById('adminId').value,
+                password: document.getElementById('adminPasswordInput').value,
+                userType: 'admin'
+            };
+            localStorage.setItem('adminData', JSON.stringify(adminData));
+            
+            showAdminDashboard(adminData);
+            
+            alert('Admin registration successful!');
         }
-        
-        const adminData = {
-            email: document.getElementById('adminRegEmail').value,
-            name: document.getElementById('adminName').value,
-            college: document.getElementById('adminCollegeSelect').value,
-            designation: document.getElementById('adminDesignation').value,
-            adminId: document.getElementById('adminId').value,
-            password: password,
-            userType: 'admin' // Set user type as admin
-        };
-        
-        // Save admin data to localStorage
-        localStorage.setItem('adminData', JSON.stringify(adminData));
-        
-        // Show admin dashboard
-        showAdminDashboard(adminData);
-        
-        alert('Admin registration successful!');
     });
 
     // Edit Profile Button
@@ -264,33 +308,51 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Logout Button (Student)
-    logoutBtn.addEventListener('click', function() {
-        // Show login form
+    logoutBtn.addEventListener('click', async function() {
+        try {
+            await authAPI.logout();
+        } catch (error) {
+            console.error('Backend logout failed:', error);
+        }
+        // Continue with existing logout logic
         profileSection.classList.add('hidden');
         loginSection.classList.remove('hidden');
     });
 
     // Logout Button (Admin)
-    adminLogoutBtn.addEventListener('click', function() {
-        // Show login form (unified login)
+    adminLogoutBtn.addEventListener('click', async function() {
+        try {
+            await authAPI.logout();
+        } catch (error) {
+            console.error('Backend logout failed:', error);
+        }
+        // Continue with existing admin logout logic
         adminDashboard.classList.add('hidden');
         loginSection.classList.remove('hidden');
     });
 
     // Check if user is already logged in
-    function checkLoggedInStatus() {
-        const userData = JSON.parse(localStorage.getItem('userData'));
-        const adminData = JSON.parse(localStorage.getItem('adminData'));
-        
-        if (adminData) {
-            // Admin is logged in, show dashboard
-            showAdminDashboard(adminData);
-        } else if (userData) {
-            // User is logged in, show profile
-            showProfile(userData);
-        } else {
-            // No one is logged in, show login form
-            loginSection.classList.remove('hidden');
+    async function checkLoggedInStatus() {
+        try {
+            const response = await authAPI.getProfile();
+            if (response.role === 'admin') {
+                showAdminDashboard(response.user);
+            } else {
+                showProfile(response.user);
+            }
+        } catch (error) {
+            console.error('Backend profile check failed:', error);
+            // Fallback to existing localStorage logic
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            const adminData = JSON.parse(localStorage.getItem('adminData'));
+            
+            if (adminData) {
+                showAdminDashboard(adminData);
+            } else if (userData) {
+                showProfile(userData);
+            } else {
+                loginSection.classList.remove('hidden');
+            }
         }
     }
 
@@ -335,38 +397,42 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Load students from a specific college
-    function loadStudents(adminCollege) {
-        // Clear the student list
+    async function loadStudents(adminCollege) {
+        try {
+            // Try to get students from backend first
+            const students = await adminAPI.getStudentsByCollege(adminCollege);
+            displayStudents(students);
+        } catch (error) {
+            console.error('Backend student fetch failed:', error);
+            // Fallback to existing localStorage logic
+            let allUsers = [];
+            
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            if (userData && userData.userType === 'student') {
+                allUsers.push(userData);
+            }
+            
+            const additionalUsers = JSON.parse(localStorage.getItem('allUsers')) || [];
+            allUsers = allUsers.concat(additionalUsers);
+            
+            const collegeStudents = allUsers.filter(user => user.college === adminCollege);
+            
+            displayStudents(collegeStudents);
+        }
+    }
+
+    // Add function to display students
+    function displayStudents(students) {
         studentList.innerHTML = '';
         
-        // Get all students from localStorage
-        let allUsers = [];
-        
-        // Check if userData exists and is an object (single user)
-        const userData = JSON.parse(localStorage.getItem('userData'));
-        if (userData && userData.userType === 'student') {
-            allUsers.push(userData);
-        }
-        
-        // Check if there are additional users stored in other formats (e.g., array)
-        // This is a placeholder for if you implement multiple users in the future
-        const additionalUsers = JSON.parse(localStorage.getItem('allUsers')) || [];
-        allUsers = allUsers.concat(additionalUsers);
-        
-        // Filter students from the admin's college
-        const collegeStudents = allUsers.filter(user => user.college === adminCollege);
-        
-        // Show message if no students are found
-        if (collegeStudents.length === 0) {
+        if (students.length === 0) {
             noStudentsMsg.classList.remove('hidden');
             return;
         }
         
-        // Hide the no students message
         noStudentsMsg.classList.add('hidden');
         
-        // Create student cards
-        collegeStudents.forEach((student, index) => {
+        students.forEach((student, index) => {
             const studentCard = document.createElement('div');
             studentCard.className = 'student-card';
             studentCard.innerHTML = `
@@ -390,40 +456,44 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
             
             studentList.appendChild(studentCard);
-        });
-        
-        // Add event listeners to approve/reject buttons
-        const approveButtons = document.querySelectorAll('.approve-btn');
-        const rejectButtons = document.querySelectorAll('.reject-btn');
-        
-        approveButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const index = parseInt(this.getAttribute('data-student-index'));
-                updateStudentStatus(collegeStudents[index], 'approved');
-            });
-        });
-        
-        rejectButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const index = parseInt(this.getAttribute('data-student-index'));
-                updateStudentStatus(collegeStudents[index], 'rejected');
-            });
+            
+            const approveBtn = studentCard.querySelector('.approve-btn');
+            if (approveBtn) {
+                approveBtn.addEventListener('click', async () => {
+                    try {
+                        await adminAPI.approveStudent(student.id);
+                        loadStudents(student.college);
+                    } catch (error) {
+                        console.error('Failed to approve student:', error);
+                        updateStudentStatus(student, 'approved');
+                    }
+                });
+            }
+            
+            const rejectBtn = studentCard.querySelector('.reject-btn');
+            if (rejectBtn) {
+                rejectBtn.addEventListener('click', async () => {
+                    try {
+                        await adminAPI.rejectStudent(student.id);
+                        loadStudents(student.college);
+                    } catch (error) {
+                        console.error('Failed to reject student:', error);
+                        updateStudentStatus(student, 'rejected');
+                    }
+                });
+            }
         });
     }
 
     // Update student status
     function updateStudentStatus(student, status) {
-        // Update status
         student.status = status;
         
-        // Save updated user data
         localStorage.setItem('userData', JSON.stringify(student));
         
-        // Reload the dashboard to reflect changes
         const adminData = JSON.parse(localStorage.getItem('adminData'));
         loadStudents(adminData.college);
         
-        // Show alert
         alert(`Student ${student.name} has been ${status}.`);
     }
 

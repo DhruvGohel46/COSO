@@ -106,24 +106,13 @@ REST_FRAMEWORK = {
 }
 
 # CORS settings
-CORS_ALLOW_ALL_ORIGINS = True  # In production, set specific origins
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:5500",  # VS Code Live Server default port
+    "http://localhost:5500",
+]
+
 CORS_ALLOW_CREDENTIALS = True
 
 # File upload settings
 FILE_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10 MB
 
-# coso_project/coso_project/urls.py
-
-from django.contrib import admin
-from django.urls import path, include
-from django.conf import settings
-from django.conf.urls.static import static
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('coso_app.urls')),
-]
-
-# Serve media files in development
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
