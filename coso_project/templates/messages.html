@@ -1,81 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title style="font-family: 'Irish Grover', sans-serif;">Messaging - COSO</title>
-<!-- Google Fonts integration -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/messages.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
-    <script type="module" src="../static/js/colleges and courses list.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title style="font-family: 'Irish Grover', sans-serif">
+      Messaging - COSO
+    </title>
+    <!-- Google Fonts integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../static/css/messages.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="../static/js/colleges and courses list.js"
+    ></script>
     <script type="module" src="../static/js/index.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1 style="font-family: 'Irish Grover', sans-serif; color: black;">COSO</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html"><img src="../static/images/home.png" alt="Home"></a></li>
-                <li><a href="messages.html"><img src="../static/images/message.png" alt="Messages"></a></li>
-                <li><a href="notifications.html"><img src="../static/images/bell.png" alt="Notifications"></a></li>
-                <li><a href="profile.html"><img src="../static/images/user.png" alt="Profile"></a></li>
-            </ul>
-        </nav>
+      <h1 style="font-family: 'Irish Grover', sans-serif; color: black">
+        COSO
+      </h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html"
+              ><img src="../static/images/home.png" alt="Home"
+            /></a>
+          </li>
+          <li>
+            <a href="messages.html"
+              ><img src="../static/images/message.png" alt="Messages"
+            /></a>
+          </li>
+          <li>
+            <a href="notifications.html"
+              ><img src="../static/images/bell.png" alt="Notifications"
+            /></a>
+          </li>
+          <li>
+            <a href="profile.html"
+              ><img src="../static/images/user.png" alt="Profile"
+            /></a>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <div class="container">
-        <aside class="sidebar">
-            <div class="search-container">
-                <input type="text" class="search-bar" placeholder="Search conversations...">
+      <aside class="sidebar">
+        <div class="search-container">
+          <input
+            type="text"
+            class="search-bar"
+            placeholder="Search conversations..."
+          />
+        </div>
+        <ul class="friends-list">
+          <li class="friend-item active">
+            <div class="friend-avatar">JD</div>
+            <div class="friend-info">
+              <span class="friend-name">John Doe</span>
+              <span class="last-message">Hey, how are you?</span>
             </div>
-            <ul class="friends-list">
-                <li class="friend-item active">
-                    <div class="friend-avatar">JD</div>
-                    <div class="friend-info">
-                        <span class="friend-name">John Doe</span>
-                        <span class="last-message">Hey, how are you?</span>
-                    </div>
-                </li>
-                <li class="friend-item">
-                    <div class="friend-avatar">JS</div>
-                    <div class="friend-info">
-                        <span class="friend-name">Jane Smith</span>
-                        <span class="last-message">Great! Let me know when you submit it.</span>
-                    </div>
-                </li>
-                <li class="friend-item">
-                    <div class="friend-avatar">MJ</div>
-                    <div class="friend-info">
-                        <span class="friend-name">Mike Johnson</span>
-                        <span class="last-message">7 PM at the library.</span>
-                    </div>
-                </li>
-            </ul>
-        </aside>
+          </li>
+          <li class="friend-item">
+            <div class="friend-avatar">JS</div>
+            <div class="friend-info">
+              <span class="friend-name">Jane Smith</span>
+              <span class="last-message"
+                >Great! Let me know when you submit it.</span
+              >
+            </div>
+          </li>
+          <li class="friend-item">
+            <div class="friend-avatar">MJ</div>
+            <div class="friend-info">
+              <span class="friend-name">Mike Johnson</span>
+              <span class="last-message">7 PM at the library.</span>
+            </div>
+          </li>
+        </ul>
+      </aside>
 
-        <main class="chat-area">
-            <div class="chat-header">
-                <h2 class="chat-title">John Doe</h2>
-            </div>
-            
-            <div class="messages">
-                <!-- Messages will be loaded dynamically -->
-            </div>
+      <main class="chat-area">
+        <div class="chat-header">
+          <h2 class="chat-title">John Doe</h2>
+        </div>
 
-            <div class="input-area">
-                <input type="text" class="message-input" placeholder="Type a message...">
-                <button class="send-button" title="Send Message">
-                    <img src="../static/images/send.png" alt="Send">
-                </button>
-            </div>
-        </main>
+        <div class="messages">
+          <!-- Messages will be loaded dynamically -->
+        </div>
+
+        <div class="input-area">
+          <input
+            type="text"
+            class="message-input"
+            placeholder="Type a message..."
+          />
+          <button class="send-button" title="Send Message">
+            <img src="../static/images/send.png" alt="Send" />
+          </button>
+        </div>
+      </main>
     </div>
 
     <script src="../static/js/messages.js"></script>
-</body>
+  </body>
 </html>

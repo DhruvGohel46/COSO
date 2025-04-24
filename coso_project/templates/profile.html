@@ -34,17 +34,26 @@
           </li>
           <li>
             <a href="messages.html"
-              ><img src="../static/images/message.png" alt="Messages" title="Messages"
+              ><img
+                src="../static/images/message.png"
+                alt="Messages"
+                title="Messages"
             /></a>
           </li>
           <li>
             <a href="notifications.html"
-              ><img src="../static/images/bell.png" alt="Notifications" title="Notifications"
+              ><img
+                src="../static/images/bell.png"
+                alt="Notifications"
+                title="Notifications"
             /></a>
           </li>
           <li>
             <a href="profile.html"
-              ><img src="../static/images/user.png" alt="Profile" title="Profile"
+              ><img
+                src="../static/images/user.png"
+                alt="Profile"
+                title="Profile"
             /></a>
           </li>
         </ul>
@@ -78,13 +87,17 @@
             <button type="submit" class="submit-btn">Login</button>
           </div>
         </form>
-        
+
         <div class="user-type-selection">
           <div class="signup-prompt">
             <p>Don't have an account?</p>
             <div class="user-type-buttons">
-              <button id="showStudentSignupBtn" class="button">Student Sign Up</button>
-              <button id="showAdminSignupBtn" class="button">Admin Sign Up</button>
+              <button id="showStudentSignupBtn" class="button">
+                Student Sign Up
+              </button>
+              <button id="showAdminSignupBtn" class="button">
+                Admin Sign Up
+              </button>
             </div>
           </div>
         </div>
@@ -115,19 +128,13 @@
         </div>
 
         <div class="profile-actions">
-          <button id="editProfileBtn" class="edit-btn">
-            Edit Profile
-          </button>
-          <button id="logoutBtn" class="edit-btn">
-            Logout
-          </button>
+          <button id="editProfileBtn" class="edit-btn">Edit Profile</button>
+          <button id="logoutBtn" class="edit-btn">Logout</button>
         </div>
 
         <!-- Add Post Button -->
         <div class="add-post-section">
-          <a href="post.html" class="add-post-button">
-            Add Your Post
-          </a>
+          <a href="post.html" class="add-post-button"> Add Your Post </a>
         </div>
       </div>
 
@@ -181,7 +188,7 @@
               required
             />
           </div>
-          
+
           <div class="form-group">
             <label for="adminPasswordInput">Password:</label>
             <input
@@ -207,7 +214,7 @@
               Complete Admin Sign Up
             </button>
           </div>
-          
+
           <div class="login-prompt">
             <p>Already have an account?</p>
             <button id="showLoginFromAdminBtn" class="button">Login</button>
@@ -220,16 +227,20 @@
         <div class="admin-header">
           <h2>Admin Dashboard</h2>
           <div class="admin-info">
-            <p>Institute: <span id="admin-college">University of Example</span></p>
+            <p>
+              Institute: <span id="admin-college">University of Example</span>
+            </p>
             <p>Admin: <span id="admin-name">Admin Name</span></p>
             <p>Designation: <span id="admin-designation">Position</span></p>
           </div>
           <button id="adminLogoutBtn" class="edit-btn">Logout</button>
         </div>
-        
+
         <div class="dashboard-content">
           <h3>Student Approval Queue</h3>
-          <p class="no-students hidden">No students from your institute need approval.</p>
+          <p class="no-students hidden">
+            No students from your institute need approval.
+          </p>
           <div id="studentList" class="student-list">
             <!-- Students will be populated dynamically -->
           </div>
@@ -262,8 +273,14 @@
           <!-- Student ID Card Upload Section -->
           <div class="student-id-section">
             <div class="id-preview-container">
-              <img src="../static/images/student id card.png" alt="Student ID" id="student-id-preview" />
-              <label for="student-id" class="upload-btn">Upload Student ID</label>
+              <img
+                src="../static/images/student id card.png"
+                alt="Student ID"
+                id="student-id-preview"
+              />
+              <label for="student-id" class="upload-btn"
+                >Upload Student ID</label
+              >
               <input
                 type="file"
                 id="student-id"
@@ -272,7 +289,9 @@
                 required
               />
             </div>
-            <p class="upload-hint">Upload your student ID card for verification</p>
+            <p class="upload-hint">
+              Upload your student ID card for verification
+            </p>
           </div>
 
           <div class="form-group">
@@ -319,7 +338,7 @@
               <option value="4">4</option>
             </select>
           </div>
-          
+
           <div class="form-group">
             <label for="passwordInput">Password:</label>
             <input
@@ -331,11 +350,9 @@
           </div>
 
           <div class="form-group">
-            <button type="submit" class="submit-btn">
-              Complete Sign Up
-            </button>
+            <button type="submit" class="submit-btn">Complete Sign Up</button>
           </div>
-          
+
           <div class="login-prompt">
             <p>Already have an account?</p>
             <button id="showLoginBtn" class="button">Login</button>
