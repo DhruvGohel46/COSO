@@ -312,4 +312,63 @@ document.addEventListener('DOMContentLoaded', async function () {
             addEventForm.reset();
         });
     }
+
+    // Initialize slideshows
+    initializeSlideshows();
 });
+
+// Initialize slideshows
+function initializeSlideshows() {
+    const slideshows = document.querySelectorAll('.slideshow-container');
+    
+    slideshows.forEach(slideshow => {
+        let currentSlide = 0;
+        const slides = slideshow.querySelectorAll('.slides img');
+        const prevBtn = slideshow.querySelector('.prev-btn');
+        const nextBtn = slideshow.querySelector('.next-btn');
+        const counter = slideshow.querySelector('.slide-counter');
+        
+        if (slides.length <= 1) {
+            // Hide navigation if only one image
+            if (prevBtn) prevBtn.style.display = 'none';
+            if (nextBtn) nextBtn.style.display = 'none';
+            if (counter) counter.style.display = 'none';
+            return;
+        }
+
+        function updateSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            if (counter) {
+                counter.textContent = `${currentSlide + 1} / ${slides.length}`;
+            }
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                updateSlide(currentSlide - 1);
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                updateSlide(currentSlide + 1);
+            });
+        }
+
+        // Keyboard navigation
+        slideshow.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                updateSlide(currentSlide - 1);
+            } else if (e.key === 'ArrowRight') {
+                updateSlide(currentSlide + 1);
+            }
+        });
+
+        // Initialize first slide
+        updateSlide(0);
+    });
+}
