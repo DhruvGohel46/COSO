@@ -17,16 +17,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Mock data for conversations
     const conversations = {
-        'John Doe': [
+        'Smit': [
             { text: "Hey, how are you?", type: "received", timestamp: "10:00 AM" },
             { text: "I'm good, thanks! How about you?", type: "sent", timestamp: "10:01 AM" }
         ],
-        'Jane Smith': [
+        'Rohen': [
             { text: "Did you finish the assignment?", type: "received", timestamp: "Yesterday" },
             { text: "Almost done! Just need to review it once more.", type: "sent", timestamp: "Yesterday" },
             { text: "Great! Let me know when you submit it.", type: "received", timestamp: "Yesterday" }
         ],
-        'Mike Johnson': [
+        'Arjun': [
             { text: "Are you coming to the study group tonight?", type: "received", timestamp: "2 days ago" },
             { text: "Yes, I'll be there. What time does it start?", type: "sent", timestamp: "2 days ago" },
             { text: "7 PM at the library.", type: "received", timestamp: "2 days ago" },
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // Current active conversation
-    let currentFriend = 'John Doe';
+    let currentFriend = 'Smit';
     let currentMessages = [...conversations[currentFriend]];
 
     // Function to create a message element
@@ -116,24 +116,24 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Random responses based on the current friend
             const responses = {
-                'John Doe': [
+                'Smit': [
                     "I'm doing great! What are you up to today?",
                     "Been busy with classes, how about you?",
                     "Just finished my project, finally!"
                 ],
-                'Jane Smith': [
+                'Rohan': [
                     "Let me know when you submit it, I need to compare notes.",
                     "Don't forget the deadline is tomorrow!",
                     "Thanks for the update!"
                 ],
-                'Mike Johnson': [
+                'Arjun': [
                     "Perfect! I'll bring the notes.",
                     "Don't be late this time!",
                     "We'll be in the main study room."
                 ]
             };
             
-            const friendResponses = responses[currentFriend] || responses['John Doe'];
+            const friendResponses = responses[currentFriend] || responses['Smit'];
             const randomResponse = friendResponses[Math.floor(Math.random() * friendResponses.length)];
             
             const responseMessage = {

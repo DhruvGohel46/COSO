@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title style="font-family: 'Irish Grover', sans-serif">
+        Book Buy/Sell - COSO
+    </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Irish+Grover&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../static/css/profile.css" />
+    <link rel="stylesheet" href="../static/css/book.css" />
+
+</head>
+
+<body>
+    <script type="module" src="../static/js/book.js"></script>
+    <header>
+        <nav class="navbar">
+            <h1 class="brand-name">COSO</h1>
+            <ul class="nav-links">
+                <li>
+                    <a href="index.html"><img src="../static/images/home.png" alt="Home" title="Home" /></a>
+                </li>
+                <li>
+                    <a href="messages.html"><img src="../static/images/message.png" alt="Messages"
+                            title="Messages" /></a>
+                </li>
+                <li>
+                    <a href="notifications.html"><img src="../static/images/bell.png" alt="Notifications"
+                            title="Notifications" /></a>
+                </li>
+                <li>
+                    <a href="profile.html"><img src="../static/images/user.png" alt="Profile" title="Profile" /></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="landing-container">
+        <h1 class="main-title">Buy and Sell Old Books Online and give your books a second life—and help reduce waste.
+        </h1>
+        <p class="subtitle">Join a community of readers and sellers who care about affordable access to knowledge.</p>
+
+        <div class="action-buttons">
+            <div class="action-card">
+                <img src="../static/images/Book .png" alt="Buy Books">
+                <a href="#" class="button buy-btn">Buy Used Books</a>
+            </div>
+            <span class="or-divider">Or</span>
+            <div class="action-card">
+                <img src="../static/images/money.png" alt="Sell Books">
+                <a href="#" class="button sell-btn">Sell Old Books</a>
+            </div>
+        </div>
+        <div>
+            <div class="action-card">
+                <a href="#" class="button my-books-btn">My Books</a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Rest of the existing content can stay but will be hidden initially -->
+    <div class="marketplace-content" style="display: none;">
+        <div class="book-marketplace">
+            <div class="marketplace-header">
+                <h2 class="marketplace-title">Book Marketplace</h2>
+                <div class="marketplace-actions">
+                    <button class="button back-btn">Back</button>
+                </div>
+            </div>
+
+            <!-- Content sections -->
+            <div class="content-section" id="buy-section" style="display: none;">
+                <div class="search-box">
+                    <input type="text" placeholder="Search for books by title, author, or course..." />
+                     <button class="searchB"> Search</button>
+                </div>
+
+                <div class="filter-container">
+                    <div class="filter-item active">All</div>
+                    <div class="filter-item">Computer Science</div>
+                    <div class="filter-item">Engineering</div>
+                    <div class="filter-item">Medicine</div>
+                    <div class="filter-item">Arts</div>
+                    <div class="filter-item">Business</div>
+                </div>
+
+                <div class="book-list">
+                    <!-- Computer Science Books -->
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Clean Code</h3>
+                            <p class="book-author">By Robert C. Martin</p>
+                            <p class="book-price">₹949</p>
+                            <p class="book-seller">Seller: VIKAS BOOK HOUSE</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Introduction to Algorithms</h3>
+                            <p class="book-author">By Thomas H. Cormen et al.</p>
+                            <p class="book-price">₹7,500</p>
+                            <p class="book-seller">Seller: uRead-Store</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Artificial Intelligence: A Modern Approach</h3>
+                            <p class="book-author">By Russell & Norvig</p>
+                            <p class="book-price">₹697</p>
+                            <p class="book-seller">Seller: Flipkart Explore Plus</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">You Don't Know JS</h3>
+                            <p class="book-author">By Kyle Simpson</p>
+                            <p class="book-price">₹795</p>
+                            <p class="book-seller">Seller: Amazon Asia-Pacific</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">The Pragmatic Programmer</h3>
+                            <p class="book-author">By Andrew Hunt & David Thomas</p>
+                            <p class="book-price">₹940</p>
+                            <p class="book-seller">Seller: Sapna Online</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">The Art of Computer Programming</h3>
+                            <p class="book-author">By Donald E. Knuth</p>
+                            <p class="book-price">₹8,828</p>
+                            <p class="book-seller">Seller: WesternShop</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <!-- Engineering Books -->
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Engineering Mechanics</h3>
+                            <p class="book-author">By R.C. Hibbeler</p>
+                            <p class="book-price">₹829</p>
+                            <p class="book-seller">Seller: Amazon Seller</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Strength of Materials</h3>
+                            <p class="book-author">By S.S. Bhavikatti</p>
+                            <p class="book-price">₹450</p>
+                            <p class="book-seller">Seller: Amazon India</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Machine Design</h3>
+                            <p class="book-author">By V.B. Bhandari</p>
+                            <p class="book-price">₹940</p>
+                            <p class="book-seller">Seller: Amazon India</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Control Systems Engineering</h3>
+                            <p class="book-author">By Norman S. Nise</p>
+                            <p class="book-price">₹1,799</p>
+                            <p class="book-seller">Seller: PUNJAB BOOKS ONLINE</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Fluid Mechanics</h3>
+                            <p class="book-author">By Yunus Çengel & John Cimbala</p>
+                            <p class="book-price">₹16,156</p>
+                            <p class="book-seller">Seller: Importx-USA</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Electrical Technology</h3>
+                            <p class="book-author">By B.L. Theraja</p>
+                            <p class="book-price">₹655</p>
+                            <p class="book-seller">Seller: IMPERIAL BOOKS</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <!-- Medicine Books -->
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Gray's Anatomy</h3>
+                            <p class="book-author">By Henry Gray</p>
+                            <p class="book-price">₹1,540</p>
+                            <p class="book-seller">Seller: Multiple sellers</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Robbins Basic Pathology</h3>
+                            <p class="book-author">By Vinay Kumar et al.</p>
+                            <p class="book-price">₹3,934</p>
+                            <p class="book-seller">Seller: Amazon India</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Bates' Guide to Physical Examination</h3>
+                            <p class="book-author">By Lynn S. Bickley</p>
+                            <p class="book-price">₹2,300</p>
+                            <p class="book-seller">Seller: Amazon India</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Essentials of Medical Pharmacology</h3>
+                            <p class="book-author">By K.D. Tripathi</p>
+                            <p class="book-price">₹1,205</p>
+                            <p class="book-seller">Seller: MANYABOOKS</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Harrison's Principles of Internal Medicine</h3>
+                            <p class="book-author">By J. Larry Jameson et al.</p>
+                            <p class="book-price">₹4,342</p>
+                            <p class="book-seller">Seller: Flipkart</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Davidson's Principles & Practice of Medicine</h3>
+                            <p class="book-author">By Brian R. Walker</p>
+                            <p class="book-price">₹1,299</p>
+                            <p class="book-seller">Seller: Amazon India</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <!-- Arts Books -->
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">The Story of Art</h3>
+                            <p class="book-author">By E.H. Gombrich</p>
+                            <p class="book-price">₹2,834</p>
+                            <p class="book-seller">Seller: AtlanticPublishers</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Ways of Seeing</h3>
+                            <p class="book-author">By John Berger</p>
+                            <p class="book-price">₹329</p>
+                            <p class="book-seller">Seller: Penguin Books Ltd</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Art: A World History</p>
+                                <p class="book-author">By DK Publishing</p>
+                                <p class="book-price">₹1,070</p>
+                                <p class="book-seller">Seller: Amazon India</p>
+                                <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Lives of the Artists</h3>
+                            <p class="book-author">By Giorgio Vasari</p>
+                            <p class="book-price">₹407</p>
+                            <p class="book-seller">Seller: Penguin Books Ltd</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Art Through the Ages</h3>
+                            <p class="book-author">By Helen Gardner</p>
+                            <p class="book-price">₹555</p>
+                            <p class="book-seller">Seller: Grapevine India Publishers</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Steal Like an Artist</h3>
+                            <p class="book-author">By Austin Kleon</p>
+                            <p class="book-price">₹199</p>
+                            <p class="book-seller">Seller: Flipkart</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <!-- Business Books -->
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Rich Dad Poor Dad</h3>
+                            <p class="book-author">By Robert T. Kiyosaki</p>
+                            <p class="book-price">₹260</p>
+                            <p class="book-seller">Seller: DC BOOKS INDIA</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">The Lean Startup</h3>
+                            <p class="book-author">By Eric Ries</p>
+                            <p class="book-price">₹162</p>
+                            <p class="book-seller">Seller: BookHubIndia24</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Good to Great</h3>
+                            <p class="book-author">By Jim Collins</p>
+                            <p class="book-price">₹240</p>
+                            <p class="book-seller">Seller: WORLD LIBRARY PRINTS WORK</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Zero to One</h3>
+                            <p class="book-author">By Peter Thiel</p>
+                            <p class="book-price">₹114</p>
+                            <p class="book-seller">Seller: Flipkart</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Start with Why</h3>
+                            <p class="book-author">By Simon Sinek</p>
+                            <p class="book-price">₹164</p>
+                            <p class="book-seller">Seller: Flipkart</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">The Intelligent Investor</h3>
+                            <p class="book-author">By Benjamin Graham</p>
+                            <p class="book-price">₹1,599</p>
+                            <p class="book-seller">Seller: UDBOOKHUB</p>
+                            <button class="button contact-btn">Contact Seller</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section" id="sell-section" style="display: none;">
+                <form id="sellBookForm" class="sell-form">
+                    <div class="upload-container">
+                        <div class="book-preview" id="bookImagePreview">
+                            <span>Book Image</span>
+                        </div>
+                        <label for="book-image" class="button">Upload Book Image</label>
+                        <input type="file" id="book-image" accept="image/*" style="display: none" />
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="book-title">Book Title</label>
+                            <input type="text" id="book-title" placeholder="Enter book title" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="book-author">Author</label>
+                            <input type="text" id="book-author" placeholder="Enter author name" required />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="book-course">Related Course</label>
+                            <select id="book-course" required>
+                                <option value="">Select Course</option>
+                                <option value="computer-science">Computer Science</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="medicine">Medicine</option>
+                                <option value="arts">Arts</option>
+                                <option value="business">Business</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="book-condition">Condition</label>
+                            <select id="book-condition" required>
+                                <option value="">Select Condition</option>
+                                <option value="new">New</option>
+                                <option value="like-new">Like New</option>
+                                <option value="good">Good</option>
+                                <option value="fair">Fair</option>
+                                <option value="poor">Poor</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="book-price">Price (₹)</label>
+                            <input type="number" id="book-price" placeholder="Enter price" min="0" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="book-edition">Edition (Optional)</label>
+                            <input type="text" id="book-edition" placeholder="e.g., 3rd Edition" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="book-description">Description</label>
+                        <textarea id="book-description"
+                            placeholder="Provide details about the book, its condition, any highlighting or notes, etc."
+                            required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="button">Post Book for Sale</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="content-section" id="my-books-section" style="display: none;">
+                <div class="my-books-header">
+                    <h3>My Listed Books</h3>
+                </div>
+
+                <div class="book-list">
+                    <!-- Sample My Book Cards -->
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Java Programming</h3>
+                            <p class="book-author">By Herbert Schildt</p>
+                            <p class="book-price">₹400</p>
+                            <span class="book-status status-available">Available</span>
+                            <div class="book-action-buttons">
+                                <button class="button book-action-btn">Edit</button>
+                                <button class="button book-action-btn cancel-btn">Remove</button>
+                                <button class="button book-action-btn">Mark Sold</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img src="../static/images/logo.png" alt="Book Cover" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">Calculus: Early Transcendentals</h3>
+                            <p class="book-author">By James Stewart</p>
+                            <p class="book-price">₹550</p>
+                            <span class="book-status status-sold">Sold</span>
+                            <div class="book-action-buttons">
+                                <button class="button book-action-btn cancel-btn">Remove</button>
+                                <button class="button book-action-btn">Relist</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="no-books" style="display: none;">
+                    <p>You haven't listed any books yet.</p>
+                    <button class="button" id="startSellingBtn">Start Selling</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
