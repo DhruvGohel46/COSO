@@ -259,6 +259,11 @@ header {
 
 /* Media Queries */
 @media (max-width: 768px) {
+    body{
+        width: 100vw;
+        padding: 0;
+        margin: 0;
+    }
     .brand-name {
         font-size: 2rem;
     }
