@@ -728,6 +728,7 @@ form select {
   }
   .page-container {
     flex-direction: column;
+    padding-top: 0; /* Remove top padding for mobile */
   }
 
   .sidebar {
@@ -762,6 +763,7 @@ form select {
     margin-left: 0;
     width: 100%;
     padding: 10px;
+    margin-top: 0;
   }
 
   /* Search Section Improvements */
@@ -972,7 +974,7 @@ form select {
   /* Layout & Container Fixes */
   .page-container {
     flex-direction: column;
-    padding-top: 70px; /* Account for fixed header height */
+    padding-top: 30px; /* Account for fixed header height */
   }
 
   /* Sidebar Improvements */
