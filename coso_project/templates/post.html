@@ -71,7 +71,7 @@
           <div class="photo-upload-section">
             <label for="post-photos">Upload Photos</label>
             <div class="photo-preview-container" id="photo-preview-container">
-              <div class="photo-placeholder" id="photo-placeholder">
+              <div class="photo-placeholder" id="photo-placeholder" onclick="document.getElementById('post-photos').click()">
                 <span>+</span>
                 <p>Add Photos</p>
               </div>
@@ -83,11 +83,8 @@
               accept="image/*"
               multiple
               style="display: none"
+              onchange="handlePhotoChange(event)"
             />
-            <button type="button" id="upload-photo-btn" class="button">
-              Select Photos
-            </button>
-            <p class="photo-hint">You can upload up to 5 photos</p>
           </div>
 
           <label for="post-caption">Caption</label>
@@ -115,7 +112,7 @@
           />
 
           <label for="post-visibility">Visibility</label>
-          <select id="post-visibility" name="post-visibility" required>
+          <select style="margin-bottom: 15px;"  id="post-visibility" name="post-visibility" required>
             <option value="public">Public - Anyone can see</option>
             <option value="college">
               College Only - Only students from your college
