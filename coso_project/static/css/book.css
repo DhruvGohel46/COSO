@@ -1,3 +1,5 @@
+@import url('common.css');
+
 body {
     font-family: 'Baloo Bhai 2', sans-serif;
     background-color: #ffffff;
@@ -39,6 +41,7 @@ body {
     font-size: 28px;
     font-weight: 700;
     color: #333;
+    animation: slideDown 0.5s ease;
 }
 
 .marketplace-actions {
@@ -123,16 +126,16 @@ body {
     flex-direction: column;
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
     overflow: hidden;
-    transition: all 0.3s ease;
-    animation: fadeIn 0.6s ease;
+    transition: var(--transition);
+    animation: scaleIn 0.3s ease;
     animation-fill-mode: both;
 }
 
 .book-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-lg);
 }
 
 .book-card:nth-child(1) { animation-delay: 0.1s; }
@@ -284,6 +287,12 @@ body {
     border: 1px solid #ddd;
     padding-left: 45px;
     font-family: 'Baloo Bhai 2', sans-serif;
+    transition: var(--transition);
+}
+
+.search-box input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(126, 52, 217, 0.2);
 }
 
 .search-icon {
@@ -300,6 +309,7 @@ body {
     gap: 15px;
     margin-bottom: 20px;
     flex-wrap: wrap;
+    animation: fadeIn 0.5s ease;
 }
 
 .filter-item {

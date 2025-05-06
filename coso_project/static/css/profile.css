@@ -137,6 +137,7 @@ nav a:hover {
 /* Profile Section Styles */
 .profile-section {
     margin-bottom: 40px;
+    animation: scaleIn 0.3s ease;
 }
 
 .profile-header {
@@ -660,4 +661,23 @@ nav a:hover {
         flex-direction: column;
         gap: 10px;
     }
+}
+
+@import url('common.css');
+
+.profile-picture img {
+    transition: var(--transition);
+}
+
+.profile-picture:hover img {
+    transform: scale(1.05);
+}
+
+.profile-actions button {
+    transition: var(--transition);
+}
+
+.profile-actions button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }

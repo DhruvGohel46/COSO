@@ -1,3 +1,5 @@
+@import url('common.css');
+
 /* Global Styles */
 body {
     font-family: 'Baloo Bhai 2', 'Edu AU VIC WA NT Pre', 'Merriweather', sans-serif;
@@ -90,14 +92,11 @@ nav a:hover {
     padding: 20px;
     background-color: white;
     margin: 0 auto; /* Center the notifications area */
-
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
 }
 
-
-
-/* Notifications Header Styles */
 .notifications-header {
     border-bottom: 1px solid #eee;
     padding-bottom: 15px;
@@ -109,7 +108,6 @@ nav a:hover {
     color: #333;
 }
 
-/* Notifications List Container */
 .notifications-list {
     margin-top: 20px;
 }
@@ -119,32 +117,32 @@ nav a:hover {
     align-items: center;
     padding: 15px;
     border-bottom: 1px solid #eee;
-    transition: background-color 0.3s;
+    transition: var(--transition);
+    animation: slideUp 0.3s ease;
 }
+
+.notification-item:nth-child(1) { animation-delay: 0.1s; }
+.notification-item:nth-child(2) { animation-delay: 0.2s; }
+.notification-item:nth-child(3) { animation-delay: 0.3s; }
 
 .notification-item:hover {
     background-color: #f9f9f9;
 }
 
-/* Notification Icon Styles */
 .notification-icon {
     background-color: #7E34D9;
-
     margin-right: 15px;
 }
 
-/* Notification Content Area */
 .notification-content {
     flex: 1;
 }
 
-/* Notification Message Text */
 .notification-message {
     margin: 0;
     color: #333;
 }
 
-/* Notification Timestamp */
 .notification-time {
     font-size: 0.9em;
     color: #666;
@@ -158,8 +156,7 @@ nav a:hover {
 .notification-actions button {
     background: none;
     border: none;
-color: #7E34D9;
-
+    color: #7E34D9;
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 4px;
@@ -170,14 +167,12 @@ color: #7E34D9;
     background-color: #e9f3ff;
 }
 
-/* Empty State Message (when no notifications) */
 .empty-state {
     text-align: center;
     padding: 40px;
     color: #666;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     header{
         flex-direction: row;
@@ -230,6 +225,3 @@ color: #7E34D9;
         width: 100%;
     }
 }
-
-/* Adjust margin to accommodate navigation */
-/* Removed empty ruleset for .container */
