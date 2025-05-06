@@ -652,4 +652,118 @@ form button:hover {
   .event-card {
     flex-direction: column;
   }
+
+  .page-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: static;
+    height: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    top: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 15px;
+  }
+
+  .search-container {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+
+  #search-section h1 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .search-container input,
+  .search-container select,
+  .search-container button {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .events-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .event-card {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .event-card .flyer,
+  .event-card .details {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .event-flyer {
+    max-height: 200px;
+    width: 100%;
+  }
+
+  .event-title {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+
+  .event-college {
+    font-size: 0.9rem;
+  }
+
+  .post-card {
+    padding: 15px;
+  }
+
+  .post-header {
+    flex-wrap: wrap;
+  }
+
+  .post-avatar {
+    width: 35px;
+    height: 35px;
+  }
+
+  .post-meta {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .post-author {
+    font-size: 1rem;
+  }
+
+  .post-content {
+    font-size: 0.95rem;
+  }
+
+  .post-actions {
+    gap: 10px;
+  }
+
+  .slideshow-container {
+    aspect-ratio: 4/3;
+  }
+
+  .prev-btn,
+  .next-btn {
+    width: 35px;
+    height: 35px;
+    padding: 8px;
+  }
+
+  .slide-counter {
+    font-size: 12px;
+    padding: 3px 8px;
+  }
 }
