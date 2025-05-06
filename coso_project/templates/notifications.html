@@ -20,6 +20,7 @@
     />
     <!-- Link to notifications-specific stylesheet -->
     <link rel="stylesheet" href="../static/css/notifications.css" />
+    <link rel="stylesheet" href="../static/css/common.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -32,39 +33,36 @@
   <body>
     <!-- Header Section with logo and navigation -->
     <header>
-      <h1
-        style="
-          font-family: 'Irish Grover', sans-serif;
-          color: black;
-          text-align: left;
-        "
-      >
-        COSO
-      </h1>
-      <!-- Main navigation menu -->
-      <nav>
-        <!-- Navigation links list -->
-        <ul>
-          <!-- Navigation items -->
+      <nav class="navbar">
+        <h1 class="brand-name">COSO</h1>
+        <ul class="nav-links">
           <li>
             <a href="index.html">
-              <img src="../static/images/home.png" alt=""
-            /></a>
+              <div class="image-container">
+                <img src="../static/images/home.png" alt="Home" title="Home">
+              </div>
+            </a>
           </li>
           <li>
-            <a href="messages.html"
-              ><img src="../static/images/message.png" alt=""
-            /></a>
+            <a href="messages.html">
+              <div class="image-container">
+                <img src="../static/images/message.png" alt="Messages" title="Messages">
+              </div>
+            </a>
           </li>
           <li>
-            <a href="notifications.html"
-              ><img src="../static/images/bell.png" alt=""
-            /></a>
+            <a href="notifications.html">
+              <div class="image-container">
+                <img src="../static/images/bell.png" alt="Notifications" title="Notifications">
+              </div>
+            </a>
           </li>
           <li>
-            <a href="profile.html"
-              ><img src="../static/images/user.png" alt=""
-            /></a>
+            <a href="profile.html">
+              <div class="image-container">
+                <img src="../static/images/user.png" alt="Profile" title="Profile">
+              </div>
+            </a>
           </li>
         </ul>
       </nav>

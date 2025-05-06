@@ -1,4 +1,5 @@
 @import url('common.css');
+
 /* Homepage Styles */
 body {
   font-family: "Baloo Bhai 2", "Edu AU VIC WA NT Pre", "Merriweather",
@@ -10,79 +11,9 @@ body {
   overflow-x: hidden;
   max-width: 100%;
 }
-h2{
+
+h2 {
   padding-left: 15px;
-}
-.button {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #7e34d9;
-  /* Updated color */
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-}
-
-.button:hover {
-  background-color: #502980;
-}
-
-header {
-  background-color: #7e34d9;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  height: 10vh;
-  position: fixed;  /* Change from static to fixed */
-  top: 0;          /* Stick to top */
-  left: 0;         /* Align to left edge */
-  right: 0;        /* Align to right edge */
-  z-index: 1000;   /* Ensure header stays on top */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Added shadow */
-}
-
-header img {
-  max-height: 50px;
-  max-width: 50px;
-}
-
-h1 {
-  font-size: 3rem;
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 10px;
-}
-
-nav a {
-  text-decoration: none;
-  color: white;
-  padding: 10px 15px;
-  transition: background-color 0.3s;
-  border-radius: 20px;
-  display: flex;
-  /* Ensure flex display for proper alignment */
-  justify-content: center;
-  /* Center align items horizontally */
-  align-items: center;
-  /* Center align items vertically */
-}
-
-nav a img {
-  max-height: 30px;
-  /* Increased maximum height for icons */
-  vertical-align: middle;
-  /* Align icon vertically with text */
-}
-nav a:hover {
-  background-color: #5a2d8a; /* Adjusted hover color to match the new theme */
 }
 
 /* Search Section Styles */
@@ -90,13 +21,6 @@ nav a:hover {
   padding: 40px 20px;
   background-color: #f8f9fa;
   margin-bottom: 20px;
-}
-
-#search-section h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 2rem;
-  color: #333;
 }
 
 .search-container {
@@ -170,9 +94,7 @@ nav a:hover {
 .demo-events {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* Two columns */
   gap: 20px;
-  /* Space between cards */
   max-width: 100%;
   margin: 0 auto;
   justify-items: center;
@@ -180,11 +102,8 @@ nav a:hover {
 
 .event-card {
   width: 100%;
-  /* Full width of the card */
   display: flex;
-  /* Enable flex layout */
   align-items: flex-start;
-  /* Align children at the top */
   background: white;
   border-radius: 8px;
   padding: 20px;
@@ -250,14 +169,11 @@ nav a:hover {
 /* Flyer Styles */
 .event-card .flyer {
   flex: 0 0 40%;
-  /* Allocate 40% of the width for the flyer image */
 }
 
 /* Details Styles */
 .event-card .details {
   flex: 0 0 60%;
-  /* Allocate the remaining 60% of the width for event details */
- 
 }
 
 form {
@@ -299,7 +215,6 @@ form button {
   width: 100%;
   padding: 12px;
   background-color: #7e34d9;
-  /* Updated color */
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -330,36 +245,32 @@ form button:hover {
 .event-title,
 .event-college {
   flex: 1;
-  /* Allow title and college to take available space */
   margin: 0;
-  /* Remove default margin */
   padding-left: 20px;
-  /* Add space between flyer and details */
   display: flex;
-  /* Use flex to align items */
   flex-direction: column;
-  /* Stack title and college vertically */
 }
+
 /* Sidebar Styles */
 .page-container {
   display: flex;
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
-  padding-top: 10vh; /* Add padding equal to header height */
 }
 
 .sidebar {
-  width: 180px; /* Reduced from 250px */
+  width: 180px;
   background-color: #f0eaf7;
   padding: 15px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  position: fixed; /* Change to fixed */
-  top: 13.7vh;      /* Update to match header height */
+  position: fixed;
+  top: 13.7vh;
   left: 0;
-  height: calc(100vh - 10vh); /* Subtract header height */
+  height: calc(100vh - 10vh);
   overflow-y: auto;
   z-index: 100;
+  animation: slideInLeft 0.5s ease-out;
 }
 
 .sidebar-title {
@@ -378,7 +289,14 @@ form button:hover {
 
 .sidebar-menu li {
   margin-bottom: 8px;
+  animation: fadeIn .5s ease-out;
+  animation-fill-mode: both;
 }
+
+.sidebar-menu li:nth-child(1) { animation-delay: 0.1s; }
+.sidebar-menu li:nth-child(2) { animation-delay: 0.2s; }
+.sidebar-menu li:nth-child(3) { animation-delay: 0.3s; }
+.sidebar-menu li:nth-child(4) { animation-delay: 0.4s; }
 
 .sidebar-menu a {
   text-decoration: none;
@@ -388,6 +306,23 @@ form button:hover {
   border-radius: 4px;
   transition: background-color 0.3s ease;
   font-size: 0.95rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-menu a::before {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(126, 52, 217, 0.1);
+  transition: transform .6s ease;
+}
+
+.sidebar-menu a:hover::before {
+  transform: translateX(100%);
 }
 
 .sidebar-menu a:hover,
@@ -401,18 +336,38 @@ form button:hover {
   border-left: 3px solid #7e34d9;
 }
 
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* Main Content Adjustments */
 .main-content {
   flex: 1;
   padding: 30px;
-  margin-left: 180px; /* Match sidebar width */
+  margin-left: 180px;
   width: calc(100% - 180px);
-  margin-top: 0; /* Remove any top margin since we added padding to page-container */
+  margin-top: 0;
 }
 
 /* Event Category Sections */
 .event-category {
-  margin-bottom: 40px; /* Reduced from 60px */
+  margin-bottom: 40px;
   padding: 20px;
   background: #fff;
   border-radius: 12px;
@@ -430,7 +385,7 @@ form button:hover {
 .events-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px; /* Increased gap between cards */
+  gap: 30px;
   margin-bottom: 20px;
 }
 
@@ -534,7 +489,6 @@ form button:hover {
 .post-action:hover {
   color: #7e34d9;
 }
-/* Add these styles to your index.css file */
 
 /* Event Flyer Image Styling */
 .event-flyer {
@@ -570,6 +524,7 @@ form button:hover {
   justify-content: flex-start;
   padding-left: 0;
 }
+
 /* Remove old post-photos-cluster styles and add new slideshow styles */
 .post-photos {
   margin: 15px 0;
@@ -660,7 +615,7 @@ form button:hover {
 /* Responsive styles for mobile devices */
 @media (max-width: 768px) {
   .slideshow-container {
-    aspect-ratio: 4/3;  /* More suitable aspect ratio for mobile */
+    aspect-ratio: 4/3;
   }
 
   .prev-btn,
@@ -689,834 +644,12 @@ form button:hover {
     border-radius: 6px;
   }
 
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: static;
-    padding: 10px;
-    top: auto;
-    margin-top: 0;
-  }
-
-  .main-content {
-    margin-left: 0;
-    width: 100%;
-    padding: 15px;
-  }
-
-  .page-container {
-    flex-direction: column;
-  }
-
-  .event-category {
-    margin-bottom: 30px;
-  }
-}
-
-/* Improve responsive layout for event cards */
-@media (max-width: 768px) {
-  .event-card {
-    flex-direction: column;
-    gap: 15px;
-    padding: 15px;
-  }
-
-  .flyer {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-
-  .event-flyer {
-    max-height: 180px;
-    width: 100%;
-  }
-
-  .details {
-    flex: 0 0 100%;
-    max-width: 100%;
-    padding-left: 0;
-  }
-
-  .event-title {
-    text-align: left;
-    margin-top: 5px;
-  }
-
-  .event-college {
-    text-align: left;
-  }
-}
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  /* Common Header Styles */
-  header {
-    padding: 10px;
-    align-items: center;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  nav ul {
-    gap: 5px;
-  }
-
-  nav a {
-    padding: 8px 12px;
-  }
-
-  nav a img {
-    max-height: 24px;
-  }
-
-  nav a {
-    border-radius: 20px;
-  }
-  .profile-header {
-    flex-direction: row;
-    text-align: center;
-  }
-
-  .events-section {
-    padding: 30px 15px;
-  }
-
-  .demo-events {
-    grid-template-columns: 1fr;
-    /* One column on small screens */
-  }
-  .events-container {
-    grid-template-columns: 1fr;
-  }
-  .search-container,
-  header,
-  .event-card {
-    max-width: 100%;
-    flex-direction: row;
-    display: flex;
-    align-items: center;
-  }
-
-  /* Index Page Specific */
   .search-container {
     flex-direction: column;
     align-items: center;
   }
 
-  .search-container input,
-  .search-container select,
-  .search-container button {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .demo-events,
-  .events-container {
-    grid-template-columns: 1fr;
-    padding: 10px;
-  }
-
-  .event-card {
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .event-card .flyer {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-
-  .event-card .details {
-    width: 100%;
-    padding-left: 0;
-  }
-
-  .page-container {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: static;
-    padding: 15px;
-  }
-
-  .sidebar-menu {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .sidebar-menu li {
-    flex: 1 1 auto;
-    min-width: calc(50% - 8px);
-  }
-
-  .sidebar-menu a {
-    text-align: center;
-    padding: 8px 5px;
-  }
-
-  .main-content {
-    padding: 15px;
-  }
-
-  /* Profile Page Specific */
-
-  .profile-header {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
-
-  #profile-picture,
-  .reg-profile-picture {
-    width: 120px;
-    height: 120px;
-  }
-
-  .profile-info {
-    text-align: center;
-  }
-
-  .profile-actions {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .profile-actions button {
-    width: 100%;
-  }
-
-  .form-group input,
-  .form-group select,
-  .submit-btn,
-  .button {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .container {
-    width: 95%;
-    padding: 15px;
-  }
-
-  .navbar {
-    padding: 0 10px;
-  }
-
-  .brand-name {
-    font-size: 2rem;
-  }
-
-  .nav-links {
-    gap: 10px;
-  }
-
-  .nav-links img {
-    width: 24px;
-    height: 24px;
-  }
-
-  .sidebar {
-    overflow: hidden;
-    height: auto;
-    position: static;
-    min-height: auto;
-    box-shadow: none;
-  }
-
-  /* Fix layout for the page container */
-  .page-container {
-    overflow: hidden;
-    min-height: auto;
-  }
-
-  /* Improve event card text layout */
-  .event-card {
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .event-card .flyer {
-    width: 100%;
-    margin-bottom: 15px;
-    text-align: center;
-  }
-
-  .event-card .details {
-    width: 100%;
-    padding-left: 0;
-    text-align: center;
-  }
-
-  .event-title,
-  .event-college {
-    padding-left: 0;
-    text-align: center;
-    display: block; /* Change from flex to block */
-    width: 100%;
-  }
-
-  /* Make sure text doesn't overflow */
-  .event-title {
-    font-size: 1.3rem;
-    margin-top: 10px;
-    word-wrap: break-word;
-  }
-
-  .event-college {
-    font-size: 0.9rem;
-    word-wrap: break-word;
-  }
-
-  /* Ensure proper badge display */
-  .category-badge {
-    display: inline-block;
-    margin-bottom: 10px;
-  }
-
-  /* Ensure body has no scrollbar issues */
-  body {
-    overflow-x: hidden;
-  }
-
-  /* Update media query for mobile responsiveness */
-  .search-container input[type="text"],
-  .search-container select,
-  .search-container button {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 10px;
-    font-size: 14px;
-  }
-
-  .search-container {
-    grid-template-columns: 1fr;
-    padding: 15px;
-  }
-
-  #search-section h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
-  }
-
-  /* Event Card Mobile Fixes */
-  .event-card {
-    width: 100%;
-    flex-direction: column;
-    padding: 15px;
-    margin-bottom: 20px;
-  }
-
-  .event-card .flyer {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 15px;
-  }
-
-  .event-card .flyer img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-
-  .event-card .details {
-    width: 100%;
-    padding: 0;
-  }
-
-  .event-title {
-    font-size: 1.2rem;
-    line-height: 1.4;
-    margin: 10px 0;
-    text-align: left;
-    width: 100%;
-    padding: 0;
-  }
-
-  .event-college {
-    font-size: 0.9rem;
-    line-height: 1.4;
-    margin: 5px 0;
-    text-align: left;
-    width: 100%;
-    padding: 0;
-  }
-
-  /* Post Card Mobile Fixes */
-  .post-card {
-    padding: 15px;
-    margin-bottom: 15px;
-  }
-
-  .post-header {
-    margin-bottom: 12px;
-  }
-
-  .post-content {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 12px;
-    text-align: left;
-  }
-
-  .post-image {
-    width: 100%;
-    height: auto;
-    margin: 10px 0;
-  }
-
-  .post-meta {
-    flex: 1;
-    min-width: 0; /* Prevents text overflow */
-  }
-
-  .post-author {
-    font-size: 1rem;
-    margin-bottom: 2px;
-    white-space: normal;
-    word-wrap: break-word;
-  }
-
-  .post-details {
-    font-size: 0.8rem;
-    white-space: normal;
-    word-wrap: break-word;
-  }
-
-  .post-actions {
-    flex-wrap: wrap;
-    gap: 12px;
-    padding-top: 12px;
-  }
-
-  .post-action {
-    font-size: 0.9rem;
-  }
-
-  /* Category Badge Fixes */
-  .category-badge {
-    display: inline-block;
-    margin-bottom: 8px;
-    font-size: 0.75rem;
-    padding: 3px 6px;
-  }
-
-  /* Container Spacing Fixes */
-  .events-container {
-    gap: 15px;
-    padding: 10px 0;
-  }
-
-  .user-posts-section {
-    margin-top: 30px;
-  }
-
-  /* Text Overflow Prevention */
-  .event-card .details,
-  .post-content,
-  .post-meta {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    hyphens: auto;
-  }
-
-  /* Post page css */
-  .photo-preview {
-    width: 100px;
-    height: 100px;
-  }
   .event-card {
     flex-direction: column;
-    gap: 15px;
-    padding: 15px;
-  }
-
-  .flyer {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-
-  .event-flyer {
-    max-height: 180px;
-    width: 100%;
-  }
-
-  .details {
-    flex: 0 0 100%;
-    max-width: 100%;
-    padding-left: 0;
-  }
-
-  .event-title {
-    text-align: left;
-    margin-top: 5px;
-  }
-
-  .event-college {
-    text-align: left;
-  }
-  /* Responsive adjustments */
-  .post-photos-cluster {
-    gap: 5px;
-  }
-
-  .post-photos-cluster.single-photo {
-    max-width: 100%;
-  }
-}
-
-/* Post page css */
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  font-weight: 600;
-  margin-top: 15px;
-  margin-bottom: 8px;
-  color: #444;
-}
-
-input[type="text"],
-textarea,
-select {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-  margin-bottom: 15px;
-  transition: border-color 0.3s;
-}
-
-input[type="text"]:focus,
-textarea:focus,
-select:focus {
-  border-color: var(--primary-color);
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(126, 52, 217, 0.2);
-}
-
-textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-select {
-  appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  padding-right: 30px;
-}
-
-button[type="submit"] {
-  margin-top: 20px;
-}
-
-/* Photo Upload Section Styles */
-.photo-upload-section {
-  margin-bottom: 20px;
-}
-
-.photo-preview-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin: 15px 0;
-  min-height: 150px;
-  border: 2px dashed #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  transition: border-color 0.3s;
-}
-
-.photo-preview-container:hover {
-  border-color: var(--primary-color);
-}
-
-.photo-placeholder {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  min-height: 120px;
-  color: #888;
-  cursor: pointer;
-}
-
-.photo-placeholder span {
-  font-size: 3rem;
-  margin-bottom: 10px;
-  color: #ccc;
-}
-
-.photo-placeholder p {
-  margin: 0;
-  font-weight: 500;
-}
-
-.photo-preview {
-  position: relative;
-  width: 130px;
-  height: 130px;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.photo-preview img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.remove-photo {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s;
-}
-
-.remove-photo:hover {
-  background-color: rgba(220, 53, 69, 0.8);
-}
-
-.photo-hint {
-  color: #666;
-  font-size: 0.8rem;
-  margin-top: 5px;
-  margin-bottom: 15px;
-}
-
-#upload-photo-btn {
-  margin-bottom: 10px;
-}
-
-/* Form Field Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.form-group {
-  animation: fadeIn 0.3s ease-out;
-}
-
-/* Loading State */
-.button.loading {
-  position: relative;
-  color: transparent;
-}
-
-.button.loading::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  margin: -10px 0 0 -10px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  border-top-color: white;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Notification Styles */
-.notification-container {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.notification {
-  padding: 12px 20px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  animation: slideIn 0.3s ease-out;
-}
-
-.notification.error {
-  background-color: #f44336;
-  color: white;
-}
-
-.notification.success {
-  background-color: #4caf50;
-  color: white;
-}
-
-.notification.info {
-  background-color: #2196f3;
-  color: white;
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Post Photos Styles */
-.post-photos {
-  margin: 15px 0;
-  background: #f8f8f8;
-  border-radius: 8px;
-  overflow: hidden;
-  width: 100%;
-}
-
-.slideshow-container {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: #000;
-  margin: 0 auto;
-}
-
-.slides {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.slides img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  display: none;
-}
-
-.slides img.active {
-  opacity: 1;
-  display: block;
-}
-
-.prev-btn,
-.next-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 16px;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s;
-  z-index: 1;
-}
-
-.prev-btn:hover,
-.next-btn:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.prev-btn {
-  left: 10px;
-}
-
-.next-btn {
-  right: 10px;
-}
-
-.slide-counter {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 15px;
-  font-size: 14px;
-  z-index: 1;
-}
-
-/* Responsive styles for mobile devices */
-@media (max-width: 768px) {
-  .slideshow-container {
-    aspect-ratio: 4/3;  /* More suitable aspect ratio for mobile */
-  }
-
-  .prev-btn,
-  .next-btn {
-    width: 40px;
-    height: 40px;
-    padding: 12px;
-    font-size: 16px;
-  }
-
-  .prev-btn {
-    left: 5px;
-  }
-
-  .next-btn {
-    right: 5px;
-  }
-
-  .slide-counter {
-    font-size: 12px;
-    padding: 4px 8px;
-  }
-
-  .post-photos {
-    margin: 10px 0;
-    border-radius: 6px;
   }
 }

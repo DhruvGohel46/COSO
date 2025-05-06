@@ -12,6 +12,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../static/css/index.css" />
+    <link rel="stylesheet" href="../static/css/common.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,38 +22,45 @@
   </head>
 
   <body>
+    <!-- Header with common classes -->
     <header>
-      <h1 style="font-family: 'Irish Grover', sans-serif; color: black">
-        COSO
-      </h1>
-      <nav>
-        <ul>
+      <nav class="navbar">
+        <h1 class="brand-name">COSO</h1>
+        <ul class="nav-links">
           <li>
-            <a href="index.html"
-              ><img src="../static/images/home.png" alt="Home"
-            /></a>
+            <a href="index.html">
+              <div class="image-container">
+                <img src="../static/images/home.png" alt="Home" title="Home">
+              </div>
+            </a>
           </li>
           <li>
-            <a href="messages.html"
-              ><img src="../static/images/message.png" alt="Messages"
-            /></a>
+            <a href="messages.html">
+              <div class="image-container">
+                <img src="../static/images/message.png" alt="Messages" title="Messages">
+              </div>
+            </a>
           </li>
           <li>
-            <a href="notifications.html"
-              ><img src="../static/images/bell.png" alt="Notifications"
-            /></a>
+            <a href="notifications.html">
+              <div class="image-container">
+                <img src="../static/images/bell.png" alt="Notifications" title="Notifications">
+              </div>
+            </a>
           </li>
           <li>
-            <a href="profile.html"
-              ><img src="../static/images/user.png" alt="Profile"
-            /></a>
+            <a href="profile.html">
+              <div class="image-container">
+                <img src="../static/images/user.png" alt="Profile" title="Profile">
+              </div>
+            </a>
           </li>
         </ul>
       </nav>
     </header>
 
     <div class="page-container">
-      <!-- Sidebar -->
+      <!-- Sidebar with common classes -->
       <aside class="sidebar">
         <ul class="sidebar-menu">
           <li><a href="#user-posts">Home</a></li>
@@ -64,7 +72,7 @@
         </ul>
       </aside>
 
-      <!-- Main Content -->
+      <!-- Main content with common classes -->
       <main class="main-content">
         <!-- Search Section -->
         <section id="search-section">
@@ -95,7 +103,7 @@
           </div>
         </section>
 
-        <div style="display: flex; justify-content: flex-end; margin: 20px">
+        <div style="display: flex; justify-content: flex-end; margin: 20px; margin-top: 0">
           <a href="add-event.html" class="button">Add your Event</a>
         </div>
 

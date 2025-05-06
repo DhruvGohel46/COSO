@@ -1,4 +1,5 @@
 @import url('common.css');
+
 :root {
     --primary-color: #7E34D9;
     --primary-dark: #502980;
@@ -27,75 +28,10 @@ img {
     height: 30px;
 }
 
-/* Header Styles */
-.button {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-}
-
-.button:hover {
-    background-color: #502980;
-}
-
-header {
-    background-color: #7E34D9;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    height: 10vh;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Added shadow */
-}
-
-header img {
-    max-height: 50px;
-    max-width: 50px;
-}
-
-h1 {
-    font-size: 3rem;
-    margin: 0;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 10px;
-}
-
-nav a {
-    text-decoration: none;
-    color: white;
-    padding: 10px 15px;
-    transition: background-color 0.3s;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-nav a img {
-    max-height: 30px;
-    vertical-align: middle;
-}
-
-/* Adjust nav hover style to match notifications.css */
-nav a:hover {
-    background-color: #5a2d8a; /* Adjusted hover color to match the new theme */
-}   
-
 /* Container Layout */
 .container {
     display: flex;
-    height: 86vh;
+    height:86vh;
     box-shadow: 0 0 10px var(--shadow);
     margin: 0 auto;
     max-width: 1400px;
@@ -491,7 +427,7 @@ nav a:hover {
 
 /* Adjust nav hover style to match notifications.css */
 nav a:hover {
-    background-color: #5a2d8a; /* Adjusted hover color to match the new theme */
+    background-color: var(--hover-color); /* Match common.css hover color */
 }
 
 /* Chat layout for desktop - standard side-by-side view */
