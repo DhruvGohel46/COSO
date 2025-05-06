@@ -727,6 +727,7 @@ form select {
   /* Improved Layout Structure */
   .page-container {
     flex-direction: column;
+    width: 100vw;
   }
 
   .sidebar {
