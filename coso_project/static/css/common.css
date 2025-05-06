@@ -259,6 +259,31 @@ header {
 
 /* Media Queries */
 @media (max-width: 768px) {
+    html, body {
+        width: 100%;
+        overflow-x: hidden;
+        padding: 0;
+        margin: 0;
+        position: relative;
+    }
+
+    .main-content {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    header {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
     body{
         width: 100vw;
         padding: 0;
