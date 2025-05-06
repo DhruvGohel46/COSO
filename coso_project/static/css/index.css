@@ -722,12 +722,12 @@ form select {
 }
 
 /* Responsive styles for mobile devices */
-/* Enhanced Mobile Responsive Styles */
 @media (max-width: 768px) {
-  /* Improved Layout Structure */
+  body {
+    width: 100vw;;
+  }
   .page-container {
     flex-direction: column;
-    width: 100vw;
   }
 
   .sidebar {
