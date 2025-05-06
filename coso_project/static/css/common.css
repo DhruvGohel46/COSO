@@ -2,7 +2,7 @@
     --primary-color: #7E34D9;
     --primary-dark: #502980;
     --primary-light: #9a5ce0;
-    --hover-color: #502980; /* Updated hover color */
+    --hover-color: #6d4c99; /* Updated hover color */
     --bg-light: #ffffff;
     --text-dark: #333333;
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -118,7 +118,7 @@ header {
 }
 
 .nav-links a:hover, nav a:hover {
-    background-color:#333333;
+    background-color: #8e44ee;
     transform: translateY(-2px);
 }
 
