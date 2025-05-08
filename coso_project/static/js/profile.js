@@ -368,12 +368,79 @@ document.addEventListener('DOMContentLoaded', async function () {
             profilePhotoPreview.src = userData.profilePicture;
         }
         
-        // Hide login/registration, show profile
+        // Show books section and user stats immediately for demo
+        const myBooksSection = document.getElementById('my-books-section');
+        const userStats = document.querySelector('.user-stats');
+        const noBooks = document.querySelector('.no-books');
+        
+        // Show the sections
+        myBooksSection.style.display = 'block';
+        userStats.style.display = 'block';
+        
+        // Hide the "No books" message and "Start Selling" button
+        if (noBooks) {
+            noBooks.style.display = 'none';
+        }
+        
+        // Hide login/registration sections
         loginSection.classList.add('hidden');
         registrationSection.classList.add('hidden');
         adminRegistrationSection.classList.add('hidden');
         adminDashboard.classList.add('hidden');
         profileSection.classList.remove('hidden');
+    }
+
+    // Add new function to load user's books
+    function loadUserBooks(userData) {
+        const bookList = document.querySelector('.book-list');
+        
+        // If user has no books, show the no-books message
+        if (!userData.books || userData.books.length === 0) {
+            document.querySelector('.no-books').style.display = 'block';
+            bookList.style.display = 'none';
+            return;
+        }
+        
+        // If user has books, hide no-books message and show the list
+        document.querySelector('.no-books').style.display = 'none';
+        bookList.style.display = 'grid';
+    }
+
+    // Add new function to load user stats
+    function loadUserStats(userData) {
+        const statsContainer = document.querySelector('.user-stats');
+        
+        // Update stats with actual user data
+        statsContainer.innerHTML = `
+            <div class="stat-item">
+                <div class="stat-icon">📚</div>
+                <div class="stat-info">
+                    <div class="stat-label">Books Listed</div>
+                    <div class="stat-value">${userData.booksListed || 0}</div>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">💰</div>
+                <div class="stat-info">
+                    <div class="stat-label">Books Sold</div>
+                    <div class="stat-value">${userData.booksSold || 0}</div>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">📖</div>
+                <div class="stat-info">
+                    <div class="stat-label">Active Listings</div>
+                    <div class="stat-value">${userData.activeListings || 0}</div>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">💸</div>
+                <div class="stat-info">
+                    <div class="stat-label">Total Earnings</div>
+                    <div class="stat-value earnings">₹${userData.totalEarnings || 0}</div>
+                </div>
+            </div>
+        `;
     }
 
     // Show admin dashboard
@@ -500,3 +567,12 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Initial check on page load
     checkLoggedInStatus();
 });
+
+function showUserProfile() {
+    document.getElementById('loginSection').classList.add('hidden');
+    document.getElementById('registrationSection').classList.add('hidden');
+    document.getElementById('adminRegistrationSection').classList.add('hidden');
+    document.getElementById('adminDashboard').classList.add('hidden');
+    document.getElementById('profileSection').classList.remove('hidden');
+    document.getElementById('my-books-section').style.display = 'block'; // Add this line
+}

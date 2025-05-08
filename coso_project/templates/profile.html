@@ -131,12 +131,106 @@
         <div class="profile-actions">
           <button id="editProfileBtn" class="edit-btn">Edit Profile</button>
           <button id="logoutBtn" class="edit-btn">Logout</button>
-          <a href="book.html"> <button class="edit-btn" id="book">Book Buy/Sell</button> </a>
         </div>
 
-        <!-- Add Post Button -->
+        <!-- Moved Add Post Button here -->
         <div class="add-post-section">
           <a href="post.html" class="add-post-button"> Add Your Post </a>
+        </div>
+
+        <div class="content-section" id="my-books-section">
+            <div class="my-books-header">
+                <h3>My Listed Books</h3>
+            </div>
+
+            <div class="book-list">
+                <!-- Sample My Book Cards -->
+                <div class="book-card">
+                    <img src="../static/images/books/Java Programming.jpeg" alt="Book Cover" class="book-image" />
+                    <div class="book-details">
+                        <h3 class="book-title">Java Programming</h3>
+                        <p class="book-author">By Herbert Schildt</p>
+                        <p class="book-price">₹400</p>
+                        <span class="book-status status-available">Available</span>
+                        <div class="book-action-buttons">
+                            <button class="button book-action-btn">Edit</button>
+                            <button class="button book-action-btn cancel-btn">Remove</button>
+                            <button class="button book-action-btn">Mark Sold</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <img src="../static/images/books/Calculus Early Transcendentals.jpeg" alt="Book Cover" class="book-image" />
+                    <div class="book-details">
+                        <h3 class="book-title">Calculus: Early Transcendentals</h3>
+                        <p class="book-author">By James Stewart</p>
+                        <p class="book-price">₹550</p>
+                        <span class="book-status status-sold">Sold</span>
+                        <div class="book-action-buttons">
+                            <button class="button book-action-btn cancel-btn">Remove</button>
+                            <button class="button book-action-btn">Relist</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="no-books" style="display: none;">
+                <p>You haven't listed any books yet.</p>
+                <button class="button" id="startSellingBtn">Start Selling</button>
+            </div>
+        </div>
+
+      </div>
+
+      <div class="profile-dashboard">
+        <div class="user-info-sidebar">
+          <div class="user-stats">
+            <div class="stat-item">
+              <div class="stat-icon">📚</div>
+              <div class="stat-info">
+                <div class="stat-label">Books Listed</div>
+                <div class="stat-value">12</div>
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">💰</div>
+              <div class="stat-info">
+                <div class="stat-label">Books Sold</div>
+                <div class="stat-value">5</div>
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">📖</div>
+              <div class="stat-info">
+                <div class="stat-label">Active Listings</div>
+                <div class="stat-value">7</div>
+              </div>
+            </div>
+            <!-- Add new stat item for total earnings -->
+            <div class="stat-item">
+              <div class="stat-icon">💸</div>
+              <div class="stat-info">
+                <div class="stat-label">Total Earnings</div>
+                <div class="stat-value earnings">₹2,500</div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="main-content-area">
+          <div class="user-books-section">
+            <div class="section-header">
+              <h2 class="section-title">New Books</h2>
+              <a href="book.html" class="button">List New Book</a>
+            </div>
+            
+            <div class="books-grid">
+              <!-- Book items will be dynamically populated -->
+            </div>
+          </div>
+    
+          <!-- Other sections like posts can go here -->
         </div>
       </div>
 

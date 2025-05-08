@@ -1,5 +1,3 @@
-
-
 body {
     font-family: 'Baloo Bhai 2', sans-serif;
     background-color: #ffffff;
@@ -331,49 +329,15 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Remove these styles as they're no longer needed */
+.my-books-header,
+.book-status,
+.status-available,
+.status-sold,
+.book-action-buttons,
+.book-action-btn,
 .no-books {
-    text-align: center;
-    padding: 50px 0;
-    font-size: 18px;
-    color: #666;
-}
-
-.my-books-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.book-status {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    margin-top: 5px;
-}
-
-.status-available {
-    background-color: #f0e6ff;
-    color: #7E34D9;
-}
-
-.status-sold {
-    background-color: #ffebee;
-    color: #f44336;
-}
-
-.book-action-buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.book-action-btn {
-    flex: 1;
-    padding: 5px;
-    font-size: 13px;
+    /* Remove these style blocks entirely */
 }
 
 /* New landing page styles */
