@@ -783,13 +783,7 @@ nav a:hover {
     color: #28a745;
     font-weight: 700;
     text-shadow: 0 1px 2px rgba(40, 167, 69, 0.1);
-    animation: pulseGreen 2s infinite;
-}
-
-@keyframes pulseGreen {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    /* Remove animation */
 }
 
 .main-content-area {
@@ -1210,9 +1204,6 @@ nav a:hover {
     color: #333;
     margin-bottom: 10px;
     font-weight: 700;
-    background: linear-gradient(45deg, #7e34d9, #9a5ce0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .profile-info p {
@@ -1329,4 +1320,52 @@ nav a:hover {
 .main-content-area,
 #my-books-section {
     display: none;
+}
+
+/* Enhanced Profile Card */
+.profile-header {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.1),
+        0 0 0 1px rgba(0,0,0,0.05);
+    animation: profileSlideIn 0.6s ease-out;
+}
+
+.profile-picture {
+    transform: translateZ(30px);
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(126, 52, 217, 0.2);
+}
+
+.profile-picture:hover {
+    transform: translateZ(50px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(126, 52, 217, 0.3);
+}
+
+.profile-info {
+    transform: translateZ(20px);
+}
+
+.profile-actions button {
+    transform: translateZ(10px);
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, #7e34d9, #9a5ce0);
+}
+
+.profile-actions button:hover {
+    transform: translateZ(20px) translateY(-2px);
+    box-shadow: 0 8px 25px rgba(126, 52, 217, 0.3);
+}
+
+@keyframes profileSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) translateZ(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) translateZ(0);
+    }
 }

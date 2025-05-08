@@ -96,6 +96,9 @@ nav a:hover {
     border-radius: 8px;
     box-shadow: var(--shadow-sm);
     transition: var(--transition);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    animation: fadeInUp 0.5s ease-out;
 }
 
 .notifications-header {
@@ -113,6 +116,7 @@ nav a:hover {
     margin-top: 20px;
 }
 
+/* Enhanced Notification Card */
 .notification-item {
     display: flex;
     align-items: center;
@@ -120,6 +124,19 @@ nav a:hover {
     border-bottom: 1px solid #eee;
     transition: var(--transition);
     animation: slideUp 0.3s ease;
+    transform: translateZ(0);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: all 0.3s ease;
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    box-shadow: 
+        0 10px 30px rgba(0,0,0,0.1),
+        0 0 0 1px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    animation: notificationSlideIn 0.5s ease-out;
 }
 
 .notification-item:nth-child(1) { animation-delay: 0.1s; }
@@ -128,15 +145,20 @@ nav a:hover {
 
 .notification-item:hover {
     background-color: #f9f9f9;
+    transform: translateY(-5px) translateZ(20px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
 .notification-icon {
     background-color: #7E34D9;
     margin-right: 15px;
+    transform: translateZ(10px);
+    transition: all 0.3s ease;
 }
 
 .notification-content {
     flex: 1;
+    transform: translateZ(15px);
 }
 
 .notification-message {
@@ -172,6 +194,28 @@ nav a:hover {
     text-align: center;
     padding: 40px;
     color: #666;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) translateZ(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) translateZ(0);
+    }
+}
+
+@keyframes notificationSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px) translateZ(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) translateZ(0);
+    }
 }
 
 @media (max-width: 768px) {

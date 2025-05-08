@@ -94,12 +94,14 @@ img {
     display: flex;
     align-items: center;
     gap: 12px;
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
 }
 
 .friend-item:hover {
-    transform: translateX(5px);
-    background-color: var(--hover-color);
-    color: white;
+    transform: translateX(10px) translateZ(20px);
+    background: linear-gradient(145deg, #f0f0f0, #ffffff);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .friend-item.active {
@@ -157,6 +159,9 @@ img {
     display: flex;
     flex-direction: column;
     background-color: var(--bg-light);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    animation: slideInRight 0.5s ease-out;
 }
 
 .chat-header {
@@ -206,6 +211,14 @@ img {
     animation: fadeInRight 0.3s ease;
     transition: var(--transition);
     box-shadow: 0 1px 2px var(--shadow);
+    transform: translateZ(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.message:hover {
+    transform: translateZ(10px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .message.sent {
@@ -315,6 +328,17 @@ img {
     50% { opacity: 1; }
 }
 
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px) translateZ(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) translateZ(0);
+    }
+}
+
 /* Responsive Design */
 /* Hide scrollbar for Chrome, Safari and Opera */
 .messages::-webkit-scrollbar {
@@ -356,6 +380,8 @@ img {
         position: relative;
         min-height: 86vh;
         overflow: hidden; /* Contains absolute elements */
+        transform-style: preserve-3d;
+        perspective: 1000px;
     }
     
     /* For mobile, make the sidebar fill the screen by default */
@@ -369,6 +395,10 @@ img {
         background-color: var(--bg-light);
         transition: transform 0.3s ease;
         transform: translateX(0);
+        transform: translateZ(20px);
+        background: linear-gradient(145deg, #f0eaf7, #ffffff);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        animation: sidebarSlide 0.5s ease-out;
     }
     
     /* Position chat area absolutely to completely hide/show */
@@ -382,6 +412,8 @@ img {
         background-color: var(--bg-light);
         transition: transform 0.3s ease;
         transform: translateX(100%); /* Hide off-screen to the right */
+        transform: translateZ(15px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
     
     /* When chat is active, adjust visibility with transforms */
@@ -413,6 +445,13 @@ img {
     
     .message {
         max-width: 85%;
+        transform: translateZ(5px);
+        transition: all 0.3s ease;
+    }
+    
+    .message:hover {
+        transform: translateZ(10px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
     
     .input-area {
@@ -422,6 +461,17 @@ img {
     /* Ensure messages container scrolls properly within absolute positioned chat area */
     .messages {
         max-height: calc(100% - 120px); /* Account for header and input area */
+    }
+
+    @keyframes sidebarSlide {
+        from {
+            opacity: 0;
+            transform: translateX(-30px) translateZ(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0) translateZ(20px);
+        }
     }
 }
 
