@@ -367,27 +367,18 @@ document.addEventListener('DOMContentLoaded', async function () {
         if (userData.profilePicture && userData.profilePicture !== 'logo.png') {
             profilePhotoPreview.src = userData.profilePicture;
         }
+
+        // Hide all sections first
+        hideAllSections();
         
-        // Show books section and user stats immediately for demo
-        const myBooksSection = document.getElementById('my-books-section');
-        const userStats = document.querySelector('.user-stats');
-        const noBooks = document.querySelector('.no-books');
-        
-        // Show the sections
-        myBooksSection.style.display = 'block';
-        userStats.style.display = 'block';
-        
-        // Hide the "No books" message and "Start Selling" button
-        if (noBooks) {
-            noBooks.style.display = 'none';
-        }
-        
-        // Hide login/registration sections
-        loginSection.classList.add('hidden');
-        registrationSection.classList.add('hidden');
-        adminRegistrationSection.classList.add('hidden');
-        adminDashboard.classList.add('hidden');
+        // Show profile section and all dashboard components
         profileSection.classList.remove('hidden');
+        document.querySelector('.profile-dashboard').style.display = 'grid';
+        document.querySelector('.user-info-sidebar').style.display = 'block';
+        document.querySelector('.main-content-area').style.display = 'block';
+        document.querySelector('.user-stats').style.display = 'block';
+        document.querySelector('.user-books-section').style.display = 'block';
+        document.getElementById('my-books-section').style.display = 'block';
     }
 
     // Add new function to load user's books

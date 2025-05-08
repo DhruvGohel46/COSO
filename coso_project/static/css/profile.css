@@ -1294,3 +1294,20 @@ nav a:hover {
     color: #856404;
     font-size: 0.9rem;
 }
+
+/* Initially hide user sections */
+.user-info-sidebar,
+.user-stats,
+.user-books-section {
+    display: none;
+}
+
+/* Initially hide all dashboard components */
+.profile-dashboard,
+.user-info-sidebar,
+.user-stats,
+.user-books-section,
+.main-content-area,
+#my-books-section {
+    display: none;
+}
