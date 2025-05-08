@@ -308,20 +308,25 @@ nav a:hover {
     box-sizing: border-box;
 }
 
+/* Fix submit button color and hover state */
 .submit-btn {
-    background-color: #7E34D9;
+    background: linear-gradient(45deg, #7e34d9, #9a5ce0);
     color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 4px;
+    padding: 14px 28px;
+    border-radius: 12px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s;
+    font-weight: 600;
     width: 100%;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .submit-btn:hover {
-    background-color: #502980;
+    background: linear-gradient(45deg, #502980, #7e34d9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .hidden {
@@ -359,6 +364,20 @@ nav a:hover {
     background-color: var(--primary-dark);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Fix admin dashboard visibility */
+.admin-dashboard {
+    padding: 30px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin: 20px 0;
+    display: none; /* Initially hidden */
+}
+
+.admin-dashboard.active {
+    display: block; /* Show when active class is added */
 }
 
 /* Admin Section Styles */

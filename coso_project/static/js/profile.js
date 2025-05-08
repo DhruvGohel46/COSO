@@ -110,35 +110,59 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     });
 
+    // Helper function to hide all sections
+    function hideAllSections() {
+        loginSection.classList.add('hidden');
+        profileSection.classList.add('hidden');
+        registrationSection.classList.add('hidden');
+        adminRegistrationSection.classList.add('hidden');
+        adminDashboard.classList.add('hidden');
+        
+        // Hide dashboard components if they exist
+        const profileDashboard = document.querySelector('.profile-dashboard');
+        if (profileDashboard) profileDashboard.style.display = 'none';
+        
+        const userInfoSidebar = document.querySelector('.user-info-sidebar');
+        if (userInfoSidebar) userInfoSidebar.style.display = 'none';
+        
+        const mainContentArea = document.querySelector('.main-content-area');
+        if (mainContentArea) mainContentArea.style.display = 'none';
+        
+        const userStats = document.querySelector('.user-stats');
+        if (userStats) userStats.style.display = 'none';
+        
+        const userBooksSection = document.querySelector('.user-books-section');
+        if (userBooksSection) userBooksSection.style.display = 'none';
+        
+        const myBooksSection = document.getElementById('my-books-section');
+        if (myBooksSection) myBooksSection.style.display = 'none';
+    }
+
     // Show Student Signup Form
     showStudentSignupBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        loginSection.classList.add('hidden');
+        hideAllSections();
         registrationSection.classList.remove('hidden');
-        adminRegistrationSection.classList.add('hidden');
     });
     
     // Show Admin Signup Form
     showAdminSignupBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        loginSection.classList.add('hidden');
-        registrationSection.classList.add('hidden');
+        hideAllSections();
         adminRegistrationSection.classList.remove('hidden');
     });
 
     // Show Login Form from Student Registration
     showLoginBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        registrationSection.classList.add('hidden');
-        adminRegistrationSection.classList.add('hidden');
+        hideAllSections();
         loginSection.classList.remove('hidden');
     });
     
     // Show Login Form from Admin Registration
     showLoginFromAdminBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        adminRegistrationSection.classList.add('hidden');
-        registrationSection.classList.add('hidden');
+        hideAllSections();
         loginSection.classList.remove('hidden');
     });
 
@@ -180,52 +204,46 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
 
     // Student Registration Form Submission
-    registrationForm.addEventListener('submit', async function(e) {
+    registrationForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        const formData = new FormData(registrationForm);
-        
         try {
-            // Try backend registration first
-            await authAPI.registerStudent(Object.fromEntries(formData));
+            // Collect form data
+            const formData = {
+                email: document.getElementById('regEmail').value,
+                name: document.getElementById('name').value,
+                college: document.getElementById('collegeSelect').value,
+                course: document.getElementById('courseSelect').value,
+                year: document.getElementById('year').value,
+                password: document.getElementById('passwordInput').value,
+                profilePicture: regPhotoPreview.src !== '../static/images/logo.png' ? regPhotoPreview.src : '../static/images/logo.png',
+                studentId: studentIdPreview.src !== '../static/images/student id card.png' ? studentIdPreview.src : null,
+                status: 'pending',
+                userType: 'student',
+                booksListed: 0,
+                booksSold: 0,
+                activeListings: 0,
+                totalEarnings: 0
+            };
+
+            // Validate form data
+            if (!formData.email || !formData.name || !formData.college || !formData.course || !formData.password) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            // Save user data to localStorage
+            localStorage.setItem('userData', JSON.stringify(formData));
+            
+            // Show profile with new data
+            showProfile(formData);
+            
+            // Success message
             alert('Registration successful! Your account is pending approval.');
             
-            // Fallback to existing localStorage logic if needed
-            const userData = {
-                email: document.getElementById('regEmail').value,
-                name: document.getElementById('name').value,
-                college: collegeSelect.value,
-                course: courseSelect.value,
-                year: document.getElementById('year').value,
-                password: document.getElementById('passwordInput').value,
-                profilePicture: regPhotoPreview.src !== 'logo.png' ? regPhotoPreview.src : 'logo.png',
-                studentId: studentIdPreview.src !== 'student id card.png' ? studentIdPreview.src : null,
-                status: 'pending',
-                userType: 'student'
-            };
-            localStorage.setItem('userData', JSON.stringify(userData));
-            
-            showProfile(userData);
         } catch (error) {
-            console.error('Backend registration failed:', error);
-            // Continue with existing localStorage logic
-            const userData = {
-                email: document.getElementById('regEmail').value,
-                name: document.getElementById('name').value,
-                college: collegeSelect.value,
-                course: courseSelect.value,
-                year: document.getElementById('year').value,
-                password: document.getElementById('passwordInput').value,
-                profilePicture: regPhotoPreview.src !== 'logo.png' ? regPhotoPreview.src : 'logo.png',
-                studentId: studentIdPreview.src !== 'student id card.png' ? studentIdPreview.src : null,
-                status: 'pending',
-                userType: 'student'
-            };
-            localStorage.setItem('userData', JSON.stringify(userData));
-            
-            showProfile(userData);
-            
-            alert('Registration successful! Your account is pending approval from a college admin.');
+            console.error('Registration error:', error);
+            alert('Registration failed. Please try again.');
         }
     });
 
@@ -233,43 +251,35 @@ document.addEventListener('DOMContentLoaded', async function () {
     adminRegistrationForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        const formData = new FormData(adminRegistrationForm);
-        
         try {
+            // Collect admin form data
+            const adminData = {
+                email: document.getElementById('adminRegEmail').value,
+                name: document.getElementById('adminName').value,
+                college: document.getElementById('adminCollegeSelect').value,
+                designation: document.getElementById('adminDesignation').value,
+                adminId: document.getElementById('adminId').value,
+                password: document.getElementById('adminPasswordInput').value,
+                userType: 'admin'
+            };
+            
             // Try backend admin registration first
-            await authAPI.registerAdmin(Object.fromEntries(formData));
-            alert('Admin registration successful!');
+            try {
+                await authAPI.registerAdmin(adminData);
+            } catch (error) {
+                console.error('Backend admin registration failed:', error);
+                // Continue with localStorage logic
+            }
             
-            // Fallback to existing localStorage logic if needed
-            const adminData = {
-                email: document.getElementById('adminRegEmail').value,
-                name: document.getElementById('adminName').value,
-                college: document.getElementById('adminCollegeSelect').value,
-                designation: document.getElementById('adminDesignation').value,
-                adminId: document.getElementById('adminId').value,
-                password: document.getElementById('adminPasswordInput').value,
-                userType: 'admin'
-            };
+            // Save to localStorage
             localStorage.setItem('adminData', JSON.stringify(adminData));
             
             showAdminDashboard(adminData);
+            alert('Admin registration successful!');
+            
         } catch (error) {
-            console.error('Backend admin registration failed:', error);
-            // Continue with existing localStorage logic
-            const adminData = {
-                email: document.getElementById('adminRegEmail').value,
-                name: document.getElementById('adminName').value,
-                college: document.getElementById('adminCollegeSelect').value,
-                designation: document.getElementById('adminDesignation').value,
-                adminId: document.getElementById('adminId').value,
-                password: document.getElementById('adminPasswordInput').value,
-                userType: 'admin'
-            };
-            localStorage.setItem('adminData', JSON.stringify(adminData));
-            
-            showAdminDashboard(adminData);
-            
-            alert('Admin registration successful!');
+            console.error('Admin registration error:', error);
+            alert('Admin registration failed. Please try again.');
         }
     });
 
@@ -303,7 +313,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         document.getElementById('passwordInput').value = userData.password;
         
         // Show registration form for editing
-        profileSection.classList.add('hidden');
+        hideAllSections();
         registrationSection.classList.remove('hidden');
     });
 
@@ -315,7 +325,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             console.error('Backend logout failed:', error);
         }
         // Continue with existing logout logic
-        profileSection.classList.add('hidden');
+        hideAllSections();
         loginSection.classList.remove('hidden');
     });
 
@@ -327,7 +337,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             console.error('Backend logout failed:', error);
         }
         // Continue with existing admin logout logic
-        adminDashboard.classList.add('hidden');
+        hideAllSections();
         loginSection.classList.remove('hidden');
     });
 
@@ -351,6 +361,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             } else if (userData) {
                 showProfile(userData);
             } else {
+                hideAllSections();
                 loginSection.classList.remove('hidden');
             }
         }
@@ -363,7 +374,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         document.getElementById('profile-college').textContent = userData.college;
         document.getElementById('profile-course').textContent = userData.course;
         
-        // Update profile picture if available
         if (userData.profilePicture && userData.profilePicture !== 'logo.png') {
             profilePhotoPreview.src = userData.profilePicture;
         }
@@ -371,35 +381,96 @@ document.addEventListener('DOMContentLoaded', async function () {
         // Hide all sections first
         hideAllSections();
         
-        // Show profile section and all dashboard components
+        // Show profile section and dashboard
         profileSection.classList.remove('hidden');
-        document.querySelector('.profile-dashboard').style.display = 'grid';
-        document.querySelector('.user-info-sidebar').style.display = 'block';
-        document.querySelector('.main-content-area').style.display = 'block';
-        document.querySelector('.user-stats').style.display = 'block';
-        document.querySelector('.user-books-section').style.display = 'block';
-        document.getElementById('my-books-section').style.display = 'block';
+        
+        // Show user sections and populate books
+        const userSections = [
+            '.profile-dashboard',
+            '.user-info-sidebar',
+            '.user-stats',
+            '.user-books-section',
+            '.main-content-area'
+        ];
+        
+        userSections.forEach(section => {
+            const element = document.querySelector(section);
+            if (element) {
+                element.style.display = section === '.profile-dashboard' ? 'grid' : 'block';
+            }
+        });
+
+        // Show and populate My Books section
+        const myBooksSection = document.getElementById('my-books-section');
+        if (myBooksSection) {
+            myBooksSection.style.display = 'block';
+            
+            // Add demo books
+            const demoBooks = [
+                {
+                    title: 'Java Programming',
+                    author: 'Herbert Schildt',
+                    price: '₹400',
+                    image: '../static/images/books/Java Programming.jpeg',
+                    status: 'available'
+                },
+                {
+                    title: 'Calculus: Early Transcendentals',
+                    author: 'James Stewart',
+                    price: '₹550',
+                    image: '../static/images/books/Calculus Early Transcendentals.jpeg',
+                    status: 'sold'
+                }
+            ];
+
+            const bookList = myBooksSection.querySelector('.book-list');
+            if (bookList) {
+                bookList.innerHTML = demoBooks.map(book => `
+                    <div class="book-card">
+                        <img src="${book.image}" alt="${book.title}" class="book-image" />
+                        <div class="book-details">
+                            <h3 class="book-title">${book.title}</h3>
+                            <p class="book-author">By ${book.author}</p>
+                            <p class="book-price">${book.price}</p>
+                            <span class="book-status status-${book.status}">${book.status}</span>
+                            <div class="book-action-buttons">
+                                ${book.status === 'available' ? `
+                                    <button class="button book-action-btn">Edit</button>
+                                    <button class="button book-action-btn cancel-btn">Remove</button>
+                                    <button class="button book-action-btn">Mark Sold</button>
+                                ` : `
+                                    <button class="button book-action-btn cancel-btn">Remove</button>
+                                    <button class="button book-action-btn">Relist</button>
+                                `}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
     }
 
     // Add new function to load user's books
     function loadUserBooks(userData) {
         const bookList = document.querySelector('.book-list');
+        const noBooks = document.querySelector('.no-books');
         
         // If user has no books, show the no-books message
         if (!userData.books || userData.books.length === 0) {
-            document.querySelector('.no-books').style.display = 'block';
-            bookList.style.display = 'none';
+            if (noBooks) noBooks.style.display = 'block';
+            if (bookList) bookList.style.display = 'none';
             return;
         }
         
         // If user has books, hide no-books message and show the list
-        document.querySelector('.no-books').style.display = 'none';
-        bookList.style.display = 'grid';
+        if (noBooks) noBooks.style.display = 'none';
+        if (bookList) bookList.style.display = 'grid';
     }
 
     // Add new function to load user stats
     function loadUserStats(userData) {
         const statsContainer = document.querySelector('.user-stats');
+        if (!statsContainer) return;
         
         // Update stats with actual user data
         statsContainer.innerHTML = `
@@ -436,21 +507,19 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Show admin dashboard
     function showAdminDashboard(adminData) {
+        hideAllSections();
+        
         // Update admin info
         document.getElementById('admin-name').textContent = adminData.name;
         document.getElementById('admin-college').textContent = adminData.college;
         document.getElementById('admin-designation').textContent = adminData.designation || 'Not specified';
         
-        // Hide all other sections
-        loginSection.classList.add('hidden');
-        registrationSection.classList.add('hidden');
-        profileSection.classList.add('hidden');
-        adminRegistrationSection.classList.add('hidden');
-        
         // Show admin dashboard
+        const adminDashboard = document.getElementById('adminDashboard');
         adminDashboard.classList.remove('hidden');
+        adminDashboard.classList.add('active');
         
-        // Load students from the same college
+        // Load students
         loadStudents(adminData.college);
     }
 
@@ -495,7 +564,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             studentCard.className = 'student-card';
             studentCard.innerHTML = `
                 <div class="student-photo">
-                    <img src="${student.profilePicture || 'logo.png'}" alt="${student.name}">
+                    <img src="${student.profilePicture || '../static/images/logo.png'}" alt="${student.name}">
                 </div>
                 <div class="student-details">
                     <h4>${student.name}</h4>
@@ -505,7 +574,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     <p>Status: <span class="student-status ${student.status ? 'status-' + student.status : 'status-pending'}">${student.status || 'pending'}</span></p>
                 </div>
                 <div class="student-id-preview">
-                    <img src="${student.studentId || 'student id card.png'}" alt="Student ID">
+                    <img src="${student.studentId || '../static/images/student id card.png'}" alt="Student ID">
                 </div>
                 <div class="student-actions">
                     ${student.status !== 'approved' ? `<button class="approve-btn" data-student-index="${index}">Approve</button>` : ''}
@@ -555,6 +624,14 @@ document.addEventListener('DOMContentLoaded', async function () {
         alert(`Student ${student.name} has been ${status}.`);
     }
 
+    // Handle Start Selling button
+    const startSellingBtn = document.getElementById('startSellingBtn');
+    if (startSellingBtn) {
+        startSellingBtn.addEventListener('click', function() {
+            window.location.href = 'book.html';
+        });
+    }
+
     // Initial check on page load
     checkLoggedInStatus();
 });
@@ -565,5 +642,20 @@ function showUserProfile() {
     document.getElementById('adminRegistrationSection').classList.add('hidden');
     document.getElementById('adminDashboard').classList.add('hidden');
     document.getElementById('profileSection').classList.remove('hidden');
-    document.getElementById('my-books-section').style.display = 'block'; // Add this line
+    document.getElementById('my-books-section').style.display = 'block';
+}
+
+// Add new function to show demo books
+function showMyBooks() {
+    const bookList = document.querySelector('.book-list');
+    if (!bookList) return;
+
+    // Show the book list container
+    bookList.style.display = 'grid';
+    
+    // Hide the no books message if it exists
+    const noBooks = document.querySelector('.no-books');
+    if (noBooks) {
+        noBooks.style.display = 'none';
+    }
 }
