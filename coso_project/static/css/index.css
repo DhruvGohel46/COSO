@@ -731,16 +731,7 @@ form select {
     padding-top: 0; /* Remove top padding for mobile */
   }
 
-  .sidebar {
-    position: static;
-    width: 100%;
-    height: auto;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    top: auto;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+  
 
   .sidebar-menu {
     display: flex;
