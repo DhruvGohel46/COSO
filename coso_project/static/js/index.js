@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 displayEvents(events, technicalEventsSection, nonTechnicalEventsSection, sportsEventsSection);
             } catch (error) {
                 console.error('Error fetching events:', error);
-                alert('Failed to fetch events. Please try again.');
+                alert('Serch option strats soon!');
             }
         });
     }

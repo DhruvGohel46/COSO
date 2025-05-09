@@ -537,6 +537,12 @@ function showProfile(user) {
     };
 
     if (!user.approved) {
+        // Remove existing pending message if it exists
+        const existingMessage = profileSection.querySelector('.pending-message');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+        
         // Show pending message for unapproved users
         const pendingMessage = document.createElement('div');
         pendingMessage.className = 'pending-message';
