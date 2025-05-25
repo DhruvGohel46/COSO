@@ -27,7 +27,14 @@
     <!-- Header with consistent nav structure -->
     <header>
       <nav class="navbar">
-        <h1 class="brand-name">COSO</h1>
+        <a href="index.html" class="logo-container">
+          <img
+            src="../static/images/logo.png"
+            alt="COSO Logo"
+            class="site-logo"
+          />
+          <h1 class="brand-name">COSO</h1>
+        </a>
         <ul class="nav-links">
           <li>
             <a href="index.html">
@@ -119,6 +126,7 @@
       <!-- Profile section - Will be shown to registered users -->
       <div id="profileSection" class="profile-section hidden">
         <div class="profile-header">
+          <!-- Update default profile picture -->
           <div id="profile-picture" class="image-container">
             <img
               src="../static/images/logo.png"
@@ -208,9 +216,6 @@
 
       <div class="profile-dashboard">
         <div class="user-info-sidebar">
-          <div style="font-weight: 600; font-size: xx-large;">
-            Books Info
-          </div>
           <div class="user-stats">
             <div class="stat-item">
               <div class="stat-icon">📚</div>
@@ -247,8 +252,8 @@
         <div class="main-content-area">
           <div class="user-books-section">
             <div class="section-header">
-              <h2 class="section-title">To buy or sell book</h2>
-              <a href="book.html" class="button"> Click Here</a>
+              <h2 class="section-title">New Books</h2>
+              <a href="book.html" class="button">List New Book</a>
             </div>
 
             <div class="books-grid">
@@ -375,6 +380,7 @@
         <form id="registrationForm" enctype="multipart/form-data">
           <!-- Profile Picture Upload Section -->
           <div class="reg-profile-picture-section">
+            <!-- Update registration profile picture -->
             <div class="reg-profile-picture image-container">
               <img
                 src="../static/images/logo.png"

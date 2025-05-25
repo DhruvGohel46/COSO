@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 displayEvents(events, technicalEventsSection, nonTechnicalEventsSection, sportsEventsSection);
             } catch (error) {
                 console.error('Error fetching events:', error);
-                alert('Serch option strats soon!');
+                alert('Failed to fetch events. Please try again.');
             }
         });
     }
@@ -402,3 +402,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+function showLoadingState(container) {
+    container.innerHTML = `
+        <div class="loading-container">
+            <img src="../static/images/logo.png" alt="Loading..." class="loading-logo">
+            <p>Loading...</p>
+        </div>
+    `;
+}
+
+function showEmptyState(container, message) {
+    container.innerHTML = `
+        <div class="loading-container">
+            <img src="../static/images/logo.png" alt="No content" class="placeholder-logo">
+            <p>${message}</p>
+        </div>
+    `;
+}

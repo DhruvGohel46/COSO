@@ -210,31 +210,22 @@ function populateCollegesDropdown() {
 
 // Update courses dropdown based on selected college
 function updateCoursesDropdown(collegeId) {
-    const courseSelect = document.getElementById('courseSelect');
-    if (!courseSelect) return;
-
-    // Clear existing options
-    courseSelect.innerHTML = '<option value="">Select Course</option>';
-    
-    try {
-        // Find the selected college
-        const selectedCollege = colleges.find(c => c.id === collegeId);
-        if (selectedCollege && selectedCollege.courses) {
-            // Add options for each course
-            selectedCollege.courses.forEach(course => {
-                const option = document.createElement('option');
-                option.value = course;
-                option.textContent = course;
-                courseSelect.appendChild(option);
-            });
-            courseSelect.disabled = false;
-        } else {
-            courseSelect.disabled = true;
-        }
-    } catch (error) {
-        console.error('Error updating courses:', error);
-        courseSelect.disabled = true;
+  // Clear existing options
+  courseSelect.innerHTML = '<option value="">Select Course</option>';
+  
+  // Find the selected college from the external colleges array
+  if (typeof colleges !== 'undefined') {
+    const college = colleges.find(c => c.id === collegeId);
+    if (college && college.courses) {
+      // Add options for each course
+      college.courses.forEach(course => {
+        const option = document.createElement('option');
+        option.value = course;
+        option.textContent = course;
+        courseSelect.appendChild(option);
+      });
     }
+  }
 }
 
 // Set up all event listeners
@@ -506,77 +497,65 @@ function showAdminRegistration() {
 
 // Show user profile
 function showProfile(user) {
-    hideAllSections();
-    
-    // Show profile section
-    profileSection.style.display = 'block';
-    profileSection.classList.remove('hidden');
+  hideAllSections();
+  
+  // Show and update profile section
+  profileSection.style.display = 'block';
+  profileSection.classList.remove('hidden');
+  
+  // Update profile information
+  profileName.textContent = user.name;
+  profileCollege.textContent = user.college;
+  profileCourse.textContent = user.course || '';
+  
+  if (user.profilePhoto) {
+    profilePhotoPreview.src = user.profilePhoto;
+  }
 
-    // Also show profile dashboard container
-    const profileDashboard = document.querySelector('.profile-dashboard');
-    if (profileDashboard) {
-        profileDashboard.style.display = 'grid';
-    }
-    
-    // Update profile information
-    profileName.textContent = user.name;
-    profileCollege.textContent = user.college;
-    profileCourse.textContent = user.course || '';
-    
-    if (user.profilePhoto) {
-        profilePhotoPreview.src = user.profilePhoto;
-    }
+  // Show/hide dashboard elements based on approval status
+  const dashboardElements = {
+    '.profile-dashboard': true,
+    '.user-info-sidebar': true,
+    '.user-stats': true,
+    '.user-books-section': true,
+    '#my-books-section': true,
+    '.main-content-area': true  // Add this line to include main-content-area
+  };
 
-    // Define dashboard elements to control visibility
-    const dashboardElements = {
-        '.user-info-sidebar': 'block',
-        '.user-stats': 'grid',
-        '.user-books-section': 'block',
-        '#my-books-section': 'block',
-        '.main-content-area': 'flex'
-    };
-
-    if (!user.approved) {
-        // Remove existing pending message if it exists
-        const existingMessage = profileSection.querySelector('.pending-message');
-        if (existingMessage) {
-            existingMessage.remove();
+  if (!user.approved) {
+    // Show pending message for unapproved users
+    const pendingMessage = document.createElement('div');
+    pendingMessage.className = 'pending-message';
+    pendingMessage.innerHTML = `
+      <h3 class="status-message">Account Pending Approval</h3>
+      <p class="sub-message">Your account is awaiting approval from your institute's admin. You'll be notified once approved.</p>
+    `;
+    profileSection.insertBefore(pendingMessage, profileSection.firstChild);
+    
+    // Hide dashboard elements
+    Object.keys(dashboardElements).forEach(selector => {
+      const element = document.querySelector(selector);
+      if (element) element.style.display = 'none';
+    });
+  } else {
+    // Show dashboard elements for approved users
+    Object.keys(dashboardElements).forEach(selector => {
+      const element = document.querySelector(selector);
+      if (element) {
+        // Set appropriate display style based on element
+        if (selector === '.profile-dashboard' || selector === '.user-stats') {
+          element.style.display = 'grid';
+        } else if (selector === '.main-content-area') {
+          element.style.display = 'flex';  // Set main-content-area to flex
+        } else {
+          element.style.display = 'block';
         }
-        
-        // Show pending message for unapproved users
-        const pendingMessage = document.createElement('div');
-        pendingMessage.className = 'pending-message';
-        pendingMessage.innerHTML = `
-            <h3 class="status-message">Account Pending Approval</h3>
-            <p class="sub-message">Your account is awaiting approval from your institute's admin. You'll be notified once approved.</p>
-        `;
-        profileSection.insertBefore(pendingMessage, profileSection.firstChild);
-        
-        // Hide dashboard elements for unapproved users
-        if (profileDashboard) {
-            profileDashboard.style.display = 'none';
-        }
-        Object.keys(dashboardElements).forEach(selector => {
-            const element = document.querySelector(selector);
-            if (element) {
-                element.style.display = 'none';
-            }
-        });
-    } else {
-        // Show dashboard elements for approved users
-        if (profileDashboard) {
-            profileDashboard.style.display = 'grid';
-        }
-        Object.entries(dashboardElements).forEach(([selector, displayStyle]) => {
-            const element = document.querySelector(selector);
-            if (element) {
-                element.style.display = displayStyle;
-            }
-        });
-        
-        // Load user's books
-        loadUserBooks(user.id);
-    }
+      }
+    });
+    
+    // Load user's books
+    loadUserBooks(user.id);
+  }
 }
 
 // Show admin dashboard
@@ -612,12 +591,6 @@ function hideAllSections() {
       section.style.display = 'none';
     }
   });
-
-  // Also hide profile dashboard
-  const profileDashboard = document.querySelector('.profile-dashboard');
-  if (profileDashboard) {
-    profileDashboard.style.display = 'none';
-  }
 }
 
 // Preview image before upload
@@ -663,169 +636,8 @@ function updateProfilePicture(file) {
 
 // Show edit profile modal
 function showEditProfileModal() {
-    const currentUser = getCurrentUser();
-    if (!currentUser) {
-        alert('Please login to edit profile');
-        return;
-    }
-
-    try {
-        // Hide profile section and show registration form
-        profileSection.style.display = 'none';
-        registrationSection.style.display = 'block';
-        registrationSection.classList.remove('hidden');
-
-        // Hide password field since we don't want to change it during edit
-        const passwordField = document.getElementById('passwordInput');
-        if (passwordField) {
-            passwordField.parentElement.style.display = 'none';
-        }
-
-        // Remove previous cancel button if exists
-        const existingCancelBtn = registrationForm.querySelector('.cancel-btn');
-        if (existingCancelBtn) {
-            existingCancelBtn.remove();
-        }
-
-        // Hide unnecessary sections
-        const studentIdSection = document.querySelector('.student-id-section');
-        const loginPrompt = registrationForm.querySelector('.login-prompt');
-        if (studentIdSection) studentIdSection.style.display = 'none';
-        if (loginPrompt) loginPrompt.style.display = 'none';
-
-        // Pre-fill form fields
-        document.getElementById('regEmail').value = currentUser.email || '';
-        document.getElementById('regEmail').readOnly = true;
-        document.getElementById('name').value = currentUser.name || '';
-        
-        // Handle college selection
-        const collegeSelect = document.getElementById('collegeSelect');
-        collegeSelect.value = currentUser.collegeId || '';
-        
-        // Update courses dropdown and select current course
-        updateCoursesDropdown(currentUser.collegeId);
-        
-        // Set other fields
-        document.getElementById('year').value = currentUser.year || '1';
-        if (currentUser.profilePhoto && regPhotoPreview) {
-            regPhotoPreview.src = currentUser.profilePhoto;
-        }
-
-        // Create update button container
-        const formActions = document.createElement('div');
-        formActions.className = 'form-actions';
-        
-        // Create update button
-        const updateBtn = document.createElement('button');
-        updateBtn.type = 'button';
-        updateBtn.className = 'button submit-btn';
-        updateBtn.textContent = 'Update Profile';
-        
-        // Create cancel button
-        const cancelBtn = document.createElement('button');
-        cancelBtn.type = 'button';
-        cancelBtn.className = 'button cancel-btn';
-        cancelBtn.textContent = 'Cancel';
-
-        // Add buttons to container
-        formActions.appendChild(updateBtn);
-        formActions.appendChild(cancelBtn);
-
-        // Replace existing submit button
-        const existingSubmitBtn = registrationForm.querySelector('.submit-btn');
-        if (existingSubmitBtn) {
-            existingSubmitBtn.parentElement.replaceChild(formActions, existingSubmitBtn);
-        }
-
-        // Add click handlers
-        updateBtn.onclick = () => handleProfileUpdate(currentUser.id);
-        cancelBtn.onclick = () => {
-            registrationForm.reset();
-            showProfile(currentUser);
-        };
-
-        // Select current course after a short delay
-        setTimeout(() => {
-            const courseSelect = document.getElementById('courseSelect');
-            if (courseSelect) {
-                courseSelect.value = currentUser.course || '';
-                courseSelect.disabled = false;
-            }
-        }, 100);
-
-    } catch (error) {
-        console.error('Error showing edit profile:', error);
-        alert('There was an error loading the edit profile form. Please try again.');
-        showProfile(currentUser);
-    }
-}
-
-function handleProfileUpdate(userId) {
-    const currentUser = getCurrentUser();
-    if (!currentUser || currentUser.id !== userId) {
-        alert('Unauthorized update attempt');
-        return;
-    }
-
-    // Get form values
-    const name = document.getElementById('name').value.trim();
-    const collegeId = document.getElementById('collegeSelect').value;
-    const college = document.getElementById('collegeSelect').options[document.getElementById('collegeSelect').selectedIndex].text;
-    const course = document.getElementById('courseSelect').value;
-    const year = document.getElementById('year').value;
-
-    // Validate required fields
-    if (!name || !collegeId || !course || !year) {
-        alert('Please fill in all required fields');
-        return;
-    }
-
-    // Create updated user object
-    const updatedUser = {
-        ...currentUser,
-        name,
-        collegeId,
-        college,
-        course,
-        year
-    };
-
-    // Handle profile photo
-    const newProfilePhoto = document.getElementById('reg-photo').files[0];
-    if (newProfilePhoto) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            updatedUser.profilePhoto = e.target.result;
-            saveProfileUpdate(updatedUser);
-        };
-        reader.readAsDataURL(newProfilePhoto);
-    } else {
-        saveProfileUpdate(updatedUser);
-    }
-}
-
-function saveProfileUpdate(updatedUser) {
-    try {
-        // Update user in mockUsers array
-        const userIndex = mockUsers.findIndex(u => u.id === updatedUser.id);
-        if (userIndex !== -1) {
-            mockUsers[userIndex] = updatedUser;
-            localStorage.setItem('mockUsers', JSON.stringify(mockUsers));
-        }
-
-        // Update current user in localStorage
-        localStorage.setItem('currentUser', JSON.stringify(updatedUser));
-
-        // Show success message
-        alert('Profile updated successfully!');
-
-        // Show updated profile
-        showProfile(updatedUser);
-
-    } catch (error) {
-        console.error('Error saving profile update:', error);
-        alert('Error saving profile updates. Please try again.');
-    }
+  // In a real app, this would show a modal to edit profile
+  alert('Edit profile functionality would be implemented here');
 }
 
 // Handle logout

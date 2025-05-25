@@ -163,12 +163,12 @@ nav a:hover {
 
 .notification-message {
     margin: 0;
-    color: #000000;
+    color: #333;
 }
 
 .notification-time {
     font-size: 0.9em;
-    color: #000000;
+    color: #666;
     margin-top: 5px;
 }
 
