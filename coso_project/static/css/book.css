@@ -6,14 +6,21 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    
 }
-
+body {
+    background-image: url("/static/images/bg.2.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
 .brand-name {
     font-family: 'Irish Grover', sans-serif;
 }
 
 .book-marketplace {
-    background-color: white;
+   background: rgba(255, 255, 255, 0.472);
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     padding: 20px;
@@ -211,7 +218,7 @@ body {
 
 /* Sell form styles */
 .sell-form {
-    background-color: white;
+    background: rgba(255, 255, 255, 0.472);
     border-radius: 8px;
     padding: 20px;
 }
@@ -260,7 +267,7 @@ body {
 .book-preview {
     width: 200px;
     height: 200px;
-    border: 2px dashed #ddd;
+    border: 2px dashed #242424;
     display: flex;
     align-items: center;
     justify-content: center;

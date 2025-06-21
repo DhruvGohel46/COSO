@@ -1,14 +1,21 @@
 @import url('common.css');
 
 /* Global Styles */
+
+
 body {
     font-family: 'Baloo Bhai 2', 'Edu AU VIC WA NT Pre', 'Merriweather', sans-serif;
-    background-color: #ffffff;
     color: #333;
     margin: 0;
     padding: 0;
 }
-
+body {
+    background-image: url("/static/images/bg.1.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
 .button {
     display: inline-block;
     padding: 12px 24px;
@@ -85,13 +92,14 @@ nav a:hover {
     padding: 40px 20px;
     max-width: 800px;
     margin: 0 auto;
+     background: rgba(255, 255, 255, 0.472);
 }
 
 /* Notifications Area */
 .notifications-area {
     flex: 1;
     padding: 20px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.472);
     margin: 0 auto; /* Center the notifications area */
     border-radius: 8px;
     box-shadow: var(--shadow-sm);
