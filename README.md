@@ -16,6 +16,7 @@ Custom user profiles with institute-specific information
 
 Profile photo and document upload capabilities for verification
 
+
 Event Management
 
 Create and manage college events across three categories: Technical, Non-Technical, and Sports
@@ -26,6 +27,7 @@ Event flyer upload functionality
 
 Comprehensive event details including date, description, and college information
 
+
 Social Features
 
 College post creation and sharing (admin-only posting)
@@ -33,6 +35,7 @@ College post creation and sharing (admin-only posting)
 Real-time feed displaying institutional updates and announcements
 
 Social interaction capabilities for community engagement
+
 
 Administrative Dashboard
 
@@ -43,6 +46,7 @@ Institute-specific user management
 Event and post moderation capabilities
 
 Analytics and oversight tools for institutional administrators
+
 
 Technology Stack
 Backend Development
@@ -55,6 +59,7 @@ SQLite Database: Data storage and management
 
 Python: Core programming language
 
+
 Frontend Development
 
 HTML5: Semantic markup structure
@@ -66,6 +71,7 @@ JavaScript: Interactive functionality and dynamic content
 Tailwind CSS: Utility-first CSS framework for rapid UI development
 
 Security & Integration
+
 
 CORS middleware for cross-origin resource sharing
 
